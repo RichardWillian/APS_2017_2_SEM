@@ -37,28 +37,24 @@ public class TelaPrincipal extends JanelaBase {
 		setPropriedadesjanela();
 		adicionarComponentesTela();
 		setPropriedadesComponentes();
-		cronometro.start();
 		ctrlDirtyman.start();
 	}
 
 	
 
 	private void setPropriedadesComponentes() {
-		lblTempo.setBounds(600, 40, 120, 40);
 		lblPontuacao.setBounds(460, 40, 120, 40);
 		lblAdvertencia.setBounds(1050, 90, 200, 40);
 		lblAlertaCarregandoLixo.setBounds(1050, 140, 200, 40);
 	}
 
 	private void instanciarComponentes() {
-		lblTempo = new Label("Tempo: " +cronometro.cronometro +"s");
 		lblPontuacao = new Label("PONTUAÇÃO: 0");
 		lblAdvertencia = new Label();
 		lblAlertaCarregandoLixo = new Label("Carregando lixo...");
 	}
 
 	private void adicionarComponentesTela() {
-		this.add(lblTempo);
 		this.add(ecoman.btnEcoman);
 		this.add(dirtyman.btnDirtyman);
 		this.add(lixeira.btnLixeira);
