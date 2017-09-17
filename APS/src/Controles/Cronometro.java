@@ -3,7 +3,7 @@ package Controles;
 import Telas.TelaPrincipal;
 
 public class Cronometro extends Thread {
-	
+	// TA ERRADO SAPORRA
 	public int cronometro = 60;
 
 	@Override
