@@ -35,19 +35,20 @@ public class ControleDirtyMan extends Thread {
 	@Override
 	public void run() {
 
-		telaPrincipal = TelaPrincipal.getInstance();
 		while (true) {
-
+			
 			if (podeSeMovimentar)
 				movimentarDirtyMan();
 			else {
-				for (int cronometro = 0; cronometro < 4; cronometro++) {
+				for (int cronometro = 0; cronometro < 3; cronometro++) {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
+				telaPrincipal = TelaPrincipal.getInstance();
+				
 				podeSeMovimentar = true;
 				telaPrincipal.lblAdvertencia.setVisible(false);
 			}
@@ -165,7 +166,7 @@ public class ControleDirtyMan extends Thread {
 
 	private void setTempoEspera() {
 		try {
-			Thread.sleep(8);
+			Thread.sleep(6);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
