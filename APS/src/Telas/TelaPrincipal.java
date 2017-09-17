@@ -16,7 +16,7 @@ import Personagens.Ecoman;
 
 @SuppressWarnings("serial")
 public class TelaPrincipal extends JanelaBase {
-	Cronometro cronometro;
+	Cronometro ctrlCronometro;
 	ControleDirtyMan ctrlDirtyman;
 	DirtyMan dirtyman;
 	Ecoman ecoman;
@@ -30,25 +30,30 @@ public class TelaPrincipal extends JanelaBase {
 	int pontos = 0;
 	static TelaPrincipal instancia = null;
 	
+	
+	
 	public TelaPrincipal() {
-
 		instanciarObjetos();
 		instanciarComponentes();
 		setPropriedadesjanela();
 		adicionarComponentesTela();
 		setPropriedadesComponentes();
 		ctrlDirtyman.start();
+		ctrlCronometro.start();
+		
 	}
 
 	
 
 	private void setPropriedadesComponentes() {
 		lblPontuacao.setBounds(460, 40, 120, 40);
+		lblTempo.setBounds(600, 40, 150, 50);
 		lblAdvertencia.setBounds(1050, 90, 200, 40);
 		lblAlertaCarregandoLixo.setBounds(1050, 140, 200, 40);
 	}
 
 	private void instanciarComponentes() {
+		lblTempo = new Label("TEMPO: 60s");
 		lblPontuacao = new Label("PONTUAÇÃO: 0");
 		lblAdvertencia = new Label();
 		lblAlertaCarregandoLixo = new Label("Carregando lixo...");
@@ -59,7 +64,7 @@ public class TelaPrincipal extends JanelaBase {
 		this.add(dirtyman.btnDirtyman);
 		this.add(lixeira.btnLixeira);
 		this.add(lblPontuacao);
-
+		this.add(lblTempo);
 		this.add(lblAlertaCarregandoLixo);
 		lblAlertaCarregandoLixo.setVisible(false);
 
@@ -76,20 +81,23 @@ public class TelaPrincipal extends JanelaBase {
 	}
 
 	private void instanciarObjetos() {
-
+		
 		dirtyman = DirtyMan.getInstance();
 		ecoman = new Ecoman();
 		lixeira = new Lixeira();
 		ctrlDirtyman = new ControleDirtyMan();
 		listaLixos = new Vector<Button>();
 		lixo = new Lixo();
+		ctrlCronometro = new Cronometro();
+		
+		
 	}
 
 	public static TelaPrincipal getInstance() {
 
 		if (instancia == null)
 			instancia = new TelaPrincipal();
-
+			
 		return instancia;
 	}
 

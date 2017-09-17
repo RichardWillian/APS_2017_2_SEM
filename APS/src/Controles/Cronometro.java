@@ -4,22 +4,28 @@ import Telas.TelaPrincipal;
 
 public class Cronometro extends Thread {
 	// TA ERRADO SAPORRA
-	public int cronometro = 60;
+	TelaPrincipal telaPrincipal;
+	
+	public int cronometro;
+
+	public Cronometro() {
+
+		cronometro = 60;
+	}
 
 	@Override
 	public void run() {
-		
+		telaPrincipal = TelaPrincipal.getInstance();
 		while (cronometro > 0) {
 			try {
 				Thread.sleep(1000);
-
-			} catch (Exception e) {
-				// TODO: handle exception
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			cronometro --;
-			
-		}
+			cronometro--;
 
+			telaPrincipal.lblTempo.setText("TEMPO: "+cronometro+"s");
+		}
 	}
 
 }
