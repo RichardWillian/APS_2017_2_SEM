@@ -1,4 +1,4 @@
-package Controles;
+package Constantes;
 
 public class ConstantesMensagens {
 

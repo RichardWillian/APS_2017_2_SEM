@@ -1,4 +1,4 @@
-package Controles;
+package Constantes;
 
 public class ConstantesGerais {
 
@@ -11,8 +11,4 @@ public class ConstantesGerais {
 	public static final int DISTANCIA_LIXO = 20;
 	public static final int DISTANCIA_CAPTURAR_LIXO = 40;
 	public static final int DISTANCIA_PARAR_DIRTYMAN = 60;
-	
-
-	public static final int CONGELAR = 0;
-	public static final int DIMINUIR_VELOCIDADE = 1;
 }

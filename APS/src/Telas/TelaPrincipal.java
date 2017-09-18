@@ -5,8 +5,8 @@ import java.awt.Label;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
-import Controles.ConstantesGerais;
-import Controles.ConstantesMensagens;
+import Constantes.ConstantesGerais;
+import Constantes.ConstantesMensagens;
 import Controles.ControleDirtyMan;
 import Controles.Cronometro;
 import Objetos.Lixeira;

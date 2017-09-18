@@ -2,6 +2,7 @@ package Controles;
 
 import java.util.Random;
 
+import Constantes.ConstantesGerais;
 import Personagens.DirtyMan;
 import Telas.TelaPrincipal;
 
@@ -9,17 +10,17 @@ import Telas.TelaPrincipal;
 public class ControleDirtyMan extends Thread {
 
 	private ConstantesGerais constantes; // Classe com todas as contantes que
-										 // serão usadas no código
+											// serão usadas no código
 	public TelaPrincipal telaPrincipal;
 
 	private Random sentidoAleatorio; // Indicará qual direção o DirtyMan irá
-									 // caminhar
+										// caminhar
 
 	private Random qtdePassadasAleatorias; // Indicará a quantidade de passadas
-										   // do DirtyMan
+											// do DirtyMan
 
 	private boolean podeSeMovimentar; // Indica se o DirtyMan pode ou não se
-									  // movimentar
+										// movimentar
 
 	int contadorCriarLixo;
 
@@ -36,7 +37,7 @@ public class ControleDirtyMan extends Thread {
 	public void run() {
 
 		while (true) {
-			
+
 			if (podeSeMovimentar)
 				movimentarDirtyMan();
 			else {
@@ -48,7 +49,7 @@ public class ControleDirtyMan extends Thread {
 					}
 				}
 				telaPrincipal = TelaPrincipal.getInstance();
-				
+
 				podeSeMovimentar = true;
 				telaPrincipal.lblAdvertencia.setVisible(false);
 			}
@@ -58,10 +59,17 @@ public class ControleDirtyMan extends Thread {
 	private void movimentarDirtyMan() {
 
 		int sentido = sentidoAleatorio.nextInt(4);
-		int qtdePassos = qtdePassadasAleatorias.nextInt(100) + 5;// O "+ 5"  infere que no
-																 // mínimo o DirtyMan
-															     // andará 5 passos
-																 // para qualquer um dos sentidos
+		int qtdePassos = qtdePassadasAleatorias.nextInt(100) + 5;// O "+ 5"
+																	// infere
+																	// que no
+																	// mínimo o
+																	// DirtyMan
+																	// andará 5
+																	// passos
+																	// para
+																	// qualquer
+																	// um dos
+																	// sentidos
 		int contadorPassos = 0;
 
 		switch (sentido) {
@@ -113,13 +121,13 @@ public class ControleDirtyMan extends Thread {
 	private void andarParaBaixo(int qtdePassos, int contadorPassos) {
 		while (contadorPassos <= qtdePassos) {
 
-				dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 1);
-				if (dirtyman.getPosicaoY() >= 660 - dirtyman.getAltura()) {
-					andarParaEsquerda(qtdePassos, contadorPassos);
-					break;
-				}
-				caminharDirtyMan();
-				contadorPassos++;
+			dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 1);
+			if (dirtyman.getPosicaoY() >= 660 - dirtyman.getAltura()) {
+				andarParaEsquerda(qtdePassos, contadorPassos);
+				break;
+			}
+			caminharDirtyMan();
+			contadorPassos++;
 		}
 	}
 
@@ -146,22 +154,9 @@ public class ControleDirtyMan extends Thread {
 	}
 
 	private void jogarLixo() {
-		
-		if (contadorCriarLixo % 742 == 0){
-			Random tipoLixo = new Random();
-			
-			switch (tipoLixo.nextInt()) {
-			case ConstantesGerais.CONGELAR:
-				
-				break;
 
-			default:
-				break;
-			}
-			dirtyman.jogarLixo();
-			contadorCriarLixo = 0;
-		}
-		
+		dirtyman.jogarLixo();
+		contadorCriarLixo = 0;
 	}
 
 	private void setTempoEspera() {
@@ -172,7 +167,7 @@ public class ControleDirtyMan extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void instanciarObjetos() {
 
 		constantes = new ConstantesGerais();
