@@ -1,6 +1,6 @@
 import java.awt.EventQueue;
 
-import Telas.MenuPincipal;
+import Telas.MenuPrincipal;
 import Telas.TelaInstrucoes;
 import Telas.TelaPrincipal;
 
@@ -12,7 +12,7 @@ public class ProgramaPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPincipal frame = new MenuPincipal();
+					MenuPrincipal frame = new MenuPrincipal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

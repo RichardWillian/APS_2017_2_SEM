@@ -12,14 +12,15 @@ import java.awt.event.WindowListener;
 public class JanelaBase extends Frame implements KeyListener, WindowListener, ActionListener{
 
 	public JanelaBase(){
-		
+				
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		this.addWindowListener(this);
-		
 		this.addKeyListener(this);
+		
 	}
 
+	
 	@Override
 	public void windowActivated(WindowEvent arg0) {
 		// TODO Auto-generated method stub
@@ -81,6 +82,11 @@ public class JanelaBase extends Frame implements KeyListener, WindowListener, Ac
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void TelaPrincipal() {
 		// TODO Auto-generated method stub
 		
 	}

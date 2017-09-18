@@ -29,7 +29,7 @@ public class TelaPrincipal extends JanelaBase {
 	public Label lblTempo;
 	int pontos = 0;
 	static TelaPrincipal instancia = null;
-	
+	public static int recomecar;
 	
 	
 	public TelaPrincipal() {
@@ -53,7 +53,7 @@ public class TelaPrincipal extends JanelaBase {
 	}
 
 	private void instanciarComponentes() {
-		lblTempo = new Label("TEMPO: 60s");
+		lblTempo = new Label("TEMPO: ");
 		lblPontuacao = new Label("PONTUAÇÃO: 0");
 		lblAdvertencia = new Label();
 		lblAlertaCarregandoLixo = new Label("Carregando lixo...");
@@ -95,7 +95,8 @@ public class TelaPrincipal extends JanelaBase {
 
 	public static TelaPrincipal getInstance() {
 
-		if (instancia == null)
+		recomecar = 0;
+		if (recomecar  == 1 || instancia == null)
 			instancia = new TelaPrincipal();
 			
 		return instancia;
