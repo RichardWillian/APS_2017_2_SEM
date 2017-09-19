@@ -26,6 +26,8 @@ public class ControleDirtyMan extends Thread {
 
 	DirtyMan dirtyman;
 
+	static ControleDirtyMan instancia;
+
 	public ControleDirtyMan() {
 
 		instanciarObjetos();
@@ -155,13 +157,16 @@ public class ControleDirtyMan extends Thread {
 
 	private void jogarLixo() {
 
-		dirtyman.jogarLixo();
-		contadorCriarLixo = 0;
+		if (contadorCriarLixo % 463 == 0) {
+
+			dirtyman.jogarLixo();
+			contadorCriarLixo = 0;
+		}
 	}
 
 	private void setTempoEspera() {
 		try {
-			Thread.sleep(6);
+			Thread.sleep(8);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -182,5 +187,13 @@ public class ControleDirtyMan extends Thread {
 
 	public void setSituacaoMovimentacao(boolean podeSeMovimentar) {
 		this.podeSeMovimentar = podeSeMovimentar;
+	}
+
+	public static ControleDirtyMan getInstance() {
+
+		if (instancia == null)
+			instancia = new ControleDirtyMan();
+		
+		return instancia;
 	}
 }

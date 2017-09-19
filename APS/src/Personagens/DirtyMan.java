@@ -28,6 +28,7 @@ public class DirtyMan{
 	public void mudarPosicao(){
 		btnDirtyman.setBounds(posicaoX, posicaoY, largura, altura);
 	}
+	
 	public static DirtyMan getInstance() {
 
 		if (instancia == null)

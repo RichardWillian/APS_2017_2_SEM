@@ -10,6 +10,7 @@ public class Ecoman {
 	private int altura;
 	public Button btnEcoman;
 	private boolean carregandoLixo;
+	static Ecoman instancia;
 
 	public Ecoman() {
 
@@ -20,6 +21,14 @@ public class Ecoman {
 		setCarregandoLixo(false);
 		btnEcoman = new Button("ECOMAN");
 		btnEcoman.setBounds(posicaoX, posicaoY, largura, altura);
+	}
+	
+	public static Ecoman getInstance() {
+
+		if (instancia == null)
+			instancia = new Ecoman();
+
+		return instancia;
 	}
 
 	public int getPosicaoY() {

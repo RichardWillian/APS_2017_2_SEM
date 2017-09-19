@@ -9,6 +9,7 @@ public class Lixeira {
 	private int largura;
 	private int altura;
 	public Button btnLixeira;
+	static Lixeira instancia;
 
 	public Lixeira() {
 
@@ -21,6 +22,14 @@ public class Lixeira {
 		btnLixeira.setBounds(posicaoX, posicaoY, largura, altura);
 	}
 
+	public static Lixeira getInstance() {
+
+		if (instancia == null)
+			instancia = new Lixeira();
+
+		return instancia;
+	}
+	
 	public int getPosicaoY() {
 		return posicaoY;
 	}
