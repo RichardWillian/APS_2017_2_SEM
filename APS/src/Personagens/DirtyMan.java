@@ -74,4 +74,9 @@ public class DirtyMan{
 		telaPrincipal = TelaPrincipal.getInstance();
 		telaPrincipal.jogarLixo();
 	}
+
+	public static void setInstance(DirtyMan novoDirtyMan) {
+		
+		instancia = novoDirtyMan;
+	}
 }

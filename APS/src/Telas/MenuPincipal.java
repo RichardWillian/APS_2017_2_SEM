@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controles.ControleIniciarJogo;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -51,9 +54,8 @@ public class MenuPincipal extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				if(ae.getSource() == botaoStart) {
 
-					setVisible(false);
-					@SuppressWarnings("unused")
-					TelaPrincipal tela = TelaPrincipal.getInstance();
+					dispose();
+					ControleIniciarJogo.IniciarJogo();
 				}
 			}
 		});

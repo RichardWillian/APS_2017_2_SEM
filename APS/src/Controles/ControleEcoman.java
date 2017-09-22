@@ -21,7 +21,6 @@ public class ControleEcoman {
 	Vector<Button> mochila;
 	TelaPrincipal telaPrincipal;
 	ControleDirtyMan ctrlDirtyMan;
-	MenuPincipal menuPrincipal;
 	static ControleEcoman instancia;
 
 	public ControleEcoman() {
@@ -42,11 +41,10 @@ public class ControleEcoman {
 		ecoman = Ecoman.getInstance();
 		dirtyman = DirtyMan.getInstance();
 		ctrlDirtyMan = ControleDirtyMan.getInstance();
-		lixeira = Lixeira.getInstance();
-		lixo = Lixo.getInstance();
+		lixeira = new Lixeira();
+		lixo = new Lixo();
 		telaPrincipal = TelaPrincipal.getInstance();
 		mochila = telaPrincipal.listaLixos;
-		menuPrincipal = MenuPincipal.getInstance();
 	}
 
 	public void movimentarEcoman(KeyEvent ke) {
@@ -88,21 +86,10 @@ public class ControleEcoman {
 				if (ecoman.estaCarregandoLixo()) {
 					telaPrincipal.pontos += 100;
 					telaPrincipal.lblPontuacao.setText("PONTUAÇÃO: " + telaPrincipal.pontos);
-					verificarFimPartida();
 				}
 				ecoman.setCarregandoLixo(false);
 			}
 		}
-	}
-
-	private void verificarFimPartida() {
-		
-		if(mochila.size() == 0){
-			menuPrincipal.setVisible(true);
-
-			telaPrincipal.dispose();
-		}
-		
 	}
 
 	private void alterarPosicaoEcoman() {

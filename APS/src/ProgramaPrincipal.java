@@ -12,9 +12,9 @@ public class ProgramaPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaGameOver teste = new TelaGameOver();
-					//MenuPincipal frame = MenuPincipal.getInstance();
-					//frame.setVisible(true);
+					//TelaGameOver teste = new TelaGameOver();
+					MenuPincipal frame = new MenuPincipal();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -70,4 +70,8 @@ public class Ecoman {
 	public void setCarregandoLixo(boolean carregandoLixo) {
 		this.carregandoLixo = carregandoLixo;
 	}
+
+	public static void setInstance(Ecoman novoEcoman) {
+		instancia = novoEcoman;
+	}
 }

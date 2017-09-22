@@ -21,14 +21,6 @@ public class Lixo {
 		
 		btnLixo.setBounds(posicaoX, posicaoY, largura, altura);
 	}
-
-	public static Lixo getInstance() {
-
-		if (instancia == null)
-			instancia = new Lixo();
-
-		return instancia;
-	}
 	
 	public int getPosicaoY() {
 		return posicaoY;

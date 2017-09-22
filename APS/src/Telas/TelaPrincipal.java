@@ -20,9 +20,10 @@ public class TelaPrincipal extends JanelaBase {
 	ControleDirtyMan ctrlDirtyman;
 	DirtyMan dirtyman;
 	Ecoman ecoman;
-	Lixeira lixeira;
+    Lixeira lixeira;
 	Lixo lixo;
 	ControleEcoman ctrlEcoman;
+	TelaGameOver telaGameOver;
 	public Vector<Button> listaLixos;
 	public Label lblAlertaCarregandoLixo;
 	public Label lblPontuacao;
@@ -41,7 +42,6 @@ public class TelaPrincipal extends JanelaBase {
 
 		ctrlDirtyman.start();
 		ctrlCronometro.start();
-
 	}
 
 	private void setPropriedadesComponentes() {
@@ -83,10 +83,10 @@ public class TelaPrincipal extends JanelaBase {
 
  		dirtyman = DirtyMan.getInstance();
 		ecoman = Ecoman.getInstance();
-		lixeira = Lixeira.getInstance();
 		ctrlDirtyman = ControleDirtyMan.getInstance();
+		lixeira = new Lixeira();
 		listaLixos = new Vector<Button>();
-		lixo = Lixo.getInstance();
+		lixo = new Lixo();
 		ctrlCronometro = new Cronometro();
 	}
 
@@ -138,5 +138,16 @@ public class TelaPrincipal extends JanelaBase {
 		listaLixos.add(lixo.btnLixo);
 
 		this.add(lixo.btnLixo);
+	}
+
+	public void ativarGameOver() {
+
+		telaGameOver = new TelaGameOver();
+		telaGameOver.setVisible(true);
+	}
+
+	public static void setInstance(TelaPrincipal novaTelaPrincipal) {
+		
+		instancia = novaTelaPrincipal;
 	}
 }

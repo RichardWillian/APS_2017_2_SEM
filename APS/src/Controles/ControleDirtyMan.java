@@ -36,7 +36,7 @@ public class ControleDirtyMan extends Thread {
 	}
 
 	@Override
-	public void run() {
+	public void run(){
 
 		while (true) {
 
@@ -51,11 +51,11 @@ public class ControleDirtyMan extends Thread {
 					}
 				}
 				telaPrincipal = TelaPrincipal.getInstance();
-
 				podeSeMovimentar = true;
 				telaPrincipal.lblAdvertencia.setVisible(false);
 			}
 		}
+		
 	}
 
 	private void movimentarDirtyMan() {
@@ -152,16 +152,18 @@ public class ControleDirtyMan extends Thread {
 		dirtyman.mudarPosicao();
 		setTempoEspera();
 		contadorCriarLixo++;
-		jogarLixo();
+
+		if (contadorCriarLixo % 463 == 0) {
+
+			jogarLixo();
+		}
 	}
 
 	private void jogarLixo() {
 
-		if (contadorCriarLixo % 463 == 0) {
+		dirtyman.jogarLixo();
+		contadorCriarLixo = 0;
 
-			dirtyman.jogarLixo();
-			contadorCriarLixo = 0;
-		}
 	}
 
 	private void setTempoEspera() {
@@ -193,7 +195,12 @@ public class ControleDirtyMan extends Thread {
 
 		if (instancia == null)
 			instancia = new ControleDirtyMan();
-		
+
 		return instancia;
+	}
+
+	public static void setInstance(ControleDirtyMan novoControleDirtyMan) {
+		
+		instancia = novoControleDirtyMan;
 	}
 }
