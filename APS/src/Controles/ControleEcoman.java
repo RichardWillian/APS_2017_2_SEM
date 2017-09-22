@@ -143,4 +143,8 @@ public class ControleEcoman {
 			telaPrincipal.mostrarAdvertenciaEcologica();
 		}
 	}
+
+	public static void setInstance(ControleEcoman novoControleEcoman) {
+		instancia = novoControleEcoman;
+	}
 }

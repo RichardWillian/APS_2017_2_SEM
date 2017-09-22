@@ -13,5 +13,6 @@ public class ControleIniciarJogo {
 		Ecoman.setInstance(new Ecoman());// 2º para não haver problemas na ordem
 		ControleDirtyMan.setInstance(new ControleDirtyMan());
 		TelaPrincipal.setInstance(new TelaPrincipal());
+		ControleEcoman.setInstance(new ControleEcoman());
 	}
 }
