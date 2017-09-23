@@ -9,7 +9,6 @@ import Objetos.Lixeira;
 import Objetos.Lixo;
 import Personagens.DirtyMan;
 import Personagens.Ecoman;
-import Telas.MenuPincipal;
 import Telas.TelaPrincipal;
 
 public class ControleEcoman {

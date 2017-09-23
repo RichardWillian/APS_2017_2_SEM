@@ -16,8 +16,8 @@ public class Ecoman {
 
 		posicaoX = 50;
 		posicaoY = 80;
-		largura = 60;
-		altura = 60;
+		largura = 20;
+		altura = 20;
 		setCarregandoLixo(false);
 		btnEcoman = new Button("ECOMAN");
 		btnEcoman.setBounds(posicaoX, posicaoY, largura, altura);

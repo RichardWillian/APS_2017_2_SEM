@@ -15,8 +15,8 @@ public class Lixeira {
 
 		posicaoX = 600;
 		posicaoY = 300;
-		largura = 60;
-		altura = 60;
+		largura = 20;
+		altura = 20;
 		btnLixeira = new Button("LIXEIRA");
 
 		btnLixeira.setBounds(posicaoX, posicaoY, largura, altura);

@@ -1,8 +1,11 @@
 package Telas;
 
 import java.awt.Button;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Label;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 import Constantes.ConstantesMensagens;
@@ -20,20 +23,22 @@ public class TelaPrincipal extends JanelaBase {
 	ControleDirtyMan ctrlDirtyman;
 	DirtyMan dirtyman;
 	Ecoman ecoman;
-    Lixeira lixeira;
+	Lixeira lixeira;
 	Lixo lixo;
 	ControleEcoman ctrlEcoman;
 	TelaGameOver telaGameOver;
+	BufferedImage fundoTela;
 	public Vector<Button> listaLixos;
 	public Label lblAlertaCarregandoLixo;
 	public Label lblPontuacao;
 	public Label lblAdvertencia;
 	public Label lblTempo;
 	public int pontos = 0;
+
 	static TelaPrincipal instancia;
 
 	public TelaPrincipal() {
-		
+
 		instanciarObjetos();
 		instanciarComponentes();
 		setPropriedadesjanela();
@@ -45,17 +50,17 @@ public class TelaPrincipal extends JanelaBase {
 	}
 
 	private void setPropriedadesComponentes() {
-		lblPontuacao.setBounds(460, 40, 120, 40);
-		lblTempo.setBounds(600, 40, 150, 50);
-		lblAdvertencia.setBounds(1050, 90, 200, 40);
-		lblAlertaCarregandoLixo.setBounds(1050, 140, 200, 40);
+		lblTempo.setBounds(1065, 40, 70, 12);
+		lblPontuacao.setBounds(1000, 90, 110, 15);
+		lblAlertaCarregandoLixo.setBounds(1000, 115, 150, 15);
+		lblAdvertencia.setBounds(1000, 140, 200, 40);
 	}
 
 	private void instanciarComponentes() {
-		lblTempo = new Label("TEMPO: 60s");
+		lblTempo = new Label();
 		lblPontuacao = new Label("PONTUAÇÃO: 0");
 		lblAdvertencia = new Label();
-		lblAlertaCarregandoLixo = new Label("Carregando lixo...");
+		lblAlertaCarregandoLixo = new Label("CARREGANDO LIXO...");
 	}
 
 	private void adicionarComponentesTela() {
@@ -77,11 +82,12 @@ public class TelaPrincipal extends JanelaBase {
 		this.setSize(1200, 700);
 		this.setVisible(true);
 		this.setFocusable(true);
+		this.setResizable(false);
 	}
 
 	private void instanciarObjetos() {
 
- 		dirtyman = DirtyMan.getInstance();
+		dirtyman = DirtyMan.getInstance();
 		ecoman = Ecoman.getInstance();
 		ctrlDirtyman = ControleDirtyMan.getInstance();
 		lixeira = new Lixeira();
@@ -103,9 +109,10 @@ public class TelaPrincipal extends JanelaBase {
 		ctrlEcoman = ControleEcoman.getInstance();
 		ctrlEcoman.movimentarEcoman(ke);
 
-		if (ecoman.estaCarregandoLixo())
+		if (ecoman.estaCarregandoLixo()) {
+			lblAlertaCarregandoLixo.setBackground(new Color(100, 230, 133));
 			lblAlertaCarregandoLixo.setVisible(true);
-		else
+		} else
 			lblAlertaCarregandoLixo.setVisible(false);
 	}
 
@@ -147,7 +154,18 @@ public class TelaPrincipal extends JanelaBase {
 	}
 
 	public static void setInstance(TelaPrincipal novaTelaPrincipal) {
-		
+
 		instancia = novaTelaPrincipal;
+	}
+
+	public void setPlanoDeFundo(BufferedImage fundoTelaPrincipal) {
+
+		this.fundoTela = fundoTelaPrincipal;
+	}
+
+	@Override
+	public void paint(Graphics g) {
+
+		g.drawImage(fundoTela, 0, 0, 1000, getHeight(), null);
 	}
 }

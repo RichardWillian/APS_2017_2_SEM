@@ -18,8 +18,8 @@ public class DirtyMan{
 	public DirtyMan() {
 		posicaoX = 250;
 		posicaoY = 300;
-		largura = 60;
-		altura = 60;
+		largura = 20;
+		altura = 20;
 		
 		btnDirtyman = new Button("DIRTYMAN");
 		btnDirtyman.setBounds(posicaoX, posicaoY, largura, altura);

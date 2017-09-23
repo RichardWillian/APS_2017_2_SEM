@@ -15,8 +15,8 @@ public class Lixo {
 
 		posicaoX = 10;
 		posicaoY = 30;
-		largura = 60;
-		altura = 60;
+		largura = 20;
+		altura = 20;
 		btnLixo = new Button("LIXO");
 		
 		btnLixo.setBounds(posicaoX, posicaoY, largura, altura);
