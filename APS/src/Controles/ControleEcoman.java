@@ -60,7 +60,7 @@ public class ControleEcoman {
 		if (ke.getKeyCode() == KeyEvent.VK_UP) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaCima(ecoman.getPosicaoY(), ecoman.getAltura())) {
+			if (validacoesMapa.autorizarCaminhadaCima(ecoman)) {
 				ecoman.setPosicaoY(ecoman.getPosicaoY() - ConstantesGerais.TAMANHO_PASSO_ECOMAN);
 				mudarImagemCima();
 				alterarPosicaoEcoman();
@@ -70,7 +70,7 @@ public class ControleEcoman {
 		} else if (ke.getKeyCode() == KeyEvent.VK_DOWN) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaBaixo(ecoman.getPosicaoY(), ecoman.getAltura())) {
+			if (validacoesMapa.autorizarCaminhadaBaixo(ecoman)) {
 				ecoman.setPosicaoY(ecoman.getPosicaoY() + ConstantesGerais.TAMANHO_PASSO_ECOMAN);
 				mudarImagemBaixo();
 				alterarPosicaoEcoman();
@@ -79,14 +79,8 @@ public class ControleEcoman {
 		} else if (ke.getKeyCode() == KeyEvent.VK_RIGHT) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaDireita(ecoman.getPosicaoX(), ecoman.getLargura())) {
+			if (validacoesMapa.autorizarCaminhadaDireita(ecoman)) {
 				ecoman.setPosicaoX(ecoman.getPosicaoX() + ConstantesGerais.TAMANHO_PASSO_ECOMAN);
-				mudarImagemDireita();
-				alterarPosicaoEcoman();
-				contadorPassosDireita++;
-			}
-			else {
-				ecoman.setPosicaoX(- ConstantesGerais.TAMANHO_PASSO_ECOMAN);
 				mudarImagemDireita();
 				alterarPosicaoEcoman();
 				contadorPassosDireita++;
@@ -94,14 +88,8 @@ public class ControleEcoman {
 		} else if (ke.getKeyCode() == KeyEvent.VK_LEFT) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaEsquerda(ecoman.getPosicaoX(), ecoman.getLargura())) {
+			if (validacoesMapa.autorizarCaminhadaEsquerda(ecoman)) {
 				ecoman.setPosicaoX(ecoman.getPosicaoX() - ConstantesGerais.TAMANHO_PASSO_ECOMAN);
-				mudarImagemEsquerda();
-				alterarPosicaoEcoman();
-				contadorPassosEsquerda++;
-			}
-			else {
-				ecoman.setPosicaoX(990);
 				mudarImagemEsquerda();
 				alterarPosicaoEcoman();
 				contadorPassosEsquerda++;

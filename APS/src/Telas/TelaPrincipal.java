@@ -129,10 +129,10 @@ public class TelaPrincipal extends JanelaBase {
 			lblAlertaCarregandoLixo.setVisible(true);
 		} else
 			lblAlertaCarregandoLixo.setVisible(false);
-		Integer x = ecoman.ecoImage.getBounds().x;
+		Integer x = ecoman.ecoImage.getBounds().x + 30;
 		eixoX.setText(x.toString());
 		
-		Integer y = ecoman.ecoImage.getBounds().y;
+		Integer y = ecoman.ecoImage.getBounds().y + 50;
 		eixoY.setText(y.toString());
 	}
 
