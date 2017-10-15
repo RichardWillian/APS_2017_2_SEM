@@ -4,19 +4,43 @@ import Constantes.ConstantesGerais;
 
 public class ValidacoesMapa {
 
-	public boolean autorizarCaminhadaEixoY(int posicaoY) {
+	public boolean autorizarCaminhadaCima(int posicaoY, int altura) {
+		int alturaCompensada = (8 + altura);
+		if(posicaoY + alturaCompensada + ConstantesGerais.TAMANHO_PASSO_ECOMAN >= 60){
+			
+//			if (Encontro(posicaoY, altura))
+				return true;
+		}
 		
-		if(posicaoY + 2 + ConstantesGerais.TAMANHO_PASSO_ECOMAN > 70 && posicaoY + ConstantesGerais.TAMANHO_PASSO_ECOMAN < 600)
-			return true;
-		else
-			return false;
+		return false;
 	}
 
-	public boolean autorizarCaminhadaEixoX(int posicaoX) {
+	public boolean autorizarCaminhadaBaixo(int posicaoY, int altura) {
 		
-		if( posicaoX > 40 && posicaoX < 900)
+		if(posicaoY - (8 +  altura)  + ConstantesGerais.TAMANHO_PASSO_ECOMAN <= 590)
 			return true;
-		else
-			return false;
+		
+		return false;
 	}
+
+	public boolean autorizarCaminhadaEsquerda(int posicaoX, int largura) {
+		
+		if(largura + 2 + ConstantesGerais.TAMANHO_PASSO_ECOMAN + posicaoX >= 30)
+			return true;
+		
+		return false;
+	}
+	
+	public boolean autorizarCaminhadaDireita(int posicaoX, int largura) {
+		
+		if( (largura + 2) - ConstantesGerais.TAMANHO_PASSO_ECOMAN + posicaoX <= 985)
+			return true;
+		
+		return false;
+	}
+	
+//	private boolean validarPassagemObstaculoEixoX(int posicaoY, int altura) {
+//		
+//		return false;
+//	}
 }

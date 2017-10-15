@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
+import Constantes.ConstantesGerais;
 import Constantes.ConstantesMensagens;
 import Controles.ControleDirtyMan;
 import Controles.ControleEcoman;

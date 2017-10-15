@@ -60,7 +60,7 @@ public class ControleEcoman {
 		if (ke.getKeyCode() == KeyEvent.VK_UP) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaEixoY(ecoman.getPosicaoY())) {
+			if (validacoesMapa.autorizarCaminhadaCima(ecoman.getPosicaoY(), ecoman.getAltura())) {
 				ecoman.setPosicaoY(ecoman.getPosicaoY() - ConstantesGerais.TAMANHO_PASSO_ECOMAN);
 				mudarImagemCima();
 				alterarPosicaoEcoman();
@@ -70,7 +70,7 @@ public class ControleEcoman {
 		} else if (ke.getKeyCode() == KeyEvent.VK_DOWN) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaEixoY(ecoman.getPosicaoY())) {
+			if (validacoesMapa.autorizarCaminhadaBaixo(ecoman.getPosicaoY(), ecoman.getAltura())) {
 				ecoman.setPosicaoY(ecoman.getPosicaoY() + ConstantesGerais.TAMANHO_PASSO_ECOMAN);
 				mudarImagemBaixo();
 				alterarPosicaoEcoman();
@@ -79,8 +79,14 @@ public class ControleEcoman {
 		} else if (ke.getKeyCode() == KeyEvent.VK_RIGHT) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaEixoX(ecoman.getPosicaoX())) {
+			if (validacoesMapa.autorizarCaminhadaDireita(ecoman.getPosicaoX(), ecoman.getLargura())) {
 				ecoman.setPosicaoX(ecoman.getPosicaoX() + ConstantesGerais.TAMANHO_PASSO_ECOMAN);
+				mudarImagemDireita();
+				alterarPosicaoEcoman();
+				contadorPassosDireita++;
+			}
+			else {
+				ecoman.setPosicaoX(- ConstantesGerais.TAMANHO_PASSO_ECOMAN);
 				mudarImagemDireita();
 				alterarPosicaoEcoman();
 				contadorPassosDireita++;
@@ -88,8 +94,14 @@ public class ControleEcoman {
 		} else if (ke.getKeyCode() == KeyEvent.VK_LEFT) {
 
 			adverterDirtyman();
-			if (validacoesMapa.autorizarCaminhadaEixoX(ecoman.getPosicaoX())) {
+			if (validacoesMapa.autorizarCaminhadaEsquerda(ecoman.getPosicaoX(), ecoman.getLargura())) {
 				ecoman.setPosicaoX(ecoman.getPosicaoX() - ConstantesGerais.TAMANHO_PASSO_ECOMAN);
+				mudarImagemEsquerda();
+				alterarPosicaoEcoman();
+				contadorPassosEsquerda++;
+			}
+			else {
+				ecoman.setPosicaoX(990);
 				mudarImagemEsquerda();
 				alterarPosicaoEcoman();
 				contadorPassosEsquerda++;
