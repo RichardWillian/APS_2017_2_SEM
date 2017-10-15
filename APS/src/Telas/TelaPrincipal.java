@@ -1,12 +1,15 @@
 package Telas;
 
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Label;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 
 import Constantes.ConstantesMensagens;
 import Controles.ControleDirtyMan;
@@ -33,10 +36,12 @@ public class TelaPrincipal extends JanelaBase {
 	public Label lblPontuacao;
 	public Label lblAdvertencia;
 	public Label lblTempo;
+	public Label eixoX;
+	public Label eixoY;
 	public int pontos = 0;
+	JLabel background;
 
 	static TelaPrincipal instancia;
-
 	public TelaPrincipal() {
 
 		instanciarObjetos();
@@ -44,7 +49,6 @@ public class TelaPrincipal extends JanelaBase {
 		setPropriedadesjanela();
 		adicionarComponentesTela();
 		setPropriedadesComponentes();
-
 		ctrlDirtyman.start();
 		ctrlCronometro.start();
 	}
@@ -54,6 +58,9 @@ public class TelaPrincipal extends JanelaBase {
 		lblPontuacao.setBounds(1000, 90, 110, 15);
 		lblAlertaCarregandoLixo.setBounds(1000, 115, 150, 15);
 		lblAdvertencia.setBounds(1000, 140, 200, 40);
+		background.setBounds(0, 0, 1000, getHeight());
+		eixoX.setBounds(1065, 180, 100, 40);
+		eixoY.setBounds(1065, 240, 100, 40);
 	}
 
 	private void instanciarComponentes() {
@@ -61,10 +68,13 @@ public class TelaPrincipal extends JanelaBase {
 		lblPontuacao = new Label("PONTUAÇÃO: 0");
 		lblAdvertencia = new Label();
 		lblAlertaCarregandoLixo = new Label("CARREGANDO LIXO...");
+		background = new JLabel();
+		eixoX = new Label();
+		eixoY = new Label();
 	}
 
 	private void adicionarComponentesTela() {
-		this.add(ecoman.btnEcoman);
+		this.add(ecoman.ecoImage);
 		this.add(dirtyman.btnDirtyman);
 		this.add(lixeira.btnLixeira);
 		this.add(lblPontuacao);
@@ -74,6 +84,10 @@ public class TelaPrincipal extends JanelaBase {
 
 		this.add(lblAdvertencia);
 		lblAdvertencia.setVisible(false);
+		
+		this.add(background);
+		this.add(eixoX);
+		this.add(eixoY);
 	}
 
 	private void setPropriedadesjanela() {
@@ -114,6 +128,11 @@ public class TelaPrincipal extends JanelaBase {
 			lblAlertaCarregandoLixo.setVisible(true);
 		} else
 			lblAlertaCarregandoLixo.setVisible(false);
+		Integer x = ecoman.ecoImage.getBounds().x;
+		eixoX.setText(x.toString());
+		
+		Integer y = ecoman.ecoImage.getBounds().y;
+		eixoY.setText(y.toString());
 	}
 
 	public void mostrarAdvertenciaEcologica() {
@@ -143,11 +162,10 @@ public class TelaPrincipal extends JanelaBase {
 		lixo.btnLixo.setBounds(lixo.getPosicaoX(), lixo.getPosicaoY(), lixo.getLargura(), lixo.getAltura());
 
 		listaLixos.add(lixo.btnLixo);
-
 		this.add(lixo.btnLixo);
 	}
 
-	public void ativarGameOver() {
+	public void ativarTelaGameOver() {
 
 		telaGameOver = new TelaGameOver();
 		telaGameOver.setVisible(true);
@@ -160,12 +178,7 @@ public class TelaPrincipal extends JanelaBase {
 
 	public void setPlanoDeFundo(BufferedImage fundoTelaPrincipal) {
 
-		this.fundoTela = fundoTelaPrincipal;
-	}
-
-	@Override
-	public void paint(Graphics g) {
-
-		g.drawImage(fundoTela, 0, 0, 1000, getHeight(), null);
+		Image img = fundoTelaPrincipal;
+		background.setIcon(new ImageIcon(img));
 	}
 }

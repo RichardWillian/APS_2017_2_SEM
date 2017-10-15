@@ -1,6 +1,6 @@
 package Personagens;
 
-import java.awt.Button;
+import javax.swing.JLabel;
 
 public class Ecoman {
 
@@ -8,19 +8,20 @@ public class Ecoman {
 	private int posicaoY;
 	private int largura;
 	private int altura;
-	public Button btnEcoman;
 	private boolean carregandoLixo;
 	static Ecoman instancia;
+	public JLabel ecoImage;
 
 	public Ecoman() {
 
-		posicaoX = 50;
-		posicaoY = 80;
-		largura = 20;
-		altura = 20;
+		ecoImage = new JLabel();
+		ecoImage.setBounds(100, 100, 10, 10);
+		ecoImage.setVisible(true);
+		posicaoX = 100;
+		posicaoY = 200;
+		largura = 18;
+		altura = 32;
 		setCarregandoLixo(false);
-		btnEcoman = new Button("ECOMAN");
-		btnEcoman.setBounds(posicaoX, posicaoY, largura, altura);
 	}
 	
 	public static Ecoman getInstance() {

@@ -10,7 +10,7 @@ public class Cronometro extends Thread {
 
 	public Cronometro() {
 
-		tempo = 30;
+		tempo = 5030;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class Cronometro extends Thread {
 		
 		tempo = 0;
 		telaPrincipal.lblTempo.setText("TEMPO: " + tempo + "s");
-		ControleGameOver.executarGameOver();
-		telaPrincipal.ativarGameOver();
+		//ControleGameOver.executarGameOver();
+		telaPrincipal.ativarTelaGameOver();
 	}
 }
