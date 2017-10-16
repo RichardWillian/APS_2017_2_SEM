@@ -1,6 +1,8 @@
 package Personagens;
 
-import java.awt.Button;
+//import java.awt.Button;
+
+import javax.swing.JLabel;
 
 import Telas.TelaPrincipal;
 
@@ -11,7 +13,8 @@ public class DirtyMan implements Validavel{
 	private int posicaoY;
 	private int largura;
 	private int altura;
-	public Button btnDirtyman;
+	public JLabel dirtyImage;
+	//public Button btnDirtyman;
 	static DirtyMan instancia;
 	TelaPrincipal telaPrincipal;
 	
@@ -20,13 +23,16 @@ public class DirtyMan implements Validavel{
 		posicaoY = 300;
 		largura = 18;
 		altura = 32;
+		dirtyImage = new JLabel();
+		dirtyImage.setBounds(100, 100, 10, 10);
+		dirtyImage.setVisible(true);
 		
-		btnDirtyman = new Button("DIRTYMAN");
-		btnDirtyman.setBounds(posicaoX, posicaoY, largura, altura);
+		//btnDirtyman = new Button("DIRTYMAN");
+		//btnDirtyman.setBounds(posicaoX, posicaoY, largura, altura);
 	}
 
 	public void mudarPosicao(){
-		btnDirtyman.setBounds(posicaoX, posicaoY, largura, altura);
+		dirtyImage.setBounds(posicaoX, posicaoY, largura, altura);
 	}
 	
 	public static DirtyMan getInstance() {

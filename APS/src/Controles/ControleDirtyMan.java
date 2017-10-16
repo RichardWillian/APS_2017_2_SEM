@@ -3,33 +3,28 @@ package Controles;
 import java.util.Random;
 
 import Constantes.ConstantesGerais;
+import Imagens.DirtymanImagemData;
 import Personagens.DirtyMan;
 import Telas.TelaPrincipal;
 
 @SuppressWarnings("unused")
 public class ControleDirtyMan extends Thread {
 
-	private ConstantesGerais constantes; // Classe com todas as contantes que
-											// serão usadas no código
+	private ConstantesGerais constantes; // Classe com todas as contantes que serão usadas no código
 	public TelaPrincipal telaPrincipal;
-
-	private Random sentidoAleatorio; // Indicará qual direção o DirtyMan irá
-										// caminhar
-
-	private Random qtdePassadasAleatorias; // Indicará a quantidade de passadas
-											// do DirtyMan
-
-	private boolean podeSeMovimentar; // Indica se o DirtyMan pode ou não se
-										// movimentar
-
+	private Random sentidoAleatorio; // Indicará qual direção o DirtyMan irá caminhar
+	private Random qtdePassadasAleatorias; // Indicará a quantidade de passadas do DirtyMan
+	private boolean podeSeMovimentar; // Indica se o DirtyMan pode ou não se movimentar
 	int contadorCriarLixo;
-
 	DirtyMan dirtyman;
-
 	static ControleDirtyMan instancia;
-
 	ValidacoesMapa validacoesMapa;
-
+	int contadorPassosDireita = 0;
+	int contadorPassosEsquerda = 0;
+	int contadorPassosCima = 0;
+	int contadorPassosBaixo = 0;
+	DirtymanImagemData imagemData;
+	
 	public ControleDirtyMan() {
 
 		instanciarObjetos();
@@ -109,7 +104,7 @@ public class ControleDirtyMan extends Thread {
 				caminharDirtyMan();
 				contadorPassos++;
 			}else{
-				dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 10);
+				dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 1);
 				andarParaEsquerda(qtdePassos, contadorPassos);
 				break;
 			}
@@ -150,7 +145,7 @@ public class ControleDirtyMan extends Thread {
 				caminharDirtyMan();
 				contadorPassos++;
 			} else {
-				dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 10);
+				dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 1);
 				andarParaCima(qtdePassos, contadorPassos);
 				break;
 			}
@@ -197,7 +192,7 @@ public class ControleDirtyMan extends Thread {
 
 	private void setTempoEspera() {
 		try {
-			Thread.sleep(8);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -211,6 +206,7 @@ public class ControleDirtyMan extends Thread {
 		qtdePassadasAleatorias = new Random();
 		dirtyman = DirtyMan.getInstance();
 		validacoesMapa = new ValidacoesMapa();
+		imagemData = new DirtymanImagemData();
 	}
 
 	public boolean recuperarSituacaoMovimentacao() {
@@ -232,5 +228,104 @@ public class ControleDirtyMan extends Thread {
 	public static void setInstance(ControleDirtyMan novoControleDirtyMan) {
 
 		instancia = novoControleDirtyMan;
+	}
+	private void mudarImagemDireita() {
+
+		int passos = contadorPassosDireita % 4;
+
+		switch (passos) {
+
+		case 0:
+			dirtyman.dirtyImage.setIcon(imagemData.iconD1);
+			break;
+
+		case 1:
+			dirtyman.dirtyImage.setIcon(imagemData.iconD2);
+			break;
+
+		case 2:
+			dirtyman.dirtyImage.setIcon(imagemData.iconD1);
+			break;
+
+		case 3:
+			dirtyman.dirtyImage.setIcon(imagemData.iconD3);
+			break;
+
+		} 
+	}
+
+	private void mudarImagemEsquerda() {
+
+		int passos = contadorPassosEsquerda % 4;
+
+		switch (passos) {
+
+		case 0:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDL1);
+			break;
+
+		case 1:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDL2);
+			break;
+
+		case 2:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDL1);
+			break;
+
+		case 3:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDL3);
+			break;
+
+		}
+	}
+
+	private void mudarImagemCima() {
+
+		int passos = contadorPassosCima % 4;
+
+		switch (passos) {
+
+		case 0:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDC1);
+			break;
+
+		case 1:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDC2);
+			break;
+
+		case 2:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDC1);
+			break;
+
+		case 3:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDC3);
+			break;
+		}
+	}
+
+	private void mudarImagemBaixo() {
+
+		int passos = contadorPassosBaixo % 4;
+
+		switch (passos) {
+
+		case 0:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDB1);
+			break;
+
+		case 1:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDB2);
+			break;
+
+		case 2:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDB1);
+			break;
+
+		case 3:
+			dirtyman.dirtyImage.setIcon(imagemData.iconDB3);
+			break;
+
+		}
+
 	}
 }

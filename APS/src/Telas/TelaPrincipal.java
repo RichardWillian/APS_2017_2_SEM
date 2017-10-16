@@ -6,12 +6,12 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+//import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
+//import javax.swing.JPanel;
+//import javax.swing.OverlayLayout;
 
-import Constantes.ConstantesGerais;
+//import Constantes.ConstantesGerais;
 import Constantes.ConstantesMensagens;
 import Controles.ControleDirtyMan;
 import Controles.ControleEcoman;
@@ -76,7 +76,8 @@ public class TelaPrincipal extends JanelaBase {
 
 	private void adicionarComponentesTela() {
 		this.add(ecoman.ecoImage);
-		this.add(dirtyman.btnDirtyman);
+		//this.add(dirtyman.btnDirtyman);
+		this.add(dirtyman.dirtyImage);
 		this.add(lixeira.btnLixeira);
 		this.add(lblPontuacao);
 		this.add(lblTempo);

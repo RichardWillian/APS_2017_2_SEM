@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.Vector;
 
 import Constantes.ConstantesGerais;
-import Imagens.ImagemData;
+import Imagens.EcomanImagemData;
 import Objetos.Lixeira;
 import Objetos.Lixo;
 import Personagens.DirtyMan;
@@ -23,7 +23,7 @@ public class ControleEcoman {
 	ControleDirtyMan ctrlDirtyMan;
 	static ControleEcoman instancia;
 	ValidacoesMapa validacoesMapa;
-	ImagemData imagemData;
+	EcomanImagemData imagemData;
 	int contadorPassosDireita = 0;
 	int contadorPassosEsquerda = 0;
 	int contadorPassosCima = 0;
@@ -52,7 +52,7 @@ public class ControleEcoman {
 		telaPrincipal = TelaPrincipal.getInstance();
 		mochila = telaPrincipal.listaLixos;
 		validacoesMapa = new ValidacoesMapa();
-		imagemData = new ImagemData();
+		imagemData = new EcomanImagemData();
 	}
 
 	public void movimentarEcoman(KeyEvent ke) {

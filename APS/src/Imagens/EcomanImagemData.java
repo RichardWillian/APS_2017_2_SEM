@@ -3,14 +3,14 @@ package Imagens;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class ImagemData {
+public class EcomanImagemData {
 	
 	public Icon icon1, icon2, icon3,
 	iconB1, iconB2, iconB3, 
 	iconL1, iconL2, iconL3,
 	iconC1, iconC2, iconC3;	
 	
-    public ImagemData() {
+    public EcomanImagemData() {
     	
     	
     	//Movimentos à direita
