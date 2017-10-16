@@ -5,7 +5,7 @@ import java.awt.Button;
 import Telas.TelaPrincipal;
 
 
-public class DirtyMan{
+public class DirtyMan implements Validavel{
 
 	private int posicaoX;
 	private int posicaoY;
@@ -18,8 +18,8 @@ public class DirtyMan{
 	public DirtyMan() {
 		posicaoX = 250;
 		posicaoY = 300;
-		largura = 20;
-		altura = 20;
+		largura = 18;
+		altura = 32;
 		
 		btnDirtyman = new Button("DIRTYMAN");
 		btnDirtyman.setBounds(posicaoX, posicaoY, largura, altura);

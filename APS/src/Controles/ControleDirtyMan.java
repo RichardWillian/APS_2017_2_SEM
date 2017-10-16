@@ -28,6 +28,8 @@ public class ControleDirtyMan extends Thread {
 
 	static ControleDirtyMan instancia;
 
+	ValidacoesMapa validacoesMapa;
+
 	public ControleDirtyMan() {
 
 		instanciarObjetos();
@@ -36,7 +38,7 @@ public class ControleDirtyMan extends Thread {
 	}
 
 	@Override
-	public void run(){
+	public void run() {
 
 		while (true) {
 
@@ -55,7 +57,7 @@ public class ControleDirtyMan extends Thread {
 				telaPrincipal.lblAdvertencia.setVisible(false);
 			}
 		}
-		
+
 	}
 
 	private void movimentarDirtyMan() {
@@ -97,39 +99,61 @@ public class ControleDirtyMan extends Thread {
 	private void andarParaDireita(int qtdePassos, int contadorPassos) {
 		while (contadorPassos <= qtdePassos) {
 
-			dirtyman.setPosicaoX(dirtyman.getPosicaoX() + 1);
-			if (dirtyman.getPosicaoX() >= 960 - dirtyman.getLargura()) {
-				andarParaBaixo(qtdePassos, contadorPassos);
+			if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
+				dirtyman.setPosicaoX(dirtyman.getPosicaoX() + 1);
+				if (dirtyman.getPosicaoX() >= 960 - dirtyman.getLargura()) {
+
+					andarParaBaixo(qtdePassos, contadorPassos);
+					break;
+				}
+				caminharDirtyMan();
+				contadorPassos++;
+			}else{
+				dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 10);
+				andarParaEsquerda(qtdePassos, contadorPassos);
 				break;
 			}
-			caminharDirtyMan();
-			contadorPassos++;
 		}
 	}
 
 	private void andarParaEsquerda(int qtdePassos, int contadorPassos) {
 		while (contadorPassos <= qtdePassos) {
 
-			dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 1);
-			if (dirtyman.getPosicaoX() <= 40) {
-				andarParaCima(qtdePassos, contadorPassos);
+			if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
+
+				dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 1);
+				if (dirtyman.getPosicaoX() <= 40) {
+					andarParaCima(qtdePassos, contadorPassos);
+					break;
+				}
+				caminharDirtyMan();
+				contadorPassos++;
+			} else {
+
+				dirtyman.setPosicaoX(dirtyman.getPosicaoX() + 1);
+				andarParaDireita(qtdePassos, contadorPassos);
 				break;
 			}
-			caminharDirtyMan();
-			contadorPassos++;
 		}
 	}
 
 	private void andarParaBaixo(int qtdePassos, int contadorPassos) {
 		while (contadorPassos <= qtdePassos) {
 
-			dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 1);
-			if (dirtyman.getPosicaoY() >= 660 - dirtyman.getAltura()) {
-				andarParaEsquerda(qtdePassos, contadorPassos);
+			if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
+
+				dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 1);
+				if (dirtyman.getPosicaoY() >= 660 - dirtyman.getAltura()) {
+					andarParaEsquerda(qtdePassos, contadorPassos);
+					break;
+				}
+				caminharDirtyMan();
+				contadorPassos++;
+			} else {
+				dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 10);
+				andarParaCima(qtdePassos, contadorPassos);
 				break;
 			}
-			caminharDirtyMan();
-			contadorPassos++;
 		}
 	}
 
@@ -137,13 +161,20 @@ public class ControleDirtyMan extends Thread {
 
 		while (contadorPassos <= qtdePassos) {
 
-			dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 1);
-			if (dirtyman.getPosicaoY() <= 70) {
-				andarParaDireita(qtdePassos, contadorPassos);
+			if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
+
+				dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 1);
+				if (dirtyman.getPosicaoY() <= 70) {
+					andarParaDireita(qtdePassos, contadorPassos);
+					break;
+				}
+				caminharDirtyMan();
+				contadorPassos++;
+			} else {
+				dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 1);
+				andarParaBaixo(qtdePassos, contadorPassos);
 				break;
 			}
-			caminharDirtyMan();
-			contadorPassos++;
 		}
 	}
 
@@ -153,10 +184,8 @@ public class ControleDirtyMan extends Thread {
 		setTempoEspera();
 		contadorCriarLixo++;
 
-		if (contadorCriarLixo % 463 == 0) {
-
+		if (contadorCriarLixo % 463 == 0)
 			jogarLixo();
-		}
 	}
 
 	private void jogarLixo() {
@@ -181,6 +210,7 @@ public class ControleDirtyMan extends Thread {
 		sentidoAleatorio = new Random();
 		qtdePassadasAleatorias = new Random();
 		dirtyman = DirtyMan.getInstance();
+		validacoesMapa = new ValidacoesMapa();
 	}
 
 	public boolean recuperarSituacaoMovimentacao() {
@@ -200,7 +230,7 @@ public class ControleDirtyMan extends Thread {
 	}
 
 	public static void setInstance(ControleDirtyMan novoControleDirtyMan) {
-		
+
 		instancia = novoControleDirtyMan;
 	}
 }

@@ -2,16 +2,19 @@ package Controles;
 
 import Constantes.ConstantesGerais;
 import Personagens.Ecoman;
+import Personagens.Validavel;
 
 public class ValidacoesMapa {
 
 	int passoCompensadoEixoX;
 	int passoCompensadoEixoY;
 
-	public boolean autorizarCaminhadaCima(Ecoman ecoman) {
+	public boolean autorizarCaminhadaCima(Validavel personagem) {
 
-		passoCompensadoEixoY = ecoman.getPosicaoY() + (8 + ecoman.getAltura()) + ConstantesGerais.TAMANHO_PASSO_ECOMAN;
-		passoCompensadoEixoX = ecoman.getPosicaoX() + (2 + ecoman.getLargura()) + ConstantesGerais.TAMANHO_PASSO_ECOMAN;
+		passoCompensadoEixoY = personagem.getPosicaoY() + (8 + personagem.getAltura())
+				+ ConstantesGerais.TAMANHO_PASSO_ECOMAN;
+		passoCompensadoEixoX = personagem.getPosicaoX() + (2 + personagem.getLargura())
+				+ ConstantesGerais.TAMANHO_PASSO_ECOMAN;
 
 		if (passoCompensadoEixoY >= 60) {
 
@@ -87,7 +90,8 @@ public class ValidacoesMapa {
 			boolean localizacaoLixeiraDetalheQuarteiraoMeioEsquerda = passoCompensadoEixoY == 500
 					&& (passoCompensadoEixoX >= 80 && passoCompensadoEixoX <= 100);
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			// Quarteirão Meio/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Quarteirão
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Meio/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			boolean localizacaoParedeQuarteiraoMeio = passoCompensadoEixoY == 580
 					&& (passoCompensadoEixoX >= 200 && passoCompensadoEixoX <= 270);
 
@@ -103,43 +107,63 @@ public class ValidacoesMapa {
 
 			boolean localizacaoLixeiraQuarteiraoMeio = passoCompensadoEixoY == 610
 					&& (passoCompensadoEixoX >= 420 && passoCompensadoEixoX <= 450);
-			
+
 			boolean localizacaoDetalheCasaVermelhaQuarteiraoMeio = passoCompensadoEixoY == 600
 					&& (passoCompensadoEixoX >= 480 && passoCompensadoEixoX <= 510);
-			
+
 			boolean localizacaoMuretinhaLadoDireitoCasaVermelhaQuarteiraoMeio = passoCompensadoEixoY == 580
 					&& (passoCompensadoEixoX >= 520 && passoCompensadoEixoX <= 530);
-			
+
 			boolean localizacaoLixoDetalheLadoDireitoCasaVermelhaQuarteiraoMeio = passoCompensadoEixoY == 550
 					&& (passoCompensadoEixoX >= 520 && passoCompensadoEixoX <= 550);
-			
+
 			boolean localizacaoBarrilFogoDoisQuarteiraoMeio = passoCompensadoEixoY == 560
 					&& (passoCompensadoEixoX >= 560 && passoCompensadoEixoX <= 570);
-			
+
 			boolean localizacaoPredioCinzaQuarteiraoMeio = passoCompensadoEixoY == 530
 					&& (passoCompensadoEixoX >= 530 && passoCompensadoEixoX <= 590);
-			
-			boolean localizacaoRestoParedePredioCinzaQuarteiraoMeio = passoCompensadoEixoY == 530 &&
-					(passoCompensadoEixoX >= 610 && passoCompensadoEixoX == 620); 
-			
+
+			boolean localizacaoRestoParedePredioCinzaQuarteiraoMeio = passoCompensadoEixoY == 530
+					&& (passoCompensadoEixoX >= 610 && passoCompensadoEixoX == 620);
+
 			boolean localizacaoConesQuarteiraoMeio = passoCompensadoEixoY == 600 && passoCompensadoEixoX == 620;
-			
-			boolean localizacaoGradeQuarteiraoMeio = passoCompensadoEixoY == 550 &&
-					(passoCompensadoEixoX >= 630 && passoCompensadoEixoX == 670);
-			
+
+			boolean localizacaoGradeQuarteiraoMeio = passoCompensadoEixoY == 550
+					&& (passoCompensadoEixoX >= 630 && passoCompensadoEixoX <= 670);
+
 			boolean localizacaoCanoQuarteiraoMeio = passoCompensadoEixoY == 610 && passoCompensadoEixoX == 660;
-			
-			boolean localizacaoCanoDoisQuarteiraoMeio = passoCompensadoEixoY == 610 && passoCompensadoEixoX == 680;
-			
-			boolean localizacaoParedePequenaCasaQuarteiraoMeio = passoCompensadoEixoY == 620 &&
-					(passoCompensadoEixoX >= 690 && passoCompensadoEixoX <= 730);
-			
-			boolean localizacaoRestoParedePequenaCasaQuarteiraoMeio = passoCompensadoEixoY == 620 &&
-					(passoCompensadoEixoX >= 750 && passoCompensadoEixoX <= 770);
-			
-			boolean localizacaoRestoGradePequenaCasaQuarteiraoMeio = passoCompensadoEixoY == 540 &&
-					(passoCompensadoEixoX >= 780 && passoCompensadoEixoX <= 790);
+
+			boolean localizacaoCanoDoisQuarteiraoMeio = passoCompensadoEixoY == 600 && passoCompensadoEixoX == 680;
+
+			boolean localizacaoBarrilCinzaQuarteiraoMeio = passoCompensadoEixoY == 560 && passoCompensadoEixoX == 680;
+
+			boolean localizacaoParedePequenaCasaQuarteiraoMeio = passoCompensadoEixoY == 620
+					&& (passoCompensadoEixoX >= 690 && passoCompensadoEixoX <= 730);
+
+			boolean localizacaoRestoParedePequenaCasaQuarteiraoMeio = passoCompensadoEixoY == 620
+					&& (passoCompensadoEixoX >= 750 && passoCompensadoEixoX <= 770);
+
+			boolean localizacaoRestoGradePequenaCasaQuarteiraoMeio = passoCompensadoEixoY == 540
+					&& (passoCompensadoEixoX >= 780 && passoCompensadoEixoX <= 790);
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			// Quarteirão Direita
+			// Baixo/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			boolean localizacaoParedePredioMarromQuarteiraoBaixoDireita = passoCompensadoEixoY == 630
+					&& (passoCompensadoEixoX >= 890 && passoCompensadoEixoX <= 930);
+
+			boolean localizacaoRestoParedePredioMarromQuarteiraoBaixoDireita = passoCompensadoEixoY == 630
+					&& (passoCompensadoEixoX >= 950 && passoCompensadoEixoX <= 970);
+
+			boolean localizacaoMaquinaPipocaQuarteiraoBaixoDireita = passoCompensadoEixoY == 640
+					&& (passoCompensadoEixoX >= 980 && passoCompensadoEixoX <= 990);
+
+			boolean localizacaoPredioMarromEscuroQuarteiraoBaixoDireita = passoCompensadoEixoY == 630
+					&& (passoCompensadoEixoX >= 1000 && passoCompensadoEixoX <= 1010);
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			boolean localizacaoAreaRestrita = passoCompensadoEixoY == 510
+					&& (passoCompensadoEixoX >= 840 && passoCompensadoEixoX <= 880);
 			if (localizacaoParedeQuarteiraoCimaMeio && entreAsParedesQuarteiraoCimaMeio)
 				return false;
 			else if (localizacaoLixeiraLadoEsquerdoQuarteiraoCimaMeio)
@@ -202,10 +226,6 @@ public class ValidacoesMapa {
 				return false;
 			else if (localizacaoRestoParedePredioCinzaQuarteiraoMeio)
 				return false;
-			
-			
-			
-			
 			else if (localizacaoConesQuarteiraoMeio)
 				return false;
 			else if (localizacaoGradeQuarteiraoMeio)
@@ -216,11 +236,23 @@ public class ValidacoesMapa {
 				return false;
 			else if (localizacaoParedePequenaCasaQuarteiraoMeio)
 				return false;
-			
 			else if (localizacaoRestoParedePequenaCasaQuarteiraoMeio)
 				return false;
 			else if (localizacaoRestoGradePequenaCasaQuarteiraoMeio)
 				return false;
+			else if (localizacaoBarrilCinzaQuarteiraoMeio)
+				return false;
+			else if (localizacaoParedePredioMarromQuarteiraoBaixoDireita)
+				return false;
+			else if (localizacaoRestoParedePredioMarromQuarteiraoBaixoDireita)
+				return false;
+			else if (localizacaoMaquinaPipocaQuarteiraoBaixoDireita)
+				return false;
+			else if (localizacaoPredioMarromEscuroQuarteiraoBaixoDireita)
+				return false;
+			else if (localizacaoAreaRestrita)
+				return false;
+
 			return true;
 		}
 

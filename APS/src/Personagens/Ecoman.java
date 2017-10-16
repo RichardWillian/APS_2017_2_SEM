@@ -2,7 +2,7 @@ package Personagens;
 
 import javax.swing.JLabel;
 
-public class Ecoman {
+public class Ecoman implements Validavel{
 
 	private int posicaoX;
 	private int posicaoY;
