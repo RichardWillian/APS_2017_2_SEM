@@ -11,6 +11,7 @@ import Objetos.Lixo;
 import Personagens.DirtyMan;
 import Personagens.Ecoman;
 import Telas.TelaPrincipal;
+import Validacoes.ValidacoesMapa;
 
 public class ControleEcoman {
 
@@ -97,8 +98,8 @@ public class ControleEcoman {
 		}
 
 		if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
-			if (ecoman.getPosicaoX() == lixeira.getPosicaoX() && ecoman.getPosicaoY() == lixeira.getPosicaoY()) {
-
+			if (checarProximidade(ecoman.getPosicaoX(), lixeira.getPosicaoX())
+					&& checarProximidade(ecoman.getPosicaoY(), lixeira.getPosicaoY())) {
 				if (ecoman.estaCarregandoLixo()) {
 					telaPrincipal.pontos += 100;
 					telaPrincipal.lblPontuacao.setText("PONTUAÇÃO: " + telaPrincipal.pontos);
@@ -130,7 +131,7 @@ public class ControleEcoman {
 			ecoman.ecoImage.setIcon(imagemData.icon3);
 			break;
 
-		} 
+		}
 	}
 
 	private void mudarImagemEsquerda() {
@@ -205,7 +206,6 @@ public class ControleEcoman {
 			break;
 
 		}
-
 	}
 
 	private void alterarPosicaoEcoman() {

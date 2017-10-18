@@ -1,5 +1,7 @@
 package Personagens;
 
+import java.awt.Button;
+
 import javax.swing.JLabel;
 
 public class Ecoman implements Validavel{
@@ -11,14 +13,15 @@ public class Ecoman implements Validavel{
 	private boolean carregandoLixo;
 	static Ecoman instancia;
 	public JLabel ecoImage;
-
+	//public Button ecoImage;
 	public Ecoman() {
 
+		//ecoImage = new Button();
 		ecoImage = new JLabel();
-		ecoImage.setBounds(100, 100, 10, 10);
+		ecoImage.setBounds(100, 100, 18, 32);
 		ecoImage.setVisible(true);
 		posicaoX = 100;
-		posicaoY = 200;
+		posicaoY = 100;
 		largura = 18;
 		altura = 32;
 		setCarregandoLixo(false);

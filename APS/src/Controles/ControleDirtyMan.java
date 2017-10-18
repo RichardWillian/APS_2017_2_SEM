@@ -6,6 +6,7 @@ import Constantes.ConstantesGerais;
 import Imagens.DirtymanImagemData;
 import Personagens.DirtyMan;
 import Telas.TelaPrincipal;
+import Validacoes.ValidacoesMapa;
 
 @SuppressWarnings("unused")
 public class ControleDirtyMan extends Thread {
@@ -104,7 +105,7 @@ public class ControleDirtyMan extends Thread {
 				caminharDirtyMan();
 				contadorPassos++;
 			}else{
-				dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 1);
+				dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 10);
 				andarParaEsquerda(qtdePassos, contadorPassos);
 				break;
 			}
@@ -192,7 +193,7 @@ public class ControleDirtyMan extends Thread {
 
 	private void setTempoEspera() {
 		try {
-			Thread.sleep(100);
+			Thread.sleep(8);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

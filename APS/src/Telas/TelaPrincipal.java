@@ -76,7 +76,6 @@ public class TelaPrincipal extends JanelaBase {
 
 	private void adicionarComponentesTela() {
 		this.add(ecoman.ecoImage);
-		//this.add(dirtyman.btnDirtyman);
 		this.add(dirtyman.dirtyImage);
 		this.add(lixeira.btnLixeira);
 		this.add(lblPontuacao);
@@ -178,9 +177,8 @@ public class TelaPrincipal extends JanelaBase {
 		instancia = novaTelaPrincipal;
 	}
 
-	public void setPlanoDeFundo(BufferedImage fundoTelaPrincipal) {
-
-		Image img = fundoTelaPrincipal;
-		background.setIcon(new ImageIcon(img));
+	public void setPlanoDeFundo(ImageIcon fundoTelaPrincipal) {
+		
+		background.setIcon(fundoTelaPrincipal);
 	}
 }

@@ -1,10 +1,10 @@
 package Controles;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import Personagens.DirtyMan;
 import Personagens.Ecoman;
@@ -25,13 +25,7 @@ public class ControleIniciarJogo {
 
 	private static void setImagemTela() {
 		
-		BufferedImage fundoTelaPrincipal = null;
-		try {
-			fundoTelaPrincipal = ImageIO.read(new File("C:\\Users\\Seven\\Desktop\\MapaCertoAumentado.PNG"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		ImageIcon fundoTelaPrincipal = new ImageIcon(ControleIniciarJogo.class.getResource("/Imagens/Background.png")); 
 		TelaPrincipal.getInstance().setPlanoDeFundo(fundoTelaPrincipal);
 	}
 }
