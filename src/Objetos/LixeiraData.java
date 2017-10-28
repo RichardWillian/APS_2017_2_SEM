@@ -59,7 +59,7 @@ public class LixeiraData {
 			return this.getLixeiraTresB();
 
 		} else if (posicaoX > 500) {
-			if (posicaoX < 740)
+			if (posicaoX < 730)
 				return this.getLixeiraDoisA();
 
 			return this.getLixeiraDoisB();

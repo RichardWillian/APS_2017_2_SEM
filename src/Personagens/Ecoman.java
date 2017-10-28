@@ -15,8 +15,6 @@ public class Ecoman implements Validavel{
 	public Ecoman() {
 
 		ecoImage = new JLabel();
-		ecoImage.setBounds(100, 100, 18, 32);
-		ecoImage.setVisible(true);
 		posicaoX = 100;
 		posicaoY = 100;
 		largura = 18;

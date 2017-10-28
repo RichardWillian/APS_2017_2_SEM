@@ -5,17 +5,17 @@ import java.awt.event.KeyEvent;
 import java.util.Vector;
 
 import Constantes.ConstantesGerais;
-import Imagens.EcomanImagemData;
+import ImagemData.EcomanImagemData;
 import Objetos.Lixeira;
 import Objetos.LixeiraData;
-import Personagens.DirtyMan;
+import Personagens.Dirtyman;
 import Personagens.Ecoman;
 import Telas.TelaPrincipal;
 import Validacoes.ValidacoesMapa;
 
 public class ControleEcoman {
 
-	private DirtyMan dirtyman;
+	private Dirtyman dirtyman;
 	private Ecoman ecoman;
 	private LixeiraData lixeiraData;
 	private Vector<Button> mochila;
@@ -45,13 +45,13 @@ public class ControleEcoman {
 	private void instanciarObjetos() {
 
 		ecoman = Ecoman.getInstance();
-		dirtyman = DirtyMan.getInstance();
+		dirtyman = Dirtyman.getInstance();
 		ctrlDirtyMan = ControleDirtyMan.getInstance();
 		lixeiraData = new LixeiraData();
 		telaPrincipal = TelaPrincipal.getInstance();
 		mochila = telaPrincipal.listaLixos;
 		validacoesMapa = new ValidacoesMapa();
-		imagemData = new EcomanImagemData();
+		imagemData = EcomanImagemData.getInstance();
 	}
 
 	public void movimentarEcoman(KeyEvent ke) {
@@ -117,19 +117,19 @@ public class ControleEcoman {
 		switch (passos) {
 
 		case 0:
-			ecoman.ecoImage.setIcon(imagemData.icon1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[0]);
 			break;
 
 		case 1:
-			ecoman.ecoImage.setIcon(imagemData.icon2);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[1]);
 			break;
 
 		case 2:
-			ecoman.ecoImage.setIcon(imagemData.icon1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[0]);
 			break;
 
 		case 3:
-			ecoman.ecoImage.setIcon(imagemData.icon3);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[2]);
 			break;
 
 		}
@@ -142,19 +142,19 @@ public class ControleEcoman {
 		switch (passos) {
 
 		case 0:
-			ecoman.ecoImage.setIcon(imagemData.iconL1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[6]);
 			break;
 
 		case 1:
-			ecoman.ecoImage.setIcon(imagemData.iconL2);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[7]);
 			break;
 
 		case 2:
-			ecoman.ecoImage.setIcon(imagemData.iconL1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[6]);
 			break;
 
 		case 3:
-			ecoman.ecoImage.setIcon(imagemData.iconL3);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[8]);
 			break;
 
 		}
@@ -167,19 +167,19 @@ public class ControleEcoman {
 		switch (passos) {
 
 		case 0:
-			ecoman.ecoImage.setIcon(imagemData.iconC1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[9]);
 			break;
 
 		case 1:
-			ecoman.ecoImage.setIcon(imagemData.iconC2);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[10]);
 			break;
 
 		case 2:
-			ecoman.ecoImage.setIcon(imagemData.iconC1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[9]);
 			break;
 
 		case 3:
-			ecoman.ecoImage.setIcon(imagemData.iconC3);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[11]);
 			break;
 		}
 	}
@@ -191,19 +191,19 @@ public class ControleEcoman {
 		switch (passos) {
 
 		case 0:
-			ecoman.ecoImage.setIcon(imagemData.iconB1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[3]);
 			break;
 
 		case 1:
-			ecoman.ecoImage.setIcon(imagemData.iconB2);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[4]);
 			break;
 
 		case 2:
-			ecoman.ecoImage.setIcon(imagemData.iconB1);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[3]);
 			break;
 
 		case 3:
-			ecoman.ecoImage.setIcon(imagemData.iconB3);
+			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[5]);
 			break;
 
 		}

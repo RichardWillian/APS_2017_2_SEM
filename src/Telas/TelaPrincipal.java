@@ -11,13 +11,14 @@ import javax.swing.JLabel;
 import Constantes.ConstantesMensagens;
 import Controles.ControleEcoman;
 import Objetos.Lixo;
-import Personagens.DirtyMan;
+import Personagens.Dirtyman;
 import Personagens.Ecoman;
+import Personagens.Validavel;
 
 @SuppressWarnings("serial")
 public class TelaPrincipal extends JanelaBase {
 
-	private DirtyMan dirtyman;
+	private Dirtyman dirtyman;
 	private Ecoman ecoman;
 	private Lixo lixo;
 	private ControleEcoman ctrlEcoman;
@@ -28,8 +29,13 @@ public class TelaPrincipal extends JanelaBase {
 
 	public Label eixoX;
 	public Label eixoY;
+	
+	public Label eixoEcoX;
+	public Label eixoEcoY;
+	
 	private Integer pontuacao = 0;
 	private JLabel background;
+	private JLabel detalhesBackground;
 
 	private Label lblTempo;
 	private Label lblAlertaCarregandoLixo;
@@ -52,8 +58,13 @@ public class TelaPrincipal extends JanelaBase {
 		lblAlertaCarregandoLixo.setBounds(1000, 115, 150, 15);
 		lblAdvertencia.setBounds(1000, 140, 200, 40);
 		background.setBounds(0, 0, 1000, getHeight());
+		detalhesBackground.setBounds(0, 0, 1000, getHeight());
+		ecoman.ecoImage.setBounds(ecoman.getPosicaoX(), ecoman.getPosicaoY(), ecoman.getLargura(), ecoman.getAltura());
 		eixoX.setBounds(1065, 180, 100, 40);
 		eixoY.setBounds(1065, 240, 100, 40);
+		
+		eixoEcoX.setBounds(1065, 300, 100, 40);
+		eixoEcoY.setBounds(1065, 360, 100, 40);
 	}
 
 	private void instanciarComponentes() {
@@ -62,13 +73,20 @@ public class TelaPrincipal extends JanelaBase {
 		lblAdvertencia = new Label();
 		lblAlertaCarregandoLixo = new Label("CARREGANDO LIXO...");
 		background = new JLabel();
+		detalhesBackground = new JLabel();
 		eixoX = new Label();
 		eixoY = new Label();
+		
+		eixoEcoX = new Label();
+		eixoEcoY = new Label();
 	}
 
 	private void adicionarComponentesTela() {
+		
+		this.add(detalhesBackground);
 		this.add(ecoman.ecoImage);
 		this.add(dirtyman.dirtyImage);
+		
 		this.add(lblPontuacao);
 		this.add(lblTempo);
 		
@@ -79,8 +97,13 @@ public class TelaPrincipal extends JanelaBase {
 		lblAdvertencia.setVisible(false);
 
 		this.add(background);
+		this.setComponentZOrder(background, 5);
+		
 		this.add(eixoX);
 		this.add(eixoY);
+		
+		this.add(eixoEcoX);
+		this.add(eixoEcoY);
 	}
 
 	private void setPropriedadesjanela() {
@@ -94,7 +117,7 @@ public class TelaPrincipal extends JanelaBase {
 
 	private void instanciarObjetos() {
 
-		dirtyman = DirtyMan.getInstance();
+		dirtyman = Dirtyman.getInstance();
 		ecoman = Ecoman.getInstance();
 		listaLixos = new Vector<Button>();
 		lixo = new Lixo();
@@ -118,11 +141,12 @@ public class TelaPrincipal extends JanelaBase {
 			lblAlertaCarregandoLixo.setVisible(true);
 		} else
 			lblAlertaCarregandoLixo.setVisible(false);
+		
 		Integer x = ecoman.ecoImage.getBounds().x + 30;
-		eixoX.setText(x.toString());
+		eixoEcoX.setText(x.toString());
 
 		Integer y = ecoman.ecoImage.getBounds().y + 50;
-		eixoY.setText(y.toString());
+		eixoEcoY.setText(y.toString());
 	}
 
 	public void mostrarAdvertenciaEcologica(boolean mostrarAdvertencia) {
@@ -137,9 +161,11 @@ public class TelaPrincipal extends JanelaBase {
 
 		lixo.btnLixo = new Button("LIXO");
 		lixo.btnLixo.setBounds(posicaoX, posicaoY, lixo.getLargura(), lixo.getAltura());
-
+		
 		listaLixos.add(lixo.btnLixo);
+		
 		this.add(lixo.btnLixo);
+		this.setComponentZOrder(lixo.btnLixo, 0);
 	}
 
 	public void ativarTelaGameOver() {
@@ -172,5 +198,25 @@ public class TelaPrincipal extends JanelaBase {
 
 		pontuacao += pontos;
 		lblPontuacao.setText("PONTUAÇÃO: " + pontuacao.toString());
+	}
+
+	public void setDetalhesBackground(ImageIcon detalhesBackground) {
+		this.detalhesBackground.setIcon(detalhesBackground);
+		
+	}
+	
+	public void elevarNivelSilhuetaPersonagem(Validavel personagem){
+		
+		if(personagem.equals(Ecoman.getInstance()))
+			this.setComponentZOrder(ecoman.ecoImage, 0);
+		else
+			this.setComponentZOrder(dirtyman.dirtyImage, 0);
+	}
+	public void descenderNivelSilhuetaPersonagem(Validavel personagem){
+		
+		if(personagem.equals(Ecoman.getInstance()))
+			this.setComponentZOrder(ecoman.ecoImage, 3);
+		else
+			this.setComponentZOrder(dirtyman.dirtyImage, 3);
 	}
 }

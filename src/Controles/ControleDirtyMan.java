@@ -3,8 +3,8 @@ package Controles;
 import java.util.Random;
 
 import Constantes.ConstantesGerais;
-import Imagens.DirtymanImagemData;
-import Personagens.DirtyMan;
+import ImagemData.DirtymanImagemData;
+import Personagens.Dirtyman;
 import Telas.TelaPrincipal;
 import Validacoes.ValidacoesMapa;
 
@@ -17,10 +17,12 @@ public class ControleDirtyMan extends Thread {
 	private boolean podeSeMovimentar; // Indica se o DirtyMan pode ou não se
 										// movimentar
 	private int contadorCriarLixo;
-	private DirtyMan dirtyman;
+	private Dirtyman dirtyman;
 	private static ControleDirtyMan instancia;
 	private ValidacoesMapa validacoesMapa;
 	private DirtymanImagemData imagemData;
+	private int contadorElse = 0;
+	private static final int TEMPO_ESPERA_CAMINHAR = 100;
 
 	public ControleDirtyMan() {
 
@@ -53,7 +55,7 @@ public class ControleDirtyMan extends Thread {
 	private void movimentarDirtyMan() {
 
 		int sentido = new Random().nextInt(4);
-		int qtdePassos = new Random().nextInt(100) + 5;// O "+ 5" infere que,
+		int qtdePassos = new Random().nextInt(70) + 5;// O "+ 5" infere que,
 														// no mínimo o DirtyMan
 														// andará 5 passos para
 														// qualquer um dos
@@ -77,7 +79,6 @@ public class ControleDirtyMan extends Thread {
 		default:
 			break;
 		}
-
 	}
 
 	private void andarParaDireita(int qtdePassos, int contadorPassos) {
@@ -88,7 +89,7 @@ public class ControleDirtyMan extends Thread {
 			if (podeSeMovimentar) {
 				if (validacoesMapa.autorizarCaminhadaDireita(dirtyman)) {
 
-					dirtyman.setPosicaoX(dirtyman.getPosicaoX() + 4);
+					dirtyman.setPosicaoX(dirtyman.getPosicaoX() + dirtyman.getTamanhoPasso());
 					mudarImagemDireita(contadorPassosDireita);
 					contadorPassosDireita++;
 					if (dirtyman.getPosicaoX() >= 960 - dirtyman.getLargura()) {
@@ -98,9 +99,15 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
+					contadorElse = 0;
 				} else {
-					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 1);
-					andarParaEsquerda(qtdePassos, contadorPassos);
+					contadorElse++;
+					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - dirtyman.getTamanhoPasso());
+					if(contadorElse < 3)
+						andarParaBaixo(qtdePassos, contadorPassos);
+					else
+						andarParaEsquerda(qtdePassos, contadorPassos);
+					
 					break;
 				}
 			}
@@ -117,7 +124,7 @@ public class ControleDirtyMan extends Thread {
 			if (podeSeMovimentar) {
 				if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
 
-					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - 4);
+					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - dirtyman.getTamanhoPasso());
 					mudarImagemEsquerda(contadorPassosEsquerda);
 					contadorPassosEsquerda++;
 					if (dirtyman.getPosicaoX() <= 40) {
@@ -126,10 +133,16 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
+					contadorElse = 0;
 				} else {
-
-					dirtyman.setPosicaoX(dirtyman.getPosicaoX() + 1);
-					andarParaDireita(qtdePassos, contadorPassos);
+					
+					contadorElse++;
+					dirtyman.setPosicaoX(dirtyman.getPosicaoX() + dirtyman.getTamanhoPasso());
+					
+					if(contadorElse <= 3)
+						andarParaCima(qtdePassos, contadorPassos);
+					else
+						andarParaDireita(qtdePassos, contadorPassos);
 					break;
 				}
 			}
@@ -145,7 +158,7 @@ public class ControleDirtyMan extends Thread {
 			if (podeSeMovimentar) {
 				if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
 
-					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 4);
+					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + dirtyman.getTamanhoPasso());
 					mudarImagemBaixo(contadorPassosBaixo);
 					contadorPassosBaixo++;
 					if (dirtyman.getPosicaoY() >= 660 - dirtyman.getAltura()) {
@@ -154,9 +167,16 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
+					contadorElse = 0;
 				} else {
-					dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 1);
-					andarParaCima(qtdePassos, contadorPassos);
+					contadorElse++;
+					dirtyman.setPosicaoY(dirtyman.getPosicaoY() - dirtyman.getTamanhoPasso());
+					
+					if(contadorElse < 3)
+						andarParaDireita(qtdePassos, contadorPassos);
+					else
+						andarParaCima(qtdePassos, contadorPassos);
+					
 					break;
 				}
 			}
@@ -173,7 +193,7 @@ public class ControleDirtyMan extends Thread {
 			if (podeSeMovimentar) {
 				if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
 
-					dirtyman.setPosicaoY(dirtyman.getPosicaoY() - 4);
+					dirtyman.setPosicaoY(dirtyman.getPosicaoY() - dirtyman.getTamanhoPasso());
 
 					mudarImagemCima(contadorPassosCima);
 					contadorPassosCima++;
@@ -183,9 +203,16 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
+					contadorElse = 0;
 				} else {
-					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + 1);
-					andarParaBaixo(qtdePassos, contadorPassos);
+					contadorElse++;
+					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + dirtyman.getTamanhoPasso());
+					
+					if(contadorElse <= 3)
+						andarParaDireita(qtdePassos, contadorPassos);
+					else
+						andarParaBaixo(qtdePassos, contadorPassos);
+					
 					break;
 				}
 			}
@@ -200,7 +227,7 @@ public class ControleDirtyMan extends Thread {
 		setTempoEspera();
 		contadorCriarLixo++;
 
-		if (contadorCriarLixo % 10 == 0)
+		if (contadorCriarLixo % 463 == 0)
 			jogarLixo();
 	}
 
@@ -212,7 +239,7 @@ public class ControleDirtyMan extends Thread {
 
 	private void setTempoEspera() {
 		try {
-			Thread.sleep(41);
+			Thread.sleep(TEMPO_ESPERA_CAMINHAR);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -222,9 +249,9 @@ public class ControleDirtyMan extends Thread {
 	public void instanciarObjetos() {
 
 		constantes = new ConstantesGerais();
-		dirtyman = DirtyMan.getInstance();
+		dirtyman = Dirtyman.getInstance();
 		validacoesMapa = new ValidacoesMapa();
-		imagemData = new DirtymanImagemData();
+		imagemData = DirtymanImagemData.getInstance();
 	}
 
 	public boolean recuperarSituacaoMovimentacao() {
@@ -255,19 +282,19 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.iconD1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[0]);// Direita 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.iconD2);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[1]);// Direita 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.iconD1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[0]);// Direita 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.iconD3);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[2]);// Direita 3
 			break;
 
 		}
@@ -280,19 +307,19 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDL1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[6]);// Esquerda 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDL2);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[7]);// Esquerda 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDL1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[6]);// Esquerda 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDL3);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[8]);// Esquerda 3
 			break;
 
 		}
@@ -305,19 +332,19 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDC1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[9]);// Cima 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDC2);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[10]);// Cima 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDC1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[9]);// Cima 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDC3);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[11]);// Cima 3
 			break;
 		}
 	}
@@ -329,19 +356,19 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDB1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[3]);// Baixo 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDB2);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[4]);// Baixo 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDB1);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[3]);// Baixo 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.iconDB3);
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[5]);// Baixo 3
 			break;
 
 		}

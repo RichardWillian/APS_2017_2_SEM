@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 import Telas.TelaPrincipal;
 
-public class DirtyMan implements Validavel {
+public class Dirtyman implements Validavel {
 
 	private int posicaoX;
 	private int posicaoY;
@@ -12,28 +12,36 @@ public class DirtyMan implements Validavel {
 	private int altura;
 	private int tamanhoPasso;
 	public JLabel dirtyImage;
-	private static DirtyMan instancia;
+	private static Dirtyman instancia;
 	private TelaPrincipal telaPrincipal;
 
-	public DirtyMan() {
-		posicaoX = 250;
-		posicaoY = 300;
+	public Dirtyman() {
+		posicaoX = 240;
+		posicaoY = 310;
 		largura = 18;
 		altura = 32;
 		tamanhoPasso = 10;
 		dirtyImage = new JLabel();
-		dirtyImage.setBounds(100, 100, 10, 10);
+		dirtyImage.setBounds(300, 300, 10, 10);
 		dirtyImage.setVisible(true);
 	}
 
 	public void mudarPosicao() {
 		dirtyImage.setBounds(posicaoX, posicaoY, largura, altura);
+		
+		telaPrincipal = TelaPrincipal.getInstance();
+		
+		Integer x = getTamanhoPassoCompensadoEixoX();
+		telaPrincipal.eixoX.setText(x.toString());
+
+		Integer y = getTamanhoPassoCompensadoEixoY();
+		telaPrincipal.eixoY.setText(y.toString());
 	}
 
-	public static DirtyMan getInstance() {
+	public static Dirtyman getInstance() {
 
 		if (instancia == null)
-			instancia = new DirtyMan();
+			instancia = new Dirtyman();
 
 		return instancia;
 	}
@@ -87,7 +95,7 @@ public class DirtyMan implements Validavel {
 		telaPrincipal.jogarLixo(posicaoX, posicaoY);
 	}
 
-	public static void setInstance(DirtyMan novoDirtyMan) {
+	public static void setInstance(Dirtyman novoDirtyMan) {
 
 		instancia = novoDirtyMan;
 	}
@@ -105,10 +113,10 @@ public class DirtyMan implements Validavel {
 
 		int passoCompensado = posicaoY + (altura + 8) + tamanhoPasso;
 
-//		while (passoCompensado % 10 != 0) {
-//
-//			passoCompensado++;
-//		}
+		while (passoCompensado % 10 != 0) {
+
+			passoCompensado++;
+		}
 		return passoCompensado;
 	}
 
@@ -116,10 +124,10 @@ public class DirtyMan implements Validavel {
 
 		int passoCompensado = posicaoX + (largura + 2) + tamanhoPasso;
 
-//		while (passoCompensado % 10 != 0) {
-//
-//			passoCompensado++;
-//		}
+		while (passoCompensado % 10 != 0) {
+
+			passoCompensado++;
+		}
 		return passoCompensado;
 	}
 }
