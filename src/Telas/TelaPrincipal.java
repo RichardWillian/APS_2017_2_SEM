@@ -23,6 +23,7 @@ public class TelaPrincipal extends JanelaBase {
 	private Lixo lixo;
 	private ControleEcoman ctrlEcoman;
 	private TelaGameOver telaGameOver;
+	private TelaVenceuJogo telaVenceuJogo;
 	public Vector<Button> listaLixos;
 
 	private Label lblPontuacao;
@@ -169,9 +170,10 @@ public class TelaPrincipal extends JanelaBase {
 	}
 
 	public void ativarTelaGameOver() {
-
+		
 		telaGameOver = new TelaGameOver();
 		telaGameOver.setVisible(true);
+		this.dispose();
 	}
 
 	public static void setInstance(TelaPrincipal novaTelaPrincipal) {
@@ -202,7 +204,6 @@ public class TelaPrincipal extends JanelaBase {
 
 	public void setDetalhesBackground(ImageIcon detalhesBackground) {
 		this.detalhesBackground.setIcon(detalhesBackground);
-		
 	}
 	
 	public void elevarNivelSilhuetaPersonagem(Validavel personagem){
@@ -218,5 +219,18 @@ public class TelaPrincipal extends JanelaBase {
 			this.setComponentZOrder(ecoman.ecoImage, 3);
 		else
 			this.setComponentZOrder(dirtyman.dirtyImage, 3);
+	}
+	
+	public void iniciarNivelPersonagens(){
+		
+		this.setComponentZOrder(ecoman.ecoImage, 3);
+		this.setComponentZOrder(dirtyman.dirtyImage, 3);
+	}
+
+	public void ativarTelaVenceuJogo() {
+		
+		telaVenceuJogo = new TelaVenceuJogo();
+		telaVenceuJogo.setVisible(true);
+		this.dispose();
 	}
 }

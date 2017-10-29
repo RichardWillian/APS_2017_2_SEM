@@ -97,4 +97,10 @@ public class SilhuetaImagemData {
 			TelaPrincipal.getInstance().descenderNivelSilhuetaPersonagem(personagem);
 		}
 	}
+
+	public void iniciarImagensPersonagem() {
+		
+		EcomanImagemData.getInstance().preencherVetorImagens();
+		DirtymanImagemData.getInstance().preencherVetorImagens();
+	}
 }

@@ -13,8 +13,6 @@ public class TelaGameOver extends JanelaBase{
 	Label lblGameOver;
 	Label lblReiniciar;
 	MenuPincipal menuPrincipal;
-	TelaPrincipal telaPrincipal;
-	
 	
 	public TelaGameOver(){
 		
@@ -70,13 +68,11 @@ public class TelaGameOver extends JanelaBase{
 	
 		if(e.getSource() == botaoSim){
 			
-			TelaPrincipal.getInstance().dispose();
 			ControleIniciarJogo.IniciarJogo();
 			this.dispose();
 		}
 		else if(e.getSource() == botaoNao){
 			
-			TelaPrincipal.getInstance().dispose();
 			menuPrincipal = new MenuPincipal();
 			menuPrincipal.setVisible(true);
 			this.dispose();

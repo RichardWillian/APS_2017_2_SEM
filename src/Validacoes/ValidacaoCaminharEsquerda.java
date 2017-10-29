@@ -64,7 +64,9 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 
 			if (localizacaoEixoY >= 370 && localizacaoEixoY <= 420)
 				contadorDeValidacoes++;
+
 		} else if (localizacaoEixoX == 1000) {
+
 			if (localizacaoEixoY == 630)
 				contadorDeValidacoes++;
 		}
@@ -146,13 +148,11 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 			if (localizacaoEixoY > 320 && localizacaoEixoY <= 350)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
 
-		}
-		else if(localizacaoEixoX > 290 && localizacaoEixoX < 340){
-			
-			if(localizacaoEixoY > 510 && localizacaoEixoY < 530)
+		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
+
+			if (localizacaoEixoY > 510 && localizacaoEixoY < 530)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
-		}
-		else if (localizacaoEixoX > 440 && localizacaoEixoX <= 530) {
+		} else if (localizacaoEixoX > 440 && localizacaoEixoX <= 530) {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
@@ -166,7 +166,7 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
-			
+
 		} else if (localizacaoEixoX > 740 && localizacaoEixoX < 840) {
 			if (localizacaoEixoY > 660)
 				silhuetaImagemData.trocarParaSilhueta(personagem);

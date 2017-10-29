@@ -49,6 +49,7 @@ public class ValidacaoCaminharCima implements IValidadorCaminhada {
 
 			else if (localizacaoEixoX >= 880 && localizacaoEixoX <= 1010)
 				ValidarSextoQuarteirao(localizacaoEixoX, localizacaoEixoY);
+			
 		} else if (localizacaoEixoY >= 650)
 			validarSetimoQuarteirao(localizacaoEixoX, localizacaoEixoY);
 	}

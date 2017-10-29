@@ -10,7 +10,7 @@ public class Cronometro extends Thread {
 
 	public Cronometro() {
 
-		tempo = 500;
+		tempo = 999;
 	}
 
 	@Override

@@ -104,6 +104,10 @@ public class ControleEcoman {
 				if (ecoman.estaCarregandoLixo()) {
 
 					telaPrincipal.setPontuacao(100);
+					
+					if(mochila.isEmpty()){
+						telaPrincipal.ativarTelaVenceuJogo();
+					}
 				}
 				ecoman.setCarregandoLixo(false);
 			}

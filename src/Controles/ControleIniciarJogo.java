@@ -2,6 +2,7 @@ package Controles;
 
 import javax.swing.ImageIcon;
 
+import ImagemData.SilhuetaImagemData;
 import Personagens.Dirtyman;
 import Personagens.Ecoman;
 import Telas.TelaPrincipal;
@@ -19,6 +20,13 @@ public class ControleIniciarJogo {
 		IniciarThreads();
 		setBackground();
 		setDetalhesBackground();
+		setNivelPersonagens();
+	}
+
+	private static void setNivelPersonagens() {
+		
+		TelaPrincipal.getInstance().iniciarNivelPersonagens();
+		SilhuetaImagemData.getInstance().iniciarImagensPersonagem();
 	}
 
 	private static void setDetalhesBackground() {
