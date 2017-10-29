@@ -16,8 +16,8 @@ public class Dirtyman implements Validavel {
 	private TelaPrincipal telaPrincipal;
 
 	public Dirtyman() {
-		posicaoX = 240;
-		posicaoY = 310;
+		posicaoX = 0;
+		posicaoY = 0;
 		largura = 18;
 		altura = 32;
 		tamanhoPasso = 10;

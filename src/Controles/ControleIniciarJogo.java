@@ -23,7 +23,7 @@ public class ControleIniciarJogo {
 
 	private static void setDetalhesBackground() {
 		
-		ImageIcon detalhesBackground = new ImageIcon(ControleIniciarJogo.class.getResource("/ImagemData/Detalhes_Background.png.png")); 
+		ImageIcon detalhesBackground = new ImageIcon(ControleIniciarJogo.class.getResource("/ImagemData/Detalhes_Background.png")); 
 		TelaPrincipal.getInstance().setDetalhesBackground(detalhesBackground);
 	}
 

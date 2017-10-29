@@ -21,8 +21,11 @@ public class ControleDirtyMan extends Thread {
 	private static ControleDirtyMan instancia;
 	private ValidacoesMapa validacoesMapa;
 	private DirtymanImagemData imagemData;
-	private int contadorElse = 0;
-	private static final int TEMPO_ESPERA_CAMINHAR = 100;
+	private int contadorElseDireita = 0;
+	private int contadorElseEsquerda = 0;
+	private int contadorElseCima = 0;
+	private int contadorElseBaixo = 0;
+	private static final int TEMPO_ESPERA_CAMINHAR = 200000;
 
 	public ControleDirtyMan() {
 
@@ -54,6 +57,7 @@ public class ControleDirtyMan extends Thread {
 
 	private void movimentarDirtyMan() {
 
+		int qtdePassosAleatorios = new Random().nextInt(100) + 5;
 		int sentido = new Random().nextInt(4);
 		int qtdePassos = new Random().nextInt(70) + 5;// O "+ 5" infere que,
 														// no mínimo o DirtyMan
@@ -99,11 +103,11 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
-					contadorElse = 0;
+					contadorElseDireita = 0;
 				} else {
-					contadorElse++;
+					contadorElseDireita++;
 					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - dirtyman.getTamanhoPasso());
-					if(contadorElse < 3)
+					if(contadorElseDireita < 3)
 						andarParaBaixo(qtdePassos, contadorPassos);
 					else
 						andarParaEsquerda(qtdePassos, contadorPassos);
@@ -122,7 +126,7 @@ public class ControleDirtyMan extends Thread {
 		while (contadorPassos <= qtdePassos) {
 
 			if (podeSeMovimentar) {
-				if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
+				if (validacoesMapa.autorizarCaminhadaEsquerda(dirtyman)) {
 
 					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - dirtyman.getTamanhoPasso());
 					mudarImagemEsquerda(contadorPassosEsquerda);
@@ -133,13 +137,13 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
-					contadorElse = 0;
+					contadorElseEsquerda = 0;
 				} else {
 					
-					contadorElse++;
+					contadorElseEsquerda++;
 					dirtyman.setPosicaoX(dirtyman.getPosicaoX() + dirtyman.getTamanhoPasso());
 					
-					if(contadorElse <= 3)
+					if(contadorElseEsquerda < 3)
 						andarParaCima(qtdePassos, contadorPassos);
 					else
 						andarParaDireita(qtdePassos, contadorPassos);
@@ -156,7 +160,7 @@ public class ControleDirtyMan extends Thread {
 		while (contadorPassos <= qtdePassos) {
 
 			if (podeSeMovimentar) {
-				if (validacoesMapa.autorizarCaminhadaCima(dirtyman)) {
+				if (validacoesMapa.autorizarCaminhadaBaixo(dirtyman)) {
 
 					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + dirtyman.getTamanhoPasso());
 					mudarImagemBaixo(contadorPassosBaixo);
@@ -167,12 +171,12 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
-					contadorElse = 0;
+					contadorElseBaixo = 0;
 				} else {
-					contadorElse++;
+					contadorElseBaixo++;
 					dirtyman.setPosicaoY(dirtyman.getPosicaoY() - dirtyman.getTamanhoPasso());
 					
-					if(contadorElse < 3)
+					if(contadorElseBaixo < 2)
 						andarParaDireita(qtdePassos, contadorPassos);
 					else
 						andarParaCima(qtdePassos, contadorPassos);
@@ -203,12 +207,12 @@ public class ControleDirtyMan extends Thread {
 					}
 					caminharDirtyMan();
 					contadorPassos++;
-					contadorElse = 0;
+					contadorElseCima = 0;
 				} else {
-					contadorElse++;
+					contadorElseCima++;
 					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + dirtyman.getTamanhoPasso());
 					
-					if(contadorElse <= 3)
+					if(contadorElseCima < 2)
 						andarParaDireita(qtdePassos, contadorPassos);
 					else
 						andarParaBaixo(qtdePassos, contadorPassos);

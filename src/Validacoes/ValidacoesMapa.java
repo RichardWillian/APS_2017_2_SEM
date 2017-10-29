@@ -38,24 +38,26 @@ public class ValidacoesMapa {
 		if (personagem.getTamanhoPassoCompensadoEixoX() >= 30) {
 
 			ValidacaoCaminharEsquerda validacaoCaminharEsquerda = new ValidacaoCaminharEsquerda();
-			if (validacaoCaminharEsquerda.autorizarCaminhar(personagem.getTamanhoPassoCompensadoEixoX(),
-					personagem.getTamanhoPassoCompensadoEixoY(), personagem)) {
+			if (validacaoCaminharEsquerda.autorizarCaminhar(personagem.getTamanhoPassoCompensadoEixoX(), 
+				personagem.getTamanhoPassoCompensadoEixoY(), personagem)) {
 
 				return true;
 			} else
 				return false;
 		} else {
-			personagem.setPosicaoX(990);
-
-			if (personagem.getPosicaoY() >= 600)
-				personagem.setPosicaoY(personagem.getPosicaoY() + 30);
+			
+			if(personagem.getPosicaoY() > 520 && personagem.getPosicaoY() < 600){
+				personagem.setPosicaoX(990);
+				personagem.setPosicaoY(580);
+			}else
+				personagem.setPosicaoX(990);
 			return true;
 		}
 	}
 
 	public boolean autorizarCaminhadaDireita(Validavel personagem) {
 
-		if (personagem.getTamanhoPassoCompensadoEixoX() <= 1000) {
+		if (personagem.getTamanhoPassoCompensadoEixoX() < 1020) {
 			ValidacaoCaminharDireita validacaoCaminharDireita = new ValidacaoCaminharDireita();
 
 			if (validacaoCaminharDireita.autorizarCaminhar(personagem.getTamanhoPassoCompensadoEixoX(),
