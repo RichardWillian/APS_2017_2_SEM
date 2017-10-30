@@ -70,17 +70,18 @@ public class TelaVenceuJogo extends JanelaBase {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == botaoReiniciarJogo) {
-
+			
 			ControleIniciarJogo.IniciarJogo();
+			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
+			ctrlEncerrarJogo.encerrarJogo();
 			this.dispose();
 		} else if (e.getSource() == botaoVoltarMenuPrincipal) {
 
 			menuPrincipal = new MenuPincipal();
 			menuPrincipal.setVisible(true);
+			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
+			ctrlEncerrarJogo.encerrarJogo();
 			this.dispose();
 		}
-
-		ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
-		ctrlEncerrarJogo.encerrarJogo();
 	}
 }

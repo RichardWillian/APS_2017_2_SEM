@@ -16,6 +16,7 @@ public class ControleIniciarJogo {
 		ControleDirtyMan.setInstance(new ControleDirtyMan());
 		TelaPrincipal.setInstance(new TelaPrincipal());
 		ControleEcoman.setInstance(new ControleEcoman());
+		Cronometro.setInstance(new Cronometro());
 
 		IniciarThreads();
 		setBackground();
@@ -31,15 +32,14 @@ public class ControleIniciarJogo {
 
 	private static void setDetalhesBackground() {
 
-		ImageIcon detalhesBackground = new ImageIcon(
-				ControleIniciarJogo.class.getResource("/ImagemData/Detalhes_Background.png"));
+		ImageIcon detalhesBackground = new ImageIcon(ControleIniciarJogo.class.getResource("/ImagemData/Detalhes_Background.png"));
 		TelaPrincipal.getInstance().setDetalhesBackground(detalhesBackground);
 	}
 
 	private static void IniciarThreads() {
 
 		ControleDirtyMan.getInstance().start();
-		Cronometro.iniciarCronometro();
+		Cronometro.getInstance().iniciarCronometro();
 	}
 
 	private static void setBackground() {

@@ -166,32 +166,44 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 			if (localizacaoEixoY <= 350 && localizacaoEixoY > 320)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
 
 		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
 
 			if (localizacaoEixoY > 510 && localizacaoEixoY < 530)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
 
 		} else if (localizacaoEixoX >= 430 && localizacaoEixoX < 520) {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
 
 		} else if (localizacaoEixoX >= 550 && localizacaoEixoX < 640) {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 340)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
-
-		} else if (localizacaoEixoX >= 690 && localizacaoEixoX < 780) {
-
-			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-		} else if (localizacaoEixoX > 720 && localizacaoEixoX < 820) {
-
-			if (localizacaoEixoY > 660)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else
+			else 
 				retornarImagensPersonagem(personagem);
+
+		} else if (localizacaoEixoY > 320 && localizacaoEixoY <= 370) {
+			
+			if(localizacaoEixoX > 680 && localizacaoEixoX < 780)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
+			
+		} else if(localizacaoEixoY > 660){
+			
+			if(localizacaoEixoX > 720 && localizacaoEixoX < 820)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
+
 		} else
 			retornarImagensPersonagem(personagem);
 	}

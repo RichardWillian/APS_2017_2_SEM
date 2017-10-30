@@ -9,9 +9,9 @@ public class Cronometro extends Thread {
 	public int tempo;
 	private static Cronometro instancia;
 
-	public Cronometro() {
+	Cronometro() {
 
-		tempo = 6;
+		tempo = 999;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class Cronometro extends Thread {
 		ctrlEncerrarJogo.encerrarJogo();
 	}
 
-	public static void iniciarCronometro() {
+	public void iniciarCronometro() {
 
 		Cronometro cronometro = new Cronometro();
 		cronometro.start();
@@ -46,5 +46,9 @@ public class Cronometro extends Thread {
 			instancia = new Cronometro();
 
 		return instancia;
+	}
+
+	public static void setInstance(Cronometro cronometro) {
+		instancia = cronometro;
 	}
 }

@@ -21,7 +21,7 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 		return false;
 	}
 
-	private void RetornarImagensPersonagem(Validavel personagem) {
+	private void retornarImagensPersonagem(Validavel personagem) {
 
 		silhuetaImagemData.retornarImagensPersonagem(personagem);
 	}
@@ -147,31 +147,46 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 
 			if (localizacaoEixoY > 320 && localizacaoEixoY <= 350)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
 
 		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
 
 			if (localizacaoEixoY > 510 && localizacaoEixoY < 530)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
+			
 		} else if (localizacaoEixoX > 440 && localizacaoEixoX <= 530) {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
 
 		} else if (localizacaoEixoX > 560 && localizacaoEixoX <= 650) {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 340)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
 
-		} else if (localizacaoEixoX > 700 && localizacaoEixoX <= 790) {
-
-			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
+		} else if (localizacaoEixoY > 320 && localizacaoEixoY <= 370) {
+			
+			if(localizacaoEixoX > 700 && localizacaoEixoX <= 790)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
-
-		} else if (localizacaoEixoX > 740 && localizacaoEixoX < 840) {
-			if (localizacaoEixoY > 660)
+			else 
+				retornarImagensPersonagem(personagem);
+			
+		} else if(localizacaoEixoY > 660){
+			
+			if(localizacaoEixoX > 730 && localizacaoEixoX < 830)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else 
+				retornarImagensPersonagem(personagem);
+			
 		} else
-			RetornarImagensPersonagem(personagem);
+			retornarImagensPersonagem(personagem);
 	}
 
 	private void ValidarQuartoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
