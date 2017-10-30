@@ -29,7 +29,7 @@ public class MenuPincipal extends JFrame implements ActionListener {
 	Button botaoExit;
 	Button botaoInstrucao;
 	TelaInstrucoes telaControle;
-	
+
 	public MenuPincipal() {
 
 		instanciarComponentes();
@@ -39,7 +39,7 @@ public class MenuPincipal extends JFrame implements ActionListener {
 	}
 
 	private void adicionarComponentesTela() {
-		
+
 		setContentPane(contentPane);
 	}
 
@@ -53,19 +53,19 @@ public class MenuPincipal extends JFrame implements ActionListener {
 		contentPane.add(botaoInstrucao);
 		contentPane.add(botaoExit);
 		contentPane.add(botaoStart);
-		
+
 		lblEcoman.setForeground(new Color(0, 51, 0));
 		lblEcoman.setToolTipText("");
 		lblEcoman.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEcoman.setFont(new Font("Tahoma", Font.BOLD, 42));
 		lblEcoman.setBounds(113, 47, 197, 68);
-		
+
 		botaoInstrucao.setBounds(174, 181, 70, 22);
 		botaoInstrucao.addActionListener(this);
-		
+
 		botaoExit.setBounds(174, 209, 70, 22);
 		botaoExit.addActionListener(this);
-		
+
 		botaoStart.setBounds(174, 153, 70, 22);
 		botaoStart.addActionListener(this);
 	}
@@ -100,18 +100,16 @@ public class MenuPincipal extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		
-		if(ae.getSource() == botaoStart){
-			
+
+		if (ae.getSource() == botaoStart) {
+
 			dispose();
 			ControleIniciarJogo.IniciarJogo();
-		}
-		else if(ae.getSource() == botaoExit){
-			
+		} else if (ae.getSource() == botaoExit) {
+
 			System.exit(0);
-		}
-		else if(ae.getSource() == botaoInstrucao){
-			
+		} else if (ae.getSource() == botaoInstrucao) {
+
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {

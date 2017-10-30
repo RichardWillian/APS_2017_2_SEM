@@ -30,10 +30,10 @@ public class TelaPrincipal extends JanelaBase {
 
 	public Label eixoX;
 	public Label eixoY;
-	
+
 	public Label eixoEcoX;
 	public Label eixoEcoY;
-	
+
 	private Integer pontuacao = 0;
 	private JLabel background;
 	private JLabel detalhesBackground;
@@ -63,7 +63,7 @@ public class TelaPrincipal extends JanelaBase {
 		ecoman.ecoImage.setBounds(ecoman.getPosicaoX(), ecoman.getPosicaoY(), ecoman.getLargura(), ecoman.getAltura());
 		eixoX.setBounds(1065, 180, 100, 40);
 		eixoY.setBounds(1065, 240, 100, 40);
-		
+
 		eixoEcoX.setBounds(1065, 300, 100, 40);
 		eixoEcoY.setBounds(1065, 360, 100, 40);
 	}
@@ -77,20 +77,20 @@ public class TelaPrincipal extends JanelaBase {
 		detalhesBackground = new JLabel();
 		eixoX = new Label();
 		eixoY = new Label();
-		
+
 		eixoEcoX = new Label();
 		eixoEcoY = new Label();
 	}
 
 	private void adicionarComponentesTela() {
-		
+
 		this.add(detalhesBackground);
 		this.add(ecoman.ecoImage);
 		this.add(dirtyman.dirtyImage);
-		
+
 		this.add(lblPontuacao);
 		this.add(lblTempo);
-		
+
 		this.add(lblAlertaCarregandoLixo);
 		lblAlertaCarregandoLixo.setVisible(false);
 
@@ -99,10 +99,10 @@ public class TelaPrincipal extends JanelaBase {
 
 		this.add(background);
 		this.setComponentZOrder(background, 5);
-		
+
 		this.add(eixoX);
 		this.add(eixoY);
-		
+
 		this.add(eixoEcoX);
 		this.add(eixoEcoY);
 	}
@@ -142,7 +142,7 @@ public class TelaPrincipal extends JanelaBase {
 			lblAlertaCarregandoLixo.setVisible(true);
 		} else
 			lblAlertaCarregandoLixo.setVisible(false);
-		
+
 		Integer x = ecoman.ecoImage.getBounds().x + 30;
 		eixoEcoX.setText(x.toString());
 
@@ -162,15 +162,15 @@ public class TelaPrincipal extends JanelaBase {
 
 		lixo.btnLixo = new Button("LIXO");
 		lixo.btnLixo.setBounds(posicaoX, posicaoY, lixo.getLargura(), lixo.getAltura());
-		
+
 		listaLixos.add(lixo.btnLixo);
-		
+
 		this.add(lixo.btnLixo);
 		this.setComponentZOrder(lixo.btnLixo, 0);
 	}
 
 	public void ativarTelaGameOver() {
-		
+
 		telaGameOver = new TelaGameOver();
 		telaGameOver.setVisible(true);
 		this.dispose();
@@ -205,30 +205,31 @@ public class TelaPrincipal extends JanelaBase {
 	public void setDetalhesBackground(ImageIcon detalhesBackground) {
 		this.detalhesBackground.setIcon(detalhesBackground);
 	}
-	
-	public void elevarNivelSilhuetaPersonagem(Validavel personagem){
-		
-		if(personagem.equals(Ecoman.getInstance()))
+
+	public void elevarNivelSilhuetaPersonagem(Validavel personagem) {
+
+		if (personagem.equals(Ecoman.getInstance()))
 			this.setComponentZOrder(ecoman.ecoImage, 0);
 		else
 			this.setComponentZOrder(dirtyman.dirtyImage, 0);
 	}
-	public void descenderNivelSilhuetaPersonagem(Validavel personagem){
-		
-		if(personagem.equals(Ecoman.getInstance()))
+
+	public void descenderNivelSilhuetaPersonagem(Validavel personagem) {
+
+		if (personagem.equals(Ecoman.getInstance()))
 			this.setComponentZOrder(ecoman.ecoImage, 3);
 		else
 			this.setComponentZOrder(dirtyman.dirtyImage, 3);
 	}
-	
-	public void iniciarNivelPersonagens(){
-		
+
+	public void iniciarNivelPersonagens() {
+
 		this.setComponentZOrder(ecoman.ecoImage, 3);
 		this.setComponentZOrder(dirtyman.dirtyImage, 3);
 	}
 
 	public void ativarTelaVenceuJogo() {
-		
+
 		telaVenceuJogo = new TelaVenceuJogo();
 		telaVenceuJogo.setVisible(true);
 		this.dispose();

@@ -3,7 +3,7 @@ package Validacoes;
 import Personagens.Validavel;
 
 public class ValidacoesMapa {
-	
+
 	public boolean autorizarCaminhadaCima(Validavel personagem) {
 
 		if (personagem.getTamanhoPassoCompensadoEixoY() >= 60) {
@@ -38,18 +38,18 @@ public class ValidacoesMapa {
 		if (personagem.getTamanhoPassoCompensadoEixoX() >= 30) {
 
 			ValidacaoCaminharEsquerda validacaoCaminharEsquerda = new ValidacaoCaminharEsquerda();
-			if (validacaoCaminharEsquerda.autorizarCaminhar(personagem.getTamanhoPassoCompensadoEixoX(), 
-				personagem.getTamanhoPassoCompensadoEixoY(), personagem)) {
+			if (validacaoCaminharEsquerda.autorizarCaminhar(personagem.getTamanhoPassoCompensadoEixoX(),
+					personagem.getTamanhoPassoCompensadoEixoY(), personagem)) {
 
 				return true;
 			} else
 				return false;
 		} else {
-			
-			if(personagem.getPosicaoY() > 520 && personagem.getPosicaoY() < 600){
+
+			if (personagem.getPosicaoY() > 520 && personagem.getPosicaoY() < 600) {
 				personagem.setPosicaoX(990);
 				personagem.setPosicaoY(580);
-			}else
+			} else
 				personagem.setPosicaoX(990);
 			return true;
 		}

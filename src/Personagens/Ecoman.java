@@ -2,7 +2,7 @@ package Personagens;
 
 import javax.swing.JLabel;
 
-public class Ecoman implements Validavel{
+public class Ecoman implements Validavel {
 
 	private int posicaoX;
 	private int posicaoY;
@@ -12,6 +12,7 @@ public class Ecoman implements Validavel{
 	private boolean carregandoLixo;
 	static Ecoman instancia;
 	public JLabel ecoImage;
+
 	public Ecoman() {
 
 		ecoImage = new JLabel();
@@ -22,7 +23,7 @@ public class Ecoman implements Validavel{
 		tamanhoPasso = 10;
 		setCarregandoLixo(false);
 	}
-	
+
 	public static Ecoman getInstance() {
 
 		if (instancia == null)
@@ -82,14 +83,14 @@ public class Ecoman implements Validavel{
 	public void setTamanhoPasso(int tamanhoPasso) {
 		this.tamanhoPasso = tamanhoPasso;
 	}
-	
+
 	public int getTamanhoPassoCompensadoEixoY() {
-		
+
 		return posicaoY + (altura + 8) + tamanhoPasso;
 	}
-	
+
 	public int getTamanhoPassoCompensadoEixoX() {
-		
+
 		return posicaoX + (largura + 2) + tamanhoPasso;
 	}
 }

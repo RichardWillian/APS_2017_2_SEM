@@ -49,7 +49,7 @@ public class ValidacaoCaminharCima implements IValidadorCaminhada {
 
 			else if (localizacaoEixoX >= 880 && localizacaoEixoX <= 1010)
 				ValidarSextoQuarteirao(localizacaoEixoX, localizacaoEixoY);
-			
+
 		} else if (localizacaoEixoY >= 650)
 			validarSetimoQuarteirao(localizacaoEixoX, localizacaoEixoY);
 	}
@@ -187,21 +187,21 @@ public class ValidacaoCaminharCima implements IValidadorCaminhada {
 					retornarImagensPersonagem(personagem);
 			}
 
-		} else if(localizacaoEixoY >= 530 && localizacaoEixoY <= 540){
-			
+		} else if (localizacaoEixoY >= 530 && localizacaoEixoY <= 540) {
+
 			if (localizacaoEixoX > 290 && localizacaoEixoX < 340)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
 			else
 				retornarImagensPersonagem(personagem);
 		}
-		
+
 		else if (localizacaoEixoY >= 550 && localizacaoEixoY < 610) {
 
 			if (localizacaoEixoX == 740)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
 			else
 				retornarImagensPersonagem(personagem);
-			
+
 		} else if (localizacaoEixoY > 670 && localizacaoEixoY <= 680) {
 
 			if (localizacaoEixoX > 730 && localizacaoEixoX <= 820)

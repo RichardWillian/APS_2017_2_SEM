@@ -28,9 +28,9 @@ public class Dirtyman implements Validavel {
 
 	public void mudarPosicao() {
 		dirtyImage.setBounds(posicaoX, posicaoY, largura, altura);
-		
+
 		telaPrincipal = TelaPrincipal.getInstance();
-		
+
 		Integer x = getTamanhoPassoCompensadoEixoX();
 		telaPrincipal.eixoX.setText(x.toString());
 

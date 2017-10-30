@@ -91,8 +91,6 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 	private void validarQuintoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
 
-		
-		
 		if (localizacaoEixoX == 190) {
 			if (localizacaoEixoY >= 360 && localizacaoEixoY <= 570)
 				contadorDeValidacoes++;
@@ -100,7 +98,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 		} else if (localizacaoEixoX == 270 || localizacaoEixoX == 330) {
 			if (localizacaoEixoY >= 520 && localizacaoEixoY <= 590)
 				contadorDeValidacoes++;
-			
+
 		} else if (localizacaoEixoX == 310) {
 			if (localizacaoEixoY >= 370 && localizacaoEixoY <= 360)
 				contadorDeValidacoes++;
@@ -110,7 +108,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 410 && localizacaoEixoY == 600) {
-				contadorDeValidacoes++;
+			contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 430) {
 			if (localizacaoEixoY == 380)
@@ -123,14 +121,14 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 		} else if (localizacaoEixoX == 550) {
 			if (localizacaoEixoY == 380)
 				contadorDeValidacoes++;
-			
-			else if(localizacaoEixoY == 550)
+
+			else if (localizacaoEixoY == 550)
 				contadorDeValidacoes++;
-			
-		} else if(localizacaoEixoX == 600){
-			if(localizacaoEixoY > 370 && localizacaoEixoY < 520)
+
+		} else if (localizacaoEixoX == 600) {
+			if (localizacaoEixoY > 370 && localizacaoEixoY < 520)
 				contadorDeValidacoes++;
-			
+
 		} else if (localizacaoEixoX == 610) {
 			if (localizacaoEixoY >= 570 && localizacaoEixoY <= 580)
 				contadorDeValidacoes++;
@@ -143,8 +141,8 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 			if (localizacaoEixoY >= 580 && localizacaoEixoY <= 600)
 				contadorDeValidacoes++;
 
-		} else if (localizacaoEixoX == 660){
-			if(localizacaoEixoY == 550) 
+		} else if (localizacaoEixoX == 660) {
+			if (localizacaoEixoY == 550)
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 670) {
@@ -152,14 +150,14 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 680) {
-			
+
 			if (localizacaoEixoY >= 380 && localizacaoEixoY <= 390)
 				contadorDeValidacoes++;
-			
+
 			else if (localizacaoEixoY >= 560 && localizacaoEixoY <= 610)
 				contadorDeValidacoes++;
-		} 
-		
+		}
+
 		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
 	}
 
@@ -173,7 +171,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 			if (localizacaoEixoY > 510 && localizacaoEixoY < 530)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
-			
+
 		} else if (localizacaoEixoX >= 430 && localizacaoEixoX < 520) {
 
 			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)

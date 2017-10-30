@@ -6,7 +6,7 @@ public class Lixeira {
 	private float posicaoY;
 	private int largura;
 	private int altura;
-	
+
 	public float getPosicaoY() {
 		return posicaoY;
 	}

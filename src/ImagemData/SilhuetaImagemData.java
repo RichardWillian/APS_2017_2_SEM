@@ -99,7 +99,7 @@ public class SilhuetaImagemData {
 	}
 
 	public void iniciarImagensPersonagem() {
-		
+
 		EcomanImagemData.getInstance().preencherVetorImagens();
 		DirtymanImagemData.getInstance().preencherVetorImagens();
 	}

@@ -10,14 +10,14 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 @SuppressWarnings("serial")
-public class JanelaBase extends Frame implements KeyListener, WindowListener, ActionListener{
+public class JanelaBase extends Frame implements KeyListener, WindowListener, ActionListener {
 
-	public JanelaBase(){
-		
+	public JanelaBase() {
+
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		this.addWindowListener(this);
-		
+
 		this.addKeyListener(this);
 	}
 
@@ -83,13 +83,12 @@ public class JanelaBase extends Frame implements KeyListener, WindowListener, Ac
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void paintBg(Graphics g) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
-

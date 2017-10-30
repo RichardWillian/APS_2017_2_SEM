@@ -7,10 +7,11 @@ public class Cronometro extends Thread {
 	TelaPrincipal telaPrincipal;
 
 	public int tempo;
+	private static Cronometro instancia;
 
 	public Cronometro() {
 
-		tempo = 999;
+		tempo = 6;
 	}
 
 	@Override
@@ -26,14 +27,24 @@ public class Cronometro extends Thread {
 			}
 			tempo--;
 		}
-		
+
 		telaPrincipal.setTextLabelTempo(tempo);
 		telaPrincipal.ativarTelaGameOver();
+		ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
+		ctrlEncerrarJogo.encerrarJogo();
 	}
-	
-	public static void iniciarCronometro(){
-		
+
+	public static void iniciarCronometro() {
+
 		Cronometro cronometro = new Cronometro();
 		cronometro.start();
+	}
+
+	public static Cronometro getInstance() {
+
+		if (instancia == null)
+			instancia = new Cronometro();
+
+		return instancia;
 	}
 }

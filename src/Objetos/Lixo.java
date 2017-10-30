@@ -18,10 +18,10 @@ public class Lixo {
 		largura = 30;
 		altura = 30;
 		btnLixo = new Button("LIXO");
-		
+
 		btnLixo.setBounds(posicaoX, posicaoY, largura, altura);
 	}
-	
+
 	public int getPosicaoY() {
 		return posicaoY;
 	}

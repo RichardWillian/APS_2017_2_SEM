@@ -26,6 +26,7 @@ public class ControleDirtyMan extends Thread {
 	private int contadorElseCima = 0;
 	private int contadorElseBaixo = 0;
 	private static final int TEMPO_ESPERA_CAMINHAR = 60;
+	private static final int QTDE_PASSOS_JOGAR_LIXO = 163;
 
 	public ControleDirtyMan() {
 
@@ -107,15 +108,14 @@ public class ControleDirtyMan extends Thread {
 				} else {
 					contadorElseDireita++;
 					dirtyman.setPosicaoX(dirtyman.getPosicaoX() - dirtyman.getTamanhoPasso());
-					if(contadorElseDireita < 3)
+					if (contadorElseDireita < 3)
 						andarParaBaixo(qtdePassos, contadorPassos);
 					else
 						andarParaEsquerda(qtdePassos, contadorPassos);
-					
+
 					break;
 				}
-			}
-			else
+			} else
 				break;
 		}
 	}
@@ -139,18 +139,17 @@ public class ControleDirtyMan extends Thread {
 					contadorPassos++;
 					contadorElseEsquerda = 0;
 				} else {
-					
+
 					contadorElseEsquerda++;
 					dirtyman.setPosicaoX(dirtyman.getPosicaoX() + dirtyman.getTamanhoPasso());
-					
-					if(contadorElseEsquerda < 3)
+
+					if (contadorElseEsquerda < 3)
 						andarParaCima(qtdePassos, contadorPassos);
 					else
 						andarParaDireita(qtdePassos, contadorPassos);
 					break;
 				}
-			}
-			else
+			} else
 				break;
 		}
 	}
@@ -175,16 +174,15 @@ public class ControleDirtyMan extends Thread {
 				} else {
 					contadorElseBaixo++;
 					dirtyman.setPosicaoY(dirtyman.getPosicaoY() - dirtyman.getTamanhoPasso());
-					
-					if(contadorElseBaixo < 2)
+
+					if (contadorElseBaixo < 2)
 						andarParaDireita(qtdePassos, contadorPassos);
 					else
 						andarParaCima(qtdePassos, contadorPassos);
-					
+
 					break;
 				}
-			}
-			else
+			} else
 				break;
 		}
 	}
@@ -211,16 +209,15 @@ public class ControleDirtyMan extends Thread {
 				} else {
 					contadorElseCima++;
 					dirtyman.setPosicaoY(dirtyman.getPosicaoY() + dirtyman.getTamanhoPasso());
-					
-					if(contadorElseCima < 2)
+
+					if (contadorElseCima < 2)
 						andarParaDireita(qtdePassos, contadorPassos);
 					else
 						andarParaBaixo(qtdePassos, contadorPassos);
-					
+
 					break;
 				}
-			}
-			else
+			} else
 				break;
 		}
 	}
@@ -231,7 +228,7 @@ public class ControleDirtyMan extends Thread {
 		setTempoEspera();
 		contadorCriarLixo++;
 
-		if (contadorCriarLixo % 463 == 0)
+		if (contadorCriarLixo % QTDE_PASSOS_JOGAR_LIXO == 0)
 			jogarLixo();
 	}
 
@@ -286,19 +283,23 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[0]);// Direita 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[0]);// Direita
+																			// 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[1]);// Direita 2
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[1]);// Direita
+																			// 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[0]);// Direita 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[0]);// Direita
+																			// 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[2]);// Direita 3
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[2]);// Direita
+																			// 3
 			break;
 
 		}
@@ -311,19 +312,23 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[6]);// Esquerda 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[6]);// Esquerda
+																			// 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[7]);// Esquerda 2
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[7]);// Esquerda
+																			// 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[6]);// Esquerda 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[6]);// Esquerda
+																			// 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[8]);// Esquerda 3
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[8]);// Esquerda
+																			// 3
 			break;
 
 		}
@@ -336,19 +341,23 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[9]);// Cima 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[9]);// Cima
+																			// 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[10]);// Cima 2
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[10]);// Cima
+																			// 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[9]);// Cima 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[9]);// Cima
+																			// 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[11]);// Cima 3
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[11]);// Cima
+																			// 3
 			break;
 		}
 	}
@@ -360,19 +369,23 @@ public class ControleDirtyMan extends Thread {
 		switch (passos) {
 
 		case 0:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[3]);// Baixo 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[3]);// Baixo
+																			// 1
 			break;
 
 		case 1:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[4]);// Baixo 2
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[4]);// Baixo
+																			// 2
 			break;
 
 		case 2:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[3]);// Baixo 1
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[3]);// Baixo
+																			// 1
 			break;
 
 		case 3:
-			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[5]);// Baixo 3
+			dirtyman.dirtyImage.setIcon(imagemData.recuperarImagens()[5]);// Baixo
+																			// 3
 			break;
 
 		}

@@ -1,11 +1,11 @@
 package Controles;
 
-
-public class ControleGameOver {
+public class ControleEncerrarJogo {
 
 	@SuppressWarnings("deprecation")
-	public static void executarGameOver() {
-		
+	public void encerrarJogo() {
+
 		ControleDirtyMan.getInstance().stop();
+		Cronometro.getInstance().stop();
 	}
 }

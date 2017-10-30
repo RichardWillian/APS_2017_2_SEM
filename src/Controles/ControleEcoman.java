@@ -96,16 +96,16 @@ public class ControleEcoman {
 		}
 
 		if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
-			
+
 			Lixeira lixeira = lixeiraData.getLixeira(ecoman.getPosicaoX(), ecoman.getPosicaoY());
-			if (checarProximidade(ecoman.getTamanhoPassoCompensadoEixoX(), lixeira.getPosicaoX(), false) && 
-				checarProximidade(ecoman.getTamanhoPassoCompensadoEixoY(), lixeira.getPosicaoY(), true)) {
-				
+			if (checarProximidade(ecoman.getTamanhoPassoCompensadoEixoX(), lixeira.getPosicaoX(), false)
+					&& checarProximidade(ecoman.getTamanhoPassoCompensadoEixoY(), lixeira.getPosicaoY(), true)) {
+
 				if (ecoman.estaCarregandoLixo()) {
 
 					telaPrincipal.setPontuacao(100);
-					
-					if(mochila.isEmpty()){
+
+					if (mochila.isEmpty()) {
 						telaPrincipal.ativarTelaVenceuJogo();
 					}
 				}
@@ -256,13 +256,13 @@ public class ControleEcoman {
 		// capturá-lo ou pará-lo
 		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_JOGAR_LIXO;
 	}
-	
+
 	private boolean checarProximidade(float posicaoEcoman, float posicaoAlvo, boolean distante) {
 
-		if(distante)
+		if (distante)
 			return Math.abs((long) posicaoEcoman - posicaoAlvo) <= 25.5f;
-		
-		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_JOGAR_LIXO; 
+
+		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_JOGAR_LIXO;
 	}
 
 	private void adverterDirtyman() {

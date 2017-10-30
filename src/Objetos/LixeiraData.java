@@ -46,7 +46,7 @@ public class LixeiraData {
 
 		lixeira.setPosicaoX(455);
 		lixeira.setPosicaoY(595);
-		return lixeira;   
+		return lixeira;
 	}
 
 	public Lixeira getLixeira(int posicaoX, int posicaoY) {

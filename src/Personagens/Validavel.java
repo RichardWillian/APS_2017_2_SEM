@@ -11,10 +11,10 @@ public interface Validavel {
 	int getPosicaoX();
 
 	void setPosicaoY(int posixaoY);
-	
+
 	void setPosicaoX(int posixaoX);
-	
+
 	int getTamanhoPassoCompensadoEixoX();
-	
+
 	int getTamanhoPassoCompensadoEixoY();
 }

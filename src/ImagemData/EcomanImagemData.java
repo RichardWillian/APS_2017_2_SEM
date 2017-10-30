@@ -5,15 +5,12 @@ import javax.swing.ImageIcon;
 
 public class EcomanImagemData {
 
-	public Icon icon1, icon2, icon3, 
-	iconB1, iconB2, iconB3, 
-	iconL1, iconL2, iconL3, 
-	iconC1, iconC2, iconC3;
-	
+	public Icon icon1, icon2, icon3, iconB1, iconB2, iconB3, iconL1, iconL2, iconL3, iconC1, iconC2, iconC3;
+
 	private Icon[] imagensEcoman = new Icon[12];
 	private static final String URL = "/spritesEcoman/";
 	static EcomanImagemData instancia = null;
-	
+
 	private EcomanImagemData() {
 
 		// Movimentos à direita
@@ -47,17 +44,17 @@ public class EcomanImagemData {
 		iconC2 = new ImageIcon(EcomanImagemData.class.getResource(URL + "Costas_2.png"));
 
 		iconC3 = new ImageIcon(EcomanImagemData.class.getResource(URL + "Costas_3.png"));
-		
+
 		preencherVetorImagens();
 	}
-	
-	public Icon[] recuperarImagens(){
-		
+
+	public Icon[] recuperarImagens() {
+
 		return imagensEcoman;
 	}
-	
-	public void preencherVetorImagens(){
-		
+
+	public void preencherVetorImagens() {
+
 		imagensEcoman[0] = icon1;
 		imagensEcoman[1] = icon2;
 		imagensEcoman[2] = icon3;
@@ -71,19 +68,19 @@ public class EcomanImagemData {
 		imagensEcoman[10] = iconC2;
 		imagensEcoman[11] = iconC3;
 	}
-	
-	public static EcomanImagemData getInstance(){
-		
-		if(instancia == null)
+
+	public static EcomanImagemData getInstance() {
+
+		if (instancia == null)
 			instancia = new EcomanImagemData();
-		
+
 		return instancia;
 	}
 
 	public void trocarParaSilhueta(Icon[] silhuetas) {
-		
-		for(int i = 0; i < silhuetas.length; i++){
-		
+
+		for (int i = 0; i < silhuetas.length; i++) {
+
 			imagensEcoman[i] = silhuetas[i];
 		}
 	}
