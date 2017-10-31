@@ -3,6 +3,7 @@ package Telas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+import Controles.ControleEncerrarJogo;
 import Controles.ControleIniciarJogo;
 
 @SuppressWarnings("serial")
@@ -68,10 +69,14 @@ public class TelaGameOver extends JanelaBase {
 
 		if (e.getSource() == botaoSim) {
 
+			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
+			ctrlEncerrarJogo.encerrarJogo();
 			ControleIniciarJogo.IniciarJogo();
 			this.dispose();
 		} else if (e.getSource() == botaoNao) {
 
+			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
+			ctrlEncerrarJogo.encerrarJogo();
 			menuPrincipal = new MenuPincipal();
 			menuPrincipal.setVisible(true);
 			this.dispose();

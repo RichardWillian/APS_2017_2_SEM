@@ -126,7 +126,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 600) {
-			if (localizacaoEixoY > 370 && localizacaoEixoY < 520)
+			if (localizacaoEixoY > 370 && localizacaoEixoY < 530)
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 610) {
@@ -156,6 +156,10 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 			else if (localizacaoEixoY >= 560 && localizacaoEixoY <= 610)
 				contadorDeValidacoes++;
+		} else if(localizacaoEixoX == 740){
+			
+			if(localizacaoEixoY > 370 && localizacaoEixoY < 620)
+				contadorDeValidacoes++;
 		}
 
 		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
@@ -171,7 +175,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
 
-			if (localizacaoEixoY > 510 && localizacaoEixoY < 530)
+			if (localizacaoEixoY > 510 && localizacaoEixoY < 540)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
 			else 
 				retornarImagensPersonagem(personagem);

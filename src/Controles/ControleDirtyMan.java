@@ -25,7 +25,7 @@ public class ControleDirtyMan extends Thread {
 	private int contadorElseEsquerda = 0;
 	private int contadorElseCima = 0;
 	private int contadorElseBaixo = 0;
-	private static final int TEMPO_ESPERA_CAMINHAR = 60000;
+	private static final int TEMPO_ESPERA_CAMINHAR = 60;
 	private static final int QTDE_PASSOS_JOGAR_LIXO = 200;
 
 	public ControleDirtyMan() {

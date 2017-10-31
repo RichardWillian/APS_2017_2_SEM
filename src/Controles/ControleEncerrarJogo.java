@@ -2,10 +2,10 @@ package Controles;
 
 public class ControleEncerrarJogo {
 
-	@SuppressWarnings("deprecation")
 	public void encerrarJogo() {
 
-		ControleDirtyMan.getInstance().stop();
-		Cronometro.getInstance().stop();
+		ControleDirtyMan.getInstance().interrupt();
+		Cronometro.getInstance().interrupt();
+		ControleIniciarJogo.IniciarJogo();
 	}
 }

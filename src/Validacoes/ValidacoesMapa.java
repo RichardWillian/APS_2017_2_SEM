@@ -22,7 +22,12 @@ public class ValidacoesMapa {
 	public boolean autorizarCaminhadaBaixo(Validavel personagem) {
 
 		if (personagem.getTamanhoPassoCompensadoEixoY() <= 670) {
-			return true;
+			ValidacaoCaminharBaixo validacaoCaminharBaixo = new ValidacaoCaminharBaixo();
+			if(validacaoCaminharBaixo.autorizarCaminhar(personagem.getTamanhoPassoCompensadoEixoX(), 
+					personagem.getTamanhoPassoCompensadoEixoY(), personagem))
+				return true;
+			else 
+				return false;
 		}
 
 		if (personagem.getPosicaoX() >= 800)

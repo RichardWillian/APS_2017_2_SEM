@@ -56,6 +56,11 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 
 	private void validarSetimoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
 
+		if(localizacaoEixoX == 830){
+			if(localizacaoEixoY > 680 && localizacaoEixoY <= 710)
+				contadorDeValidacoes++;
+		}
+		
 		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
 	}
 
@@ -96,7 +101,7 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 790) {
-			if (localizacaoEixoY >= 380 && localizacaoEixoY <= 500)
+			if (localizacaoEixoY >= 380 && localizacaoEixoY <= 530)
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 360) {
@@ -128,6 +133,7 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 540) {
+			
 			if (localizacaoEixoY >= 380 && localizacaoEixoY <= 540) {
 				contadorDeValidacoes++;
 
@@ -137,13 +143,20 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 		} else if (localizacaoEixoX == 630) {
 			if (localizacaoEixoY >= 570 && localizacaoEixoY <= 590)
 				contadorDeValidacoes++;
-
+		}else if (localizacaoEixoX == 740) {
+		
+			if(localizacaoEixoY > 370 && localizacaoEixoY < 620)
+				contadorDeValidacoes++;
+		}
+		else if (localizacaoEixoX == 600) {
+			if (localizacaoEixoY > 370 && localizacaoEixoY < 530)
+				contadorDeValidacoes++;
 		}
 		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
 	}
 
 	private void validarMostrarSilhueta(int localizacaoEixoX, int localizacaoEixoY) {
-		if (localizacaoEixoX > 210 && localizacaoEixoX <= 290) {
+		if (localizacaoEixoX > 210 && localizacaoEixoX <= 300) {
 
 			if (localizacaoEixoY > 320 && localizacaoEixoY <= 350)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
@@ -152,7 +165,7 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 
 		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
 
-			if (localizacaoEixoY > 510 && localizacaoEixoY < 530)
+			if (localizacaoEixoY > 510 && localizacaoEixoY < 540)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
 			else 
 				retornarImagensPersonagem(personagem);
@@ -178,9 +191,9 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 			else 
 				retornarImagensPersonagem(personagem);
 			
-		} else if(localizacaoEixoY > 660){
+		} else if(localizacaoEixoY > 660 && localizacaoEixoY <= 680){
 			
-			if(localizacaoEixoX > 730 && localizacaoEixoX < 830)
+			if(localizacaoEixoX > 740 && localizacaoEixoX <= 830)
 				silhuetaImagemData.trocarParaSilhueta(personagem);
 			else 
 				retornarImagensPersonagem(personagem);

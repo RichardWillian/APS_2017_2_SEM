@@ -63,10 +63,7 @@ public class ValidacaoCaminharCima implements IValidadorCaminhada {
 
 		if (localizacaoEixoY == 630) {
 
-			if (localizacaoEixoX >= 890 && localizacaoEixoX <= 930)
-				contadorDeValidacoes++;
-
-			else if (localizacaoEixoX >= 950 && localizacaoEixoX <= 970)
+			if (localizacaoEixoX >= 890 && localizacaoEixoX <= 970)
 				contadorDeValidacoes++;
 
 			else if (localizacaoEixoX >= 1000 && localizacaoEixoX <= 1010)
@@ -92,7 +89,7 @@ public class ValidacaoCaminharCima implements IValidadorCaminhada {
 			else if (localizacaoEixoX >= 530 && localizacaoEixoX <= 590)
 				contadorDeValidacoes++;
 
-			else if (localizacaoEixoX >= 610 && localizacaoEixoX == 620)
+			else if (localizacaoEixoX >= 610 && localizacaoEixoX < 630)
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoY == 550) {
@@ -166,17 +163,20 @@ public class ValidacaoCaminharCima implements IValidadorCaminhada {
 
 		if (localizacaoEixoY > 330 && localizacaoEixoY <= 510) {
 
-			if (localizacaoEixoX >= 210 && localizacaoEixoX <= 300) {
+			if (localizacaoEixoX >= 210 && localizacaoEixoX < 300) {
 				silhuetaImagemData.trocarParaSilhueta(personagem);
-			} else if (localizacaoEixoX > 440 && localizacaoEixoX <= 530) {
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			} else if (localizacaoEixoX > 700 && localizacaoEixoX < 790) {
+				
+			} else if (localizacaoEixoX > 430 && localizacaoEixoX < 530) {
+				silhuetaImagemData.trocarParaSilhueta(personagem);				
+				
+			} else if (localizacaoEixoX > 690 && localizacaoEixoX < 790) {
 
 				if (localizacaoEixoY < 500)
 					silhuetaImagemData.trocarParaSilhueta(personagem);
 				else
 					retornarImagensPersonagem(personagem);
-			} else if (localizacaoEixoX > 560 && localizacaoEixoX <= 650) {
+				
+			} else if (localizacaoEixoX > 550 && localizacaoEixoX <= 650) {
 
 				if (localizacaoEixoY > 350)
 					silhuetaImagemData.trocarParaSilhueta(personagem);

@@ -71,7 +71,6 @@ public class TelaVenceuJogo extends JanelaBase {
 
 		if (e.getSource() == botaoReiniciarJogo) {
 			
-			ControleIniciarJogo.IniciarJogo();
 			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
 			ctrlEncerrarJogo.encerrarJogo();
 			this.dispose();
