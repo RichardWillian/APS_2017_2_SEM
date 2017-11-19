@@ -1,12 +1,13 @@
-package Controles;
+package controles;
 
 import java.util.Random;
 
-import Constantes.ConstantesGerais;
-import ImagemData.DirtymanImagemData;
-import Personagens.Dirtyman;
-import Telas.TelaPrincipal;
-import Validacoes.ValidacoesMapa;
+import constantes.ConstantesGerais;
+import data.DirtymanImagemData;
+import data.MensagemData;
+import personagens.Dirtyman;
+import telas.TelaPrincipal;
+import validacoes.ValidacoesMapa;
 
 @SuppressWarnings("unused")
 public class ControleDirtyMan extends Thread {
@@ -25,11 +26,22 @@ public class ControleDirtyMan extends Thread {
 	private int contadorElseEsquerda = 0;
 	private int contadorElseCima = 0;
 	private int contadorElseBaixo = 0;
+	private static boolean pararDirtyMan = false;
 	private static final int TEMPO_ESPERA_CAMINHAR = 60;
-	private static final int QTDE_PASSOS_JOGAR_LIXO = 200;
+	private static final int QTDE_PASSOS_JOGAR_LIXO = 80;
+
+	public void pararDirtyMan() {
+		pararDirtyMan = true;
+	}
 
 	public ControleDirtyMan() {
-
+		
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		instanciarObjetos();
 		podeSeMovimentar = true;
 	}
@@ -39,19 +51,30 @@ public class ControleDirtyMan extends Thread {
 
 		while (true) {
 
+			System.err.println("DirtyMan está vivo ");
+
+			if (pararDirtyMan == true) {
+				System.err.println("************** DirtyMan morreu **************");
+
+				return;
+
+			}
+
 			if (podeSeMovimentar)
 				movimentarDirtyMan();
 			else {
-				for (int cronometro = 0; cronometro < 3; cronometro++) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+				if (!MensagemData.getInstance().isMensagemOn()) {
+					int numeroMensagem = new Random().nextInt(7);
+					TelaPrincipal.getInstance().mostrarAdvertenciaEcologica(true, numeroMensagem);
+					for (int cronometro = 0; cronometro < 3; cronometro++) {
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
 				}
-				telaPrincipal = TelaPrincipal.getInstance();
 				podeSeMovimentar = true;
-				telaPrincipal.mostrarAdvertenciaEcologica(false);
 			}
 		}
 	}
@@ -261,6 +284,10 @@ public class ControleDirtyMan extends Thread {
 
 	public void setSituacaoMovimentacao(boolean podeSeMovimentar) {
 		this.podeSeMovimentar = podeSeMovimentar;
+	}
+
+	public void restart() {
+		pararDirtyMan = false;
 	}
 
 	public static ControleDirtyMan getInstance() {

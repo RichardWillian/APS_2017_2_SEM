@@ -1,8 +1,8 @@
-package Personagens;
+package personagens;
 
 import javax.swing.JLabel;
 
-import Telas.TelaPrincipal;
+import telas.TelaPrincipal;
 
 public class Dirtyman implements Validavel {
 
@@ -16,8 +16,8 @@ public class Dirtyman implements Validavel {
 	private TelaPrincipal telaPrincipal;
 
 	public Dirtyman() {
-		posicaoX = 0;
-		posicaoY = 0;
+		posicaoX = 820;
+		posicaoY = 240;
 		largura = 18;
 		altura = 32;
 		tamanhoPasso = 10;
@@ -97,7 +97,7 @@ public class Dirtyman implements Validavel {
 
 	public static void setInstance(Dirtyman novoDirtyMan) {
 
-		instancia = novoDirtyMan;
+		instancia = novoDirtyMan; 
 	}
 
 	public int getTamanhoPasso() {

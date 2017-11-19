@@ -1,12 +1,11 @@
-package Telas;
+package telas;
 
 import java.awt.Button;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 
-import Controles.ControleEncerrarJogo;
-import Controles.ControleIniciarJogo;
+import controles.ControleIniciarJogo;
 
 @SuppressWarnings("serial")
 public class TelaVenceuJogo extends JanelaBase {
@@ -14,7 +13,7 @@ public class TelaVenceuJogo extends JanelaBase {
 	private Button botaoReiniciarJogo;
 	private Button botaoVoltarMenuPrincipal;
 	private Label lblParabens;
-	private MenuPincipal menuPrincipal;
+	private MenuPrincipal menuPrincipal;
 	private Label lblFraseAgradecimento;
 	TelaPrincipal telaPrincipal;
 
@@ -30,9 +29,11 @@ public class TelaVenceuJogo extends JanelaBase {
 
 		botaoReiniciarJogo.setBounds(48, 220, 100, 40);
 		botaoReiniciarJogo.addActionListener(this);
+		botaoReiniciarJogo.setActionCommand("Reiniciar");
 
 		botaoVoltarMenuPrincipal.setBounds(250, 220, 100, 40);
 		botaoVoltarMenuPrincipal.addActionListener(this);
+		botaoVoltarMenuPrincipal.setActionCommand("Voltar");
 
 		lblParabens.setBounds(115, 50, 200, 40);
 
@@ -69,17 +70,14 @@ public class TelaVenceuJogo extends JanelaBase {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == botaoReiniciarJogo) {
+		if (e.getActionCommand() == "Reiniciar") {
 			
-			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
-			ctrlEncerrarJogo.encerrarJogo();
-			this.dispose();
-		} else if (e.getSource() == botaoVoltarMenuPrincipal) {
+			ControleIniciarJogo.IniciarJogo();
+			this.dispose(); 
+		} else if (e.getActionCommand() == "Voltar") {
 
-			menuPrincipal = new MenuPincipal();
+			menuPrincipal = new MenuPrincipal();
 			menuPrincipal.setVisible(true);
-			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
-			ctrlEncerrarJogo.encerrarJogo();
 			this.dispose();
 		}
 	}

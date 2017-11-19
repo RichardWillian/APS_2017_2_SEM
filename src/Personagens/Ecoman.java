@@ -1,4 +1,4 @@
-package Personagens;
+package personagens;
 
 import javax.swing.JLabel;
 
@@ -16,8 +16,8 @@ public class Ecoman implements Validavel {
 	public Ecoman() {
 
 		ecoImage = new JLabel();
-		posicaoX = 100;
-		posicaoY = 100;
+		posicaoX = 120;
+		posicaoY = 250;
 		largura = 18;
 		altura = 32;
 		tamanhoPasso = 10;

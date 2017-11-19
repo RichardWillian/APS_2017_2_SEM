@@ -1,7 +1,7 @@
-package Validacoes;
+package validacoes;
 
-import ImagemData.SilhuetaImagemData;
-import Personagens.Validavel;
+import data.SilhuetaImagemData;
+import personagens.Validavel;
 
 public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
@@ -12,6 +12,9 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 	public boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, Validavel personagem) {
 
 		this.personagem = personagem;
+			if (!SilhuetaImagemData.getInstance().isSilhuetaOn(personagem))
+				SilhuetaImagemData.getInstance().retornarImagensPersonagem(personagem);
+
 		CarregarValidacoes(localizacaoEixoX, localizacaoEixoY);
 
 		if (contadorDeValidacoes.equals(0))
@@ -27,11 +30,14 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 	private void CarregarValidacoes(int localizacaoEixoX, int localizacaoEixoY) {
 
-		if (localizacaoEixoX <= 150)
-			validaPrimeiro_quartoQuarteirao(localizacaoEixoX, localizacaoEixoY);
+		if (localizacaoEixoX <= 810 && localizacaoEixoX >= 150 && localizacaoEixoY <= 290)
+			validarSegundoQuarteirao(localizacaoEixoX, localizacaoEixoY);
 
-		else if (localizacaoEixoY <= 270)
-			validarSegundo_TerceiroQuarteirao(localizacaoEixoX, localizacaoEixoY);
+		else if (localizacaoEixoX <= 150)
+			validaQuartoQuarteirao(localizacaoEixoX, localizacaoEixoY);
+
+		else if (localizacaoEixoX >= 300 && localizacaoEixoY <= 290)
+			validarTerceiroQuarteirao(localizacaoEixoX, localizacaoEixoY);
 
 		else if ((localizacaoEixoY >= 320 && localizacaoEixoY < 650) && localizacaoEixoX <= 800)
 			validarQuintoQuarteirao(localizacaoEixoX, localizacaoEixoY);
@@ -43,23 +49,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 			validarSetimoQuarteirao(localizacaoEixoX, localizacaoEixoY);
 	}
 
-	private void validarSetimoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
-
-		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
-	}
-
-	private void validaPrimeiro_quartoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
-
-		if (localizacaoEixoX == 30) {
-			if (localizacaoEixoY >= 330 && localizacaoEixoY <= 340)
-				contadorDeValidacoes++;
-		} else if (localizacaoEixoX == 70 && localizacaoEixoY == 490)
-			contadorDeValidacoes++;
-	}
-
-	private void validarSegundo_TerceiroQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
-
-		/************** para eixo X > 800 Entra o 3º quarteirão ************/
+	private void validarSegundoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
 
 		if (localizacaoEixoX == 210) {
 			if (localizacaoEixoY >= 100 && localizacaoEixoY < 200)
@@ -78,7 +68,12 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 			if (localizacaoEixoY >= 210 && localizacaoEixoY <= 230)
 				contadorDeValidacoes++;
 
-		} else if (localizacaoEixoX == 880) {
+		}
+
+	}
+
+	private void validarTerceiroQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
+		if (localizacaoEixoX == 880) {
 
 			if (localizacaoEixoY >= 60 && localizacaoEixoY <= 220)
 				contadorDeValidacoes++;
@@ -86,7 +81,15 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 		} else if (localizacaoEixoX == 980 && localizacaoEixoY == 220) {
 			contadorDeValidacoes++;
 		}
+	}
 
+	private void validaQuartoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
+
+		if (localizacaoEixoX == 30) {
+			if (localizacaoEixoY >= 330 && localizacaoEixoY <= 340)
+				contadorDeValidacoes++;
+		} else if (localizacaoEixoX == 70 && localizacaoEixoY == 490)
+			contadorDeValidacoes++;
 	}
 
 	private void validarQuintoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
@@ -156,66 +159,19 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 			else if (localizacaoEixoY >= 560 && localizacaoEixoY <= 610)
 				contadorDeValidacoes++;
-		} else if(localizacaoEixoX == 740){
-			
-			if(localizacaoEixoY > 370 && localizacaoEixoY < 620)
+		} else if (localizacaoEixoX == 740) {
+
+			if (localizacaoEixoY > 370 && localizacaoEixoY < 620)
 				contadorDeValidacoes++;
 		}
 
 		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
 	}
 
-	private void validarMostrarSilhueta(int localizacaoEixoX, int localizacaoEixoY) {
-		if (localizacaoEixoX > 190 && localizacaoEixoX < 290) {
-
-			if (localizacaoEixoY <= 350 && localizacaoEixoY > 320)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else 
-				retornarImagensPersonagem(personagem);
-
-		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
-
-			if (localizacaoEixoY > 510 && localizacaoEixoY < 540)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else 
-				retornarImagensPersonagem(personagem);
-
-		} else if (localizacaoEixoX >= 430 && localizacaoEixoX < 520) {
-
-			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else 
-				retornarImagensPersonagem(personagem);
-
-		} else if (localizacaoEixoX >= 550 && localizacaoEixoX < 640) {
-
-			if (localizacaoEixoY <= 370 && localizacaoEixoY > 340)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else 
-				retornarImagensPersonagem(personagem);
-
-		} else if (localizacaoEixoY > 320 && localizacaoEixoY <= 370) {
-			
-			if(localizacaoEixoX > 680 && localizacaoEixoX < 780)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else 
-				retornarImagensPersonagem(personagem);
-			
-		} else if(localizacaoEixoY > 660){
-			
-			if(localizacaoEixoX > 720 && localizacaoEixoX < 820)
-				silhuetaImagemData.trocarParaSilhueta(personagem);
-			else 
-				retornarImagensPersonagem(personagem);
-
-		} else
-			retornarImagensPersonagem(personagem);
-	}
-
 	private void validarSextoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
 
 		if (localizacaoEixoX == 1000) {
-			if (localizacaoEixoY >= 370 && localizacaoEixoY <= 390)
+			if (localizacaoEixoY >= 370 && localizacaoEixoY <= 400)
 				contadorDeValidacoes++;
 
 		} else if (localizacaoEixoX == 880) {
@@ -234,4 +190,57 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 			contadorDeValidacoes++;
 		}
 	}
+
+	private void validarSetimoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
+
+		validarMostrarSilhueta(localizacaoEixoX, localizacaoEixoY);
+	}
+
+	private void validarMostrarSilhueta(int localizacaoEixoX, int localizacaoEixoY) {
+		if (localizacaoEixoX > 190 && localizacaoEixoX < 290) {
+
+			if (localizacaoEixoY <= 350 && localizacaoEixoY > 320)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else
+				retornarImagensPersonagem(personagem);
+
+		} else if (localizacaoEixoX > 290 && localizacaoEixoX < 340) {
+
+			if (localizacaoEixoY > 510 && localizacaoEixoY < 540)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else
+				retornarImagensPersonagem(personagem);
+
+		} else if (localizacaoEixoX >= 430 && localizacaoEixoX < 520) {
+
+			if (localizacaoEixoY <= 370 && localizacaoEixoY > 320)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else
+				retornarImagensPersonagem(personagem);
+
+		} else if (localizacaoEixoX >= 550 && localizacaoEixoX < 640) {
+
+			if (localizacaoEixoY <= 370 && localizacaoEixoY > 340)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else
+				retornarImagensPersonagem(personagem);
+
+		} else if (localizacaoEixoY > 320 && localizacaoEixoY <= 370) {
+
+			if (localizacaoEixoX > 680 && localizacaoEixoX < 780)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else
+				retornarImagensPersonagem(personagem);
+
+		} else if (localizacaoEixoY > 660) {
+
+			if (localizacaoEixoX > 720 && localizacaoEixoX < 820)
+				silhuetaImagemData.trocarParaSilhueta(personagem);
+			else
+				retornarImagensPersonagem(personagem);
+
+		} else
+			retornarImagensPersonagem(personagem);
+	}
+
 }

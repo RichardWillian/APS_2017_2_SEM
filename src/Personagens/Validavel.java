@@ -1,4 +1,4 @@
-package Personagens;
+package personagens;
 
 public interface Validavel {
 

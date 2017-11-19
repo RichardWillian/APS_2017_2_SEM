@@ -1,58 +1,110 @@
-package Telas;
+package telas;
 
-import java.awt.*;
+import java.awt.Button;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 
-import Controles.ControleEncerrarJogo;
-import Controles.ControleIniciarJogo;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import controles.ControleIniciarJogo;
 
 @SuppressWarnings("serial")
-public class TelaGameOver extends JanelaBase {
+public class TelaGameOver extends JanelaBaseSwing {
 
-	Button botaoSim;
-	Button botaoNao;
-	Label lblGameOver;
-	Label lblReiniciar;
-	MenuPincipal menuPrincipal;
+	private JPanel contentPane;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TelaGameOver frame = new TelaGameOver();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
 	public TelaGameOver() {
+		setTitle("Game Over - Ecoman");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 650, 480);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton botaoSair = new JButton("");
+		botaoSair.setIcon(new ImageIcon(TelaGameOver.class.getResource("/novasImagens/button_sair.png")));
+		botaoSair.setBounds(386, 322, 150, 40);
+		contentPane.add(botaoSair);
+		
+		JButton botaoRecomecar = new JButton("");
+		botaoRecomecar.setIcon(new ImageIcon(TelaGameOver.class.getResource("/novasImagens/button_recomecar.png")));
+		botaoRecomecar.setBounds(141, 322, 150, 40);
+		contentPane.add(botaoRecomecar);
+		
+		JLabel lblBackground = new JLabel();
+		lblBackground.setIcon(new ImageIcon(TelaGameOver.class.getResource("/novasImagens/telaGameOver.jpg")));
+		lblBackground.setBounds(0, 0, 640, 450);
+		contentPane.add(lblBackground);
 
 		setPropriedadesjanela();
 		instanciarComponentes();
 		adicionarComponentesTela();
 		setPropriedadesComponentes();
 	}
+	
+	private Button botaoReiniciarJogo;
+	private Button botaoVoltarMenuPrincipal;
+	private Label lblParabens;
+	private MenuPrincipal menuPrincipal;
+	private Label lblFraseAgradecimento;
+	TelaPrincipal telaPrincipal;
 
 	private void setPropriedadesComponentes() {
 
-		botaoSim.setBounds(48, 220, 100, 40);
-		botaoSim.addActionListener(this);
+		botaoReiniciarJogo.setBounds(48, 220, 100, 40);
+		botaoReiniciarJogo.setActionCommand("Reiniciar");
 
-		botaoNao.setBounds(250, 220, 100, 40);
-		botaoNao.addActionListener(this);
+		botaoVoltarMenuPrincipal.setBounds(250, 220, 100, 40);
+		botaoVoltarMenuPrincipal.setActionCommand("Voltar");
 
-		lblGameOver.setBounds(115, 50, 200, 40);
-		lblReiniciar.setBounds(105, 150, 250, 40);
+		lblParabens.setBounds(115, 50, 200, 40);
+
+		lblFraseAgradecimento.setBounds(115, 110, 200, 40);
 	}
 
 	private void instanciarComponentes() {
 
-		botaoSim = new Button("SIM");
-		botaoNao = new Button("NÃO");
+		botaoReiniciarJogo = new Button("Reiniciar Jogo");
+		botaoVoltarMenuPrincipal = new Button("Menu Principal");
 
-		lblGameOver = new Label("GAME OVER");
-		lblGameOver.setFont(new Font("Tahoma", Font.BOLD, 30));
-
-		lblReiniciar = new Label("Deseja Reiniciar ?");
-		lblReiniciar.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblParabens = new Label("PARABÉNS");
+		lblFraseAgradecimento = new Label("Obrigado por limpar nossa cidade !!!");
+		lblParabens.setFont(new Font("Tahoma", Font.BOLD, 30));
 	}
 
 	private void adicionarComponentesTela() {
 
-		this.add(botaoSim);
-		this.add(botaoNao);
-		this.add(lblGameOver);
-		this.add(lblReiniciar);
+		this.add(botaoReiniciarJogo);
+		this.add(botaoVoltarMenuPrincipal);
+		this.add(lblFraseAgradecimento);
+		this.add(lblParabens);
 	}
 
 	private void setPropriedadesjanela() {
@@ -67,19 +119,16 @@ public class TelaGameOver extends JanelaBase {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == botaoSim) {
-
-			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
-			ctrlEncerrarJogo.encerrarJogo();
+		if (e.getActionCommand() == "Reiniciar") {
+			
 			ControleIniciarJogo.IniciarJogo();
-			this.dispose();
-		} else if (e.getSource() == botaoNao) {
+			this.dispose(); 
+		} else if (e.getActionCommand() == "Voltar") {
 
-			ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
-			ctrlEncerrarJogo.encerrarJogo();
-			menuPrincipal = new MenuPincipal();
+			menuPrincipal = new MenuPrincipal();
 			menuPrincipal.setVisible(true);
 			this.dispose();
 		}
 	}
+
 }

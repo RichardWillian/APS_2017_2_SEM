@@ -1,23 +1,40 @@
-package Controles;
+package controles;
 
-import Telas.TelaPrincipal;
+import data.MensagemData;
+import telas.TelaPrincipal;
 
 public class Cronometro extends Thread {
 
 	TelaPrincipal telaPrincipal;
 
-	public int tempo;
+	private static final int TEMPO = 5;
+	private static final int TEMPO_BONUS = 4;
+
+	public static int tempo;
 	private static Cronometro instancia;
+	private static boolean ganhou = false;
 
 	Cronometro() {
 
-		tempo = 60;
+		tempo = TEMPO;
+	}
+
+	public void pararCronometro() {
+		ganhou = true;
+	}
+
+	public void restart() {
+		ganhou = false;
 	}
 
 	@Override
 	public void run() {
 		telaPrincipal = TelaPrincipal.getInstance();
+		boolean movimentarSetas = false;
 		while (tempo > 0) {
+
+			if (ganhou)
+				return;
 
 			telaPrincipal.setTextLabelTempo(tempo);
 			try {
@@ -25,13 +42,34 @@ public class Cronometro extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+
+			if ((MensagemData.getInstance().isMensagemOn()) && (tempo % 10 == 0)) {
+				MensagemData.getInstance().desligarMensagem();
+				TelaPrincipal.getInstance().mostrarAdvertenciaEcologica(false, 0);
+			}
+
+			if (tempo > TEMPO - 10) {
+
+				if (movimentarSetas) {
+					TelaPrincipal.getInstance().movimentarSetaLixeira(movimentarSetas);
+					movimentarSetas = false;
+				} else{
+					
+					TelaPrincipal.getInstance().movimentarSetaLixeira(movimentarSetas);
+					movimentarSetas = true;
+				}
+			}else
+				TelaPrincipal.getInstance().retirarSetaLixeira();
+
 			tempo--;
 		}
 
 		telaPrincipal.setTextLabelTempo(tempo);
 		telaPrincipal.ativarTelaGameOver();
-		ControleEncerrarJogo ctrlEncerrarJogo = new ControleEncerrarJogo();
-		ctrlEncerrarJogo.encerrarJogo();
+
+		ControleDirtyMan.getInstance().pararDirtyMan();
+
+		return;
 	}
 
 	public void iniciarCronometro() {
@@ -46,6 +84,10 @@ public class Cronometro extends Thread {
 			instancia = new Cronometro();
 
 		return instancia;
+	}
+
+	public static void aumentarTempo() {
+		tempo += TEMPO_BONUS;
 	}
 
 	public static void setInstance(Cronometro cronometro) {

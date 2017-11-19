@@ -1,6 +1,6 @@
-package Objetos;
+package objetos;
 
-import java.awt.Button;
+import javax.swing.JLabel;
 
 public class Lixo {
 
@@ -8,7 +8,7 @@ public class Lixo {
 	private int posicaoY;
 	private int largura;
 	private int altura;
-	public Button btnLixo;
+	public JLabel btnLixo;
 	static Lixo instancia;
 
 	public Lixo() {
@@ -17,7 +17,7 @@ public class Lixo {
 		posicaoY = 30;
 		largura = 30;
 		altura = 30;
-		btnLixo = new Button("LIXO");
+		btnLixo = new JLabel("LIXO");
 
 		btnLixo.setBounds(posicaoX, posicaoY, largura, altura);
 	}

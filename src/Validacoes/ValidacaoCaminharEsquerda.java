@@ -1,7 +1,7 @@
-package Validacoes;
+package validacoes;
 
-import ImagemData.SilhuetaImagemData;
-import Personagens.Validavel;
+import data.SilhuetaImagemData;
+import personagens.Validavel;
 
 public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 
@@ -13,6 +13,8 @@ public class ValidacaoCaminharEsquerda implements IValidadorCaminhada {
 	public boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, Validavel personagem) {
 
 		this.personagem = personagem;
+		if (!SilhuetaImagemData.getInstance().isSilhuetaOn(personagem))
+			SilhuetaImagemData.getInstance().retornarImagensPersonagem(personagem);
 		CarregarValidacoes(localizacaoEixoX, localizacaoEixoY);
 
 		if (contadorDeValidacoes.equals(0))

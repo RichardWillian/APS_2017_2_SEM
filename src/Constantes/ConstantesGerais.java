@@ -1,4 +1,4 @@
-package Constantes;
+package constantes;
 
 public class ConstantesGerais {
 
@@ -6,9 +6,6 @@ public class ConstantesGerais {
 	public static final int BAIXO = 1;
 	public static final int DIREITA = 2;
 	public static final int ESQUERDA = 3;
-	public static final int DISTANCIA_DIRTYMAN = 40;
-	public static final int DISTANCIA_LIXO = 20;
-	public static final int DISTANCIA_CAPTURAR_LIXO = 40;
 	public static final float DISTANCIA_JOGAR_LIXO = 15.5f;
-	public static final int DISTANCIA_PARAR_DIRTYMAN = 60;
+	public static final float DISTANCIA_CAPTURAR_LIXO = 25f;
 }

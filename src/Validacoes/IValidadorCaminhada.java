@@ -1,6 +1,6 @@
-package Validacoes;
+package validacoes;
 
-import Personagens.Validavel;
+import personagens.Validavel;
 
 public interface IValidadorCaminhada {
 

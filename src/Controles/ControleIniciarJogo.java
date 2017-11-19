@@ -1,22 +1,25 @@
-package Controles;
+package controles;
 
 import javax.swing.ImageIcon;
 
-import ImagemData.SilhuetaImagemData;
-import Personagens.Dirtyman;
-import Personagens.Ecoman;
-import Telas.TelaPrincipal;
+import data.SilhuetaImagemData;
+import personagens.Dirtyman;
+import personagens.Ecoman;
+import telas.TelaPrincipal;
 
 public class ControleIniciarJogo {
 
 	public static void IniciarJogo() {
 
-		Dirtyman.setInstance(new Dirtyman());
+		Dirtyman.setInstance(new Dirtyman()); 
 		Ecoman.setInstance(new Ecoman());
 		ControleDirtyMan.setInstance(new ControleDirtyMan());
 		TelaPrincipal.setInstance(new TelaPrincipal());
 		ControleEcoman.setInstance(new ControleEcoman());
 		Cronometro.setInstance(new Cronometro());
+		
+		Cronometro.getInstance().restart();
+		ControleDirtyMan.getInstance().restart();
 
 		IniciarThreads();
 		setBackground();
@@ -32,7 +35,7 @@ public class ControleIniciarJogo {
 
 	private static void setDetalhesBackground() {
 
-		ImageIcon detalhesBackground = new ImageIcon(ControleIniciarJogo.class.getResource("/ImagemData/Detalhes_Background.png"));
+		ImageIcon detalhesBackground = new ImageIcon(ControleIniciarJogo.class.getResource("/data/Detalhes_Background.png"));
 		TelaPrincipal.getInstance().setDetalhesBackground(detalhesBackground);
 	}
 
@@ -44,7 +47,7 @@ public class ControleIniciarJogo {
 
 	private static void setBackground() {
 
-		ImageIcon background = new ImageIcon(ControleIniciarJogo.class.getResource("/ImagemData/Background.png"));
+		ImageIcon background = new ImageIcon(ControleIniciarJogo.class.getResource("/data/Background.png"));
 		TelaPrincipal.getInstance().setPlanoDeFundo(background);
 	}
 }

@@ -1,24 +1,25 @@
-package Controles;
+package controles;
 
-import java.awt.Button;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
-import Constantes.ConstantesGerais;
-import ImagemData.EcomanImagemData;
-import Objetos.Lixeira;
-import Objetos.LixeiraData;
-import Personagens.Dirtyman;
-import Personagens.Ecoman;
-import Telas.TelaPrincipal;
-import Validacoes.ValidacoesMapa;
+import javax.swing.JLabel;
+
+import constantes.ConstantesGerais;
+import data.EcomanImagemData;
+import data.LixeiraData;
+import objetos.Lixeira;
+import personagens.Dirtyman;
+import personagens.Ecoman;
+import telas.TelaPrincipal;
+import validacoes.ValidacoesMapa;
 
 public class ControleEcoman {
 
 	private Dirtyman dirtyman;
 	private Ecoman ecoman;
 	private LixeiraData lixeiraData;
-	private Vector<Button> mochila;
+	private Vector<JLabel> mochila;
 	private TelaPrincipal telaPrincipal;
 	private ControleDirtyMan ctrlDirtyMan;
 	private static ControleEcoman instancia;
@@ -28,6 +29,7 @@ public class ControleEcoman {
 	private int contadorPassosEsquerda = 0;
 	private int contadorPassosCima = 0;
 	private int contadorPassosBaixo = 0;
+	private JLabel lixoCapturado;
 
 	public ControleEcoman() {
 
@@ -104,8 +106,11 @@ public class ControleEcoman {
 				if (ecoman.estaCarregandoLixo()) {
 
 					telaPrincipal.setPontuacao(100);
+					Cronometro.aumentarTempo();
 
 					if (mochila.isEmpty()) {
+						Cronometro.getInstance().pararCronometro();
+						ControleDirtyMan.getInstance().pararDirtyMan();
 						telaPrincipal.ativarTelaVenceuJogo();
 					}
 				}
@@ -160,7 +165,6 @@ public class ControleEcoman {
 		case 3:
 			ecoman.ecoImage.setIcon(imagemData.recuperarImagens()[8]);
 			break;
-
 		}
 	}
 
@@ -224,10 +228,10 @@ public class ControleEcoman {
 
 	private void capturarLixo() {
 
-		Button lixoCapturado = new Button();
+		lixoCapturado = new JLabel();
 		if (!mochila.isEmpty()) {
 
-			for (Button lixo : mochila) {
+			for (JLabel lixo : mochila) {
 
 				lixoCapturado = validarCaptura(lixoCapturado, lixo);
 			}
@@ -236,25 +240,27 @@ public class ControleEcoman {
 		}
 	}
 
-	private Button validarCaptura(Button lixoCapturado, Button lixo) {
+	private JLabel validarCaptura(JLabel lixoCapturado2, JLabel lixo) {
 
 		if (!ecoman.estaCarregandoLixo()) {
 			if (checarProximidade(ecoman.getPosicaoX(), lixo.getX())
 					&& checarProximidade(ecoman.getPosicaoY(), lixo.getY())) {
 
-				lixoCapturado = lixo;
+				lixoCapturado2 = lixo;
 				telaPrincipal.remove(lixo);
+				telaPrincipal.repaint(lixoCapturado2.getX(),     lixoCapturado2.getY(),
+									  lixoCapturado2.getWidth(), lixoCapturado2.getHeight());
 				ecoman.setCarregandoLixo(true);
 			}
 		}
-		return lixoCapturado;
+		return lixoCapturado2;
 	}
 
 	private boolean checarProximidade(float posicaoEcoman, float posicaoAlvo) {
 
 		// Verifica se a aproximação entre o Ecoman e o Alvo é suficiente para
 		// capturá-lo ou pará-lo
-		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_JOGAR_LIXO;
+		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_CAPTURAR_LIXO;
 	}
 
 	private boolean checarProximidade(float posicaoEcoman, float posicaoAlvo, boolean distante) {
@@ -262,7 +268,7 @@ public class ControleEcoman {
 		if (distante)
 			return Math.abs((long) posicaoEcoman - posicaoAlvo) <= 25.5f;
 
-		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_JOGAR_LIXO;
+		return Math.abs((long) posicaoEcoman - posicaoAlvo) <= ConstantesGerais.DISTANCIA_CAPTURAR_LIXO;
 	}
 
 	private void adverterDirtyman() {
@@ -270,7 +276,6 @@ public class ControleEcoman {
 		if (checarProximidade(ecoman.getPosicaoX(), dirtyman.getPosicaoX())
 				&& checarProximidade(ecoman.getPosicaoY(), dirtyman.getPosicaoY())) {
 			ctrlDirtyMan.setSituacaoMovimentacao(false);
-			telaPrincipal.mostrarAdvertenciaEcologica(true);
 		}
 	}
 

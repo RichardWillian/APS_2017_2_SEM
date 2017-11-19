@@ -1,7 +1,7 @@
-package Validacoes;
+package validacoes;
 
-import ImagemData.SilhuetaImagemData;
-import Personagens.Validavel;
+import data.SilhuetaImagemData;
+import personagens.Validavel;
 
 public class ValidacaoCaminharBaixo implements IValidadorCaminhada {
 
@@ -12,6 +12,8 @@ public class ValidacaoCaminharBaixo implements IValidadorCaminhada {
 	public boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, Validavel personagem) {
 
 		this.personagem = personagem;
+		if (!SilhuetaImagemData.getInstance().isSilhuetaOn(personagem))
+			SilhuetaImagemData.getInstance().retornarImagensPersonagem(personagem);
 		CarregarValidacoes(localizacaoEixoX, localizacaoEixoY);
 
 		if (contadorDeValidacoes.equals(0))
@@ -34,10 +36,27 @@ public class ValidacaoCaminharBaixo implements IValidadorCaminhada {
 
 			else if (localizacaoEixoX >= 190 && localizacaoEixoX <= 800)
 				ValidarQuintoQuarteirao(localizacaoEixoX, localizacaoEixoY);
+			
+			else if(localizacaoEixoX >= 880 && localizacaoEixoX <= 1020)
+				ValidarSextoQuarteirao(localizacaoEixoX, localizacaoEixoY);
 
 		} else
 			validarSetimoQuarteirao(localizacaoEixoX, localizacaoEixoY);
 
+	}
+
+	private void ValidarSextoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {
+		
+		if(localizacaoEixoY == 360){
+			if(localizacaoEixoX >= 890 && localizacaoEixoX <= 980)
+				contadorDeValidacoes++;
+			else if(localizacaoEixoX >= 1000 && localizacaoEixoX <= 1020)
+				contadorDeValidacoes++;
+		}
+		else if(localizacaoEixoY == 400){
+			if(localizacaoEixoX >= 990 && localizacaoEixoX <= 1000)
+				contadorDeValidacoes++;
+		}
 	}
 
 	private void validarSetimoQuarteirao(int localizacaoEixoX, int localizacaoEixoY) {

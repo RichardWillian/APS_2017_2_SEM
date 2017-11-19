@@ -1,19 +1,22 @@
-package Telas;
+package telas;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Label;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import Constantes.ConstantesMensagens;
-import Controles.ControleEcoman;
-import Objetos.Lixo;
-import Personagens.Dirtyman;
-import Personagens.Ecoman;
-import Personagens.Validavel;
+
+import controles.ControleEcoman;
+import data.EcomanImagemData;
+import data.LixoImgData;
+import data.MensagemData;
+import objetos.Lixo;
+import personagens.Dirtyman;
+import personagens.Ecoman;
+import personagens.Validavel;
 
 @SuppressWarnings("serial")
 public class TelaPrincipal extends JanelaBase {
@@ -23,9 +26,11 @@ public class TelaPrincipal extends JanelaBase {
 	private Lixo lixo;
 	private ControleEcoman ctrlEcoman;
 	private TelaGameOver telaGameOver;
-	private TelaVenceuJogo telaVenceuJogo;
-	public Vector<Button> listaLixos;
-
+	//private TelaVenceuJogo telaVenceuJogo;
+	private TelaGanhou telaVenceuJogo;
+	public Vector<JLabel> listaLixos;
+	private JLabel lixoInicial;
+	
 	private Label lblPontuacao;
 
 	public Label eixoX;
@@ -40,7 +45,12 @@ public class TelaPrincipal extends JanelaBase {
 
 	private Label lblTempo;
 	private Label lblAlertaCarregandoLixo;
-	private Label lblAdvertencia;
+	private JLabel lblAdvertencia;
+	private LixoImgData iconeLixo;
+	
+	private JLabel setaLixeiraUm;
+	private JLabel setaLixeiraDois;
+	private JLabel setaLixeiraTres;
 
 	private static TelaPrincipal instancia;
 
@@ -49,18 +59,30 @@ public class TelaPrincipal extends JanelaBase {
 		instanciarObjetos();
 		instanciarComponentes();
 		setPropriedadesjanela();
+		setPropriedadesComponentes(); 
 		adicionarComponentesTela();
-		setPropriedadesComponentes();
 	}
 
 	private void setPropriedadesComponentes() {
 		lblTempo.setBounds(1065, 40, 70, 12);
 		lblPontuacao.setBounds(1000, 90, 110, 15);
+		
+		lixoInicial.setIcon(iconeLixo.getIconeLixo( new Random().nextInt(7)));
+		lixoInicial.setBounds(830, 300, 50, 50);
+		
 		lblAlertaCarregandoLixo.setBounds(1000, 115, 150, 15);
-		lblAdvertencia.setBounds(1000, 140, 200, 40);
+		lblAdvertencia.setBounds(1000, 140, 200, 100);
+		
 		background.setBounds(0, 0, 1000, getHeight());
 		detalhesBackground.setBounds(0, 0, 1000, getHeight());
+		
+		ecoman.ecoImage.setIcon(EcomanImagemData.getInstance().recuperarImagens()[4]);
 		ecoman.ecoImage.setBounds(ecoman.getPosicaoX(), ecoman.getPosicaoY(), ecoman.getLargura(), ecoman.getAltura());
+		
+		setaLixeiraUm.setBounds(270, 80, 50, 50);
+		setaLixeiraDois.setBounds(702, 80, 50, 50);
+		setaLixeiraTres.setBounds(390, 510, 50, 50);
+		
 		eixoX.setBounds(1065, 180, 100, 40);
 		eixoY.setBounds(1065, 240, 100, 40);
 
@@ -71,20 +93,34 @@ public class TelaPrincipal extends JanelaBase {
 	private void instanciarComponentes() {
 		lblTempo = new Label();
 		lblPontuacao = new Label("PONTUAÇÃO: 0");
-		lblAdvertencia = new Label();
+		lblAdvertencia = new JLabel();
+		lixoInicial = new JLabel();
 		lblAlertaCarregandoLixo = new Label("CARREGANDO LIXO...");
 		background = new JLabel();
 		detalhesBackground = new JLabel();
+		
+		setaLixeiraUm = new JLabel(new ImageIcon(TelaPrincipal.class.getResource("/data/SetaLixeira.png")));
+		setaLixeiraDois = new JLabel(new ImageIcon(TelaPrincipal.class.getResource("/data/SetaLixeira.png")));
+		setaLixeiraTres = new JLabel(new ImageIcon(TelaPrincipal.class.getResource("/data/SetaLixeira.png")));
+		
 		eixoX = new Label();
 		eixoY = new Label();
 
 		eixoEcoX = new Label();
 		eixoEcoY = new Label();
+
+		iconeLixo = new LixoImgData();
 	}
 
 	private void adicionarComponentesTela() {
 
 		this.add(detalhesBackground);
+
+		this.add(setaLixeiraUm);
+		this.add(setaLixeiraDois);
+		this.add(setaLixeiraTres);
+		
+		this.add(lixoInicial);
 		this.add(ecoman.ecoImage);
 		this.add(dirtyman.dirtyImage);
 
@@ -98,8 +134,8 @@ public class TelaPrincipal extends JanelaBase {
 		lblAdvertencia.setVisible(false);
 
 		this.add(background);
-		this.setComponentZOrder(background, 5);
-
+		listaLixos.add(lixoInicial);
+		
 		this.add(eixoX);
 		this.add(eixoY);
 
@@ -120,7 +156,7 @@ public class TelaPrincipal extends JanelaBase {
 
 		dirtyman = Dirtyman.getInstance();
 		ecoman = Ecoman.getInstance();
-		listaLixos = new Vector<Button>();
+		listaLixos = new Vector<JLabel>();
 		lixo = new Lixo();
 	}
 
@@ -150,19 +186,19 @@ public class TelaPrincipal extends JanelaBase {
 		eixoEcoY.setText(y.toString());
 	}
 
-	public void mostrarAdvertenciaEcologica(boolean mostrarAdvertencia) {
+	public void mostrarAdvertenciaEcologica(boolean mostrarAdvertencia, int numeroMensagem) {
 
 		if (mostrarAdvertencia)
-			lblAdvertencia.setText(ConstantesMensagens.ADVERTENCIA_ECOLOGICA_1);
+			lblAdvertencia.setText(MensagemData.getInstance().recuperarMensagem(numeroMensagem));
 
 		lblAdvertencia.setVisible(mostrarAdvertencia);
 	}
 
 	public void jogarLixo(int posicaoX, int posicaoY) {
 
-		lixo.btnLixo = new Button("LIXO");
+		lixo.btnLixo = new JLabel(iconeLixo.getIconeLixo( new Random().nextInt(7)));
 		lixo.btnLixo.setBounds(posicaoX, posicaoY, lixo.getLargura(), lixo.getAltura());
-
+		lixo.btnLixo.setBackground(new Color(0,0,0,0));
 		listaLixos.add(lixo.btnLixo);
 
 		this.add(lixo.btnLixo);
@@ -230,8 +266,32 @@ public class TelaPrincipal extends JanelaBase {
 
 	public void ativarTelaVenceuJogo() {
 
-		telaVenceuJogo = new TelaVenceuJogo();
+		telaVenceuJogo = new TelaGanhou();
 		telaVenceuJogo.setVisible(true);
 		this.dispose();
+	}
+
+	public void movimentarSetaLixeira(boolean acrescentarPonto) {
+		
+		int	movimentadorSetas = 0;
+		
+		if(acrescentarPonto)
+			movimentadorSetas++;
+		else
+			movimentadorSetas--;
+		
+		setaLixeiraUm.setBounds(270, 80 + movimentadorSetas, 50, 50);
+		setaLixeiraDois.setBounds(702, 80 + movimentadorSetas, 50, 50);
+		setaLixeiraTres.setBounds(390, 510 + movimentadorSetas, 50, 50);
+	}
+
+	public void retirarSetaLixeira() {
+		setaLixeiraUm.setVisible(false);
+		setaLixeiraDois.setVisible(false);
+		setaLixeiraTres.setVisible(false);
+		
+		this.remove(setaLixeiraUm);
+		this.remove(setaLixeiraDois);
+		this.remove(setaLixeiraTres);	
 	}
 }
