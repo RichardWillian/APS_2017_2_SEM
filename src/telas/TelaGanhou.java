@@ -2,23 +2,24 @@ package telas;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controles.ControleIniciarJogo;
+
 @SuppressWarnings("serial")
-public class TelaGanhou extends JFrame {
+public class TelaGanhou extends JanelaBaseSwing {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+	private JButton botaoJogarNovamente;
+	private JButton botaoSair;
+	private JLabel lblBackground;
+	private MenuPrincipal menuPrincipal;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,36 +33,62 @@ public class TelaGanhou extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public TelaGanhou() {
+		
+		instanciarComponentes();
+		setPropriedadesjanela();
+		adicionarComponentesTela();
+		setPropriedadesComponentes();
+	}
+
+	private void setPropriedadesComponentes() {
+
+		botaoSair.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/button_sair.png")));
+		botaoSair.setBounds(391, 360, 150, 40);
+		botaoSair.addActionListener(this);
+		
+		botaoJogarNovamente.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/button_jogar-novamente.png")));
+		botaoJogarNovamente.setBounds(120, 360, 200, 40);
+		botaoJogarNovamente.addActionListener(this);
+		
+		lblBackground.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/telaGanhou.jpg")));
+		lblBackground.setBounds(0, 0, 635, 441);
+	}
+
+	private void adicionarComponentesTela() {
+
+		contentPane.add(botaoSair);
+		contentPane.add(botaoJogarNovamente);
+		contentPane.add(lblBackground);
+	}
+
+	private void setPropriedadesjanela() {
+		
 		setTitle("Parabens - Ecoman");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 651, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnSair = new JButton();
-		btnSair.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/button_sair.png")));
-		btnSair.setBounds(391, 360, 150, 40);
-		contentPane.add(btnSair);
-		
-		JButton botaoJogarNovamente = new JButton("");
-		botaoJogarNovamente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botaoJogarNovamente.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/button_jogar-novamente.png")));
-		botaoJogarNovamente.setBounds(120, 360, 200, 40);
-		contentPane.add(botaoJogarNovamente);
-		
-		JLabel lblBackground = new JLabel();
-		lblBackground.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/telaGanhou.jpg")));
-		lblBackground.setBounds(0, 0, 635, 441);
-		contentPane.add(lblBackground);
 	}
 
+	private void instanciarComponentes() {
+		botaoJogarNovamente = new JButton();
+		botaoSair = new JButton();
+		lblBackground = new JLabel();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == botaoJogarNovamente) {
+			
+			ControleIniciarJogo.IniciarJogo();
+			this.dispose(); 
+		} else if (e.getSource() == botaoSair) {
+
+			menuPrincipal = new MenuPrincipal();
+			menuPrincipal.setVisible(true);
+			this.dispose();
+		}
+	}
 }
