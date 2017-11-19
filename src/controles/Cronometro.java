@@ -7,7 +7,7 @@ public class Cronometro extends Thread {
 
 	TelaPrincipal telaPrincipal;
 
-	private static final int TEMPO = 5;
+	private static final int TEMPO = 999;
 	private static final int TEMPO_BONUS = 4;
 
 	public static int tempo;
