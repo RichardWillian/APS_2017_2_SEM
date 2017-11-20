@@ -1,10 +1,10 @@
 package validacoes;
 
-import personagens.Validavel;
+import personagens.IValidavel;
 
 public class ValidacoesMapa {
 
-	public boolean autorizarCaminhadaCima(Validavel personagem) {
+	public boolean autorizarCaminhadaCima(IValidavel personagem) {
 
 		if (personagem.getTamanhoPassoCompensadoEixoY() >= 60) {
 
@@ -19,7 +19,7 @@ public class ValidacoesMapa {
 		return false;
 	}
 
-	public boolean autorizarCaminhadaBaixo(Validavel personagem) {
+	public boolean autorizarCaminhadaBaixo(IValidavel personagem) {
 
 		if (personagem.getTamanhoPassoCompensadoEixoY() <= 670) {
 			ValidacaoCaminharBaixo validacaoCaminharBaixo = new ValidacaoCaminharBaixo();
@@ -38,7 +38,7 @@ public class ValidacoesMapa {
 		return false;
 	}
 
-	public boolean autorizarCaminhadaEsquerda(Validavel personagem) {
+	public boolean autorizarCaminhadaEsquerda(IValidavel personagem) {
 
 		if (personagem.getTamanhoPassoCompensadoEixoX() >= 30) {
 
@@ -60,7 +60,7 @@ public class ValidacoesMapa {
 		}
 	}
 
-	public boolean autorizarCaminhadaDireita(Validavel personagem) {
+	public boolean autorizarCaminhadaDireita(IValidavel personagem) {
 
 		if (personagem.getTamanhoPassoCompensadoEixoX() < 1020) {
 			ValidacaoCaminharDireita validacaoCaminharDireita = new ValidacaoCaminharDireita();

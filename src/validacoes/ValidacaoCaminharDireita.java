@@ -1,15 +1,15 @@
 package validacoes;
 
 import data.SilhuetaImagemData;
-import personagens.Validavel;
+import personagens.IValidavel;
 
 public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 
 	private Integer contadorDeValidacoes = 0;
 	private SilhuetaImagemData silhuetaImagemData = SilhuetaImagemData.getInstance();
-	Validavel personagem = null;
+	IValidavel personagem = null;
 
-	public boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, Validavel personagem) {
+	public boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, IValidavel personagem) {
 
 		this.personagem = personagem;
 			if (!SilhuetaImagemData.getInstance().isSilhuetaOn(personagem))
@@ -23,7 +23,7 @@ public class ValidacaoCaminharDireita implements IValidadorCaminhada {
 		return false;
 	}
 
-	private void retornarImagensPersonagem(Validavel personagem) {
+	private void retornarImagensPersonagem(IValidavel personagem) {
 
 		silhuetaImagemData.retornarImagensPersonagem(personagem);
 	}

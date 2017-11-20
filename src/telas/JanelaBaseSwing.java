@@ -15,7 +15,7 @@ public class JanelaBaseSwing extends JFrame implements KeyListener, ActionListen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 		setLocationRelativeTo(null);
-		setBounds(350, 100, 651, 480);
+		setBounds(350, 100, 640, 480);
 		this.addKeyListener(this);
 		setResizable(false);
 		this.addKeyListener(this);

@@ -4,7 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import personagens.Ecoman;
-import personagens.Validavel;
+import personagens.IValidavel;
 import telas.TelaPrincipal;
 
 public class SilhuetaImagemData {
@@ -72,7 +72,7 @@ public class SilhuetaImagemData {
 		imagensSilhueta[11] = iconC3;
 	}
 
-	public void trocarParaSilhueta(Validavel personagem) {
+	public void trocarParaSilhueta(IValidavel personagem) {
 
 		if (personagem.equals(Ecoman.getInstance())){
 			silhuetasEcomanOn = true;
@@ -95,7 +95,7 @@ public class SilhuetaImagemData {
 		return instancia;
 	}
 
-	public void retornarImagensPersonagem(Validavel personagem) {
+	public void retornarImagensPersonagem(IValidavel personagem) {
 
 		if (personagem.equals(Ecoman.getInstance())) {
 			EcomanImagemData.getInstance().preencherVetorImagens();
@@ -108,7 +108,7 @@ public class SilhuetaImagemData {
 		}
 	}
 	
-	public boolean isSilhuetaOn(Validavel personagem){
+	public boolean isSilhuetaOn(IValidavel personagem){
 		
 		if(personagem.equals(Ecoman.getInstance()))
 			return silhuetasEcomanOn;

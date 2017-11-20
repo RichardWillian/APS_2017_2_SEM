@@ -33,7 +33,7 @@ public class MensagemData {
 	
 	private String advertencia_ecologica_8 = "<html>Lembre-se, existe apenas uma planeta Terra, então cuide dele, \"Recicle\"</html>";
 	
-	private String[] mensagens = new String[7]; 
+	private String[] mensagens = new String[9]; 
 	
 	private MensagemData(){
 		mensagemOn = false;

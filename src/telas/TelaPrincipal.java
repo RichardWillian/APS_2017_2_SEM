@@ -16,7 +16,7 @@ import data.MensagemData;
 import objetos.Lixo;
 import personagens.Dirtyman;
 import personagens.Ecoman;
-import personagens.Validavel;
+import personagens.IValidavel;
 
 @SuppressWarnings("serial")
 public class TelaPrincipal extends JanelaBase {
@@ -60,7 +60,7 @@ public class TelaPrincipal extends JanelaBase {
 	private void setPropriedadesComponentes() {
 		
 		lblBackgroundPainelInformacoes.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/novasImagens/fundoverde.jpg")));
-		lblBackgroundPainelInformacoes.setBounds(1000, 0, 200, 671);
+		lblBackgroundPainelInformacoes.setBounds(1000, 0, 200, 700);
 		
 		lblTempo.setBounds(1065, 40, 100, 12);
 		lblTempo.setFont(new Font("Rockwell", Font.BOLD, 12));
@@ -228,7 +228,7 @@ public class TelaPrincipal extends JanelaBase {
 		this.detalhesBackground.setIcon(detalhesBackground);
 	}
 
-	public void elevarNivelSilhuetaPersonagem(Validavel personagem) {
+	public void elevarNivelSilhuetaPersonagem(IValidavel personagem) {
 
 		if (personagem.equals(Ecoman.getInstance()))
 			this.setComponentZOrder(ecoman.ecoImage, 0);
@@ -236,7 +236,7 @@ public class TelaPrincipal extends JanelaBase {
 			this.setComponentZOrder(dirtyman.dirtyImage, 0);
 	}
 
-	public void descenderNivelSilhuetaPersonagem(Validavel personagem) {
+	public void descenderNivelSilhuetaPersonagem(IValidavel personagem) {
 
 		if (personagem.equals(Ecoman.getInstance()))
 			this.setComponentZOrder(ecoman.ecoImage, 3);

@@ -1,8 +1,8 @@
 package validacoes;
 
-import personagens.Validavel;
+import personagens.IValidavel;
 
 public interface IValidadorCaminhada {
 
-	boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, Validavel personagem);
+	boolean autorizarCaminhar(int localizacaoEixoX, int localizacaoEixoY, IValidavel personagem);
 }

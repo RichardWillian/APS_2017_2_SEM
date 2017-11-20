@@ -52,7 +52,7 @@ public class TelaGanhou extends JanelaBaseSwing {
 		botaoJogarNovamente.addActionListener(this);
 		
 		lblBackground.setIcon(new ImageIcon(TelaGanhou.class.getResource("/novasImagens/telaGanhou.jpg")));
-		lblBackground.setBounds(0, 0, 635, 441);
+		lblBackground.setBounds(0, 0, 640, 450);
 	}
 
 	private void adicionarComponentesTela() {

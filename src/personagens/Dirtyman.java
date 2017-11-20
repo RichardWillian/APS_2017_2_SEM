@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 import telas.TelaPrincipal;
 
-public class Dirtyman implements Validavel {
+public class Dirtyman implements IValidavel {
 
 	private int posicaoX;
 	private int posicaoY;

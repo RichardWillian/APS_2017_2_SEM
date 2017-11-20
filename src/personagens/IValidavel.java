@@ -1,6 +1,6 @@
 package personagens;
 
-public interface Validavel {
+public interface IValidavel {
 
 	int getPosicaoY();
 

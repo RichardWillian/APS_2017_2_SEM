@@ -50,7 +50,10 @@ public class ControleDirtyMan extends Thread {
 	public void run() {
 
 		while (true) {
-
+			
+			if(pararDirtyMan == true)
+				return;
+			
 			if (podeSeMovimentar)
 				movimentarDirtyMan();
 			else {

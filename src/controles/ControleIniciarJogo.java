@@ -11,6 +11,13 @@ public class ControleIniciarJogo {
 
 	public static void IniciarJogo() {
 
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Dirtyman.setInstance(new Dirtyman()); 
 		Ecoman.setInstance(new Ecoman());
 		ControleDirtyMan.setInstance(new ControleDirtyMan());
