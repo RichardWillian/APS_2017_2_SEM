@@ -79,7 +79,7 @@ public class TelaPrincipal extends JanelaBase {
 		lblAlertaCarregandoLixo.setFont(new Font("Rockwell", Font.BOLD, 12));
 		lblAlertaCarregandoLixo.setForeground(new Color(255, 255, 0));
 		
-		lblAdvertencia.setBounds(1000, 140, 200, 100);
+		lblAdvertencia.setBounds(1000, 140, 200, 120);
 		lblAdvertencia.setFont(new Font("Rockwell", Font.BOLD, 14));
 		lblAdvertencia.setForeground(new Color(255, 255, 255));
 		
@@ -115,21 +115,16 @@ public class TelaPrincipal extends JanelaBase {
 	private void adicionarComponentesTela() {
 		
 		this.add(lblPontuacao);
-		
 		this.add(lblTempo);
-		
 		this.add(lblAdvertencia);
-		
-		this.add(lblAlertaCarregandoLixo);	
-		
+		this.add(lblAlertaCarregandoLixo);
 		this.add(lblBackgroundPainelInformacoes);
-
 		this.add(detalhesBackground);
 		this.add(setaLixeiraUm);
-		this.add(setaLixeiraDois);
+		this.add(setaLixeiraDois);		
 		this.add(setaLixeiraTres);
 		this.add(lixoInicial);
-		this.add(ecoman.ecoImage);
+		this.add(ecoman.ecoImage);		
 		this.add(dirtyman.dirtyImage);
 		this.add(background);
 		listaLixos.add(lixoInicial);
