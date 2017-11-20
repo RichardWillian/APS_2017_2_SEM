@@ -51,15 +51,6 @@ public class ControleDirtyMan extends Thread {
 
 		while (true) {
 
-			System.err.println("DirtyMan está vivo ");
-
-			if (pararDirtyMan == true) {
-				System.err.println("************** DirtyMan morreu **************");
-
-				return;
-
-			}
-
 			if (podeSeMovimentar)
 				movimentarDirtyMan();
 			else {

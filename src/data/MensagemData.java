@@ -29,6 +29,10 @@ public class MensagemData {
 											+ "considerados inadequados.<br>"
 											+ "Lixo é no lixo !</html>";
 	
+	private String advertencia_ecologica_7 ="<html>Quantidades significativas de lixo na rua causam aparecimentos de \"animais peçonhentos\" <br>" + "que \"causam doenças\"<html> ";
+	
+	private String advertencia_ecologica_8 = "<html>Lembre-se, existe apenas uma planeta Terra, então cuide dele, \"Recicle\"</html>";
+	
 	private String[] mensagens = new String[7]; 
 	
 	private MensagemData(){
@@ -45,6 +49,8 @@ public class MensagemData {
 		mensagens[4] = advertencia_ecologica_4;
 		mensagens[5] = advertencia_ecologica_5;
 		mensagens[6] = advertencia_ecologica_6;
+		mensagens[7] = advertencia_ecologica_7;
+		mensagens[8] = advertencia_ecologica_8;
 	}
 	
 	public String recuperarMensagem(int numeroMensagem) {

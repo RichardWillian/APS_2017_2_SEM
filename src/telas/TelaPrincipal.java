@@ -1,7 +1,7 @@
 package telas;
 
 import java.awt.Color;
-import java.awt.Label;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Vector;
@@ -26,25 +26,19 @@ public class TelaPrincipal extends JanelaBase {
 	private Lixo lixo;
 	private ControleEcoman ctrlEcoman;
 	private TelaGameOver telaGameOver;
-	//private TelaVenceuJogo telaVenceuJogo;
 	private TelaGanhou telaVenceuJogo;
 	public Vector<JLabel> listaLixos;
 	private JLabel lixoInicial;
+	private JLabel lblBackgroundPainelInformacoes;
 	
-	private Label lblPontuacao;
-
-	public Label eixoX;
-	public Label eixoY;
-
-	public Label eixoEcoX;
-	public Label eixoEcoY;
+	private JLabel lblPontuacao;
 
 	private Integer pontuacao = 0;
 	private JLabel background;
 	private JLabel detalhesBackground;
 
-	private Label lblTempo;
-	private Label lblAlertaCarregandoLixo;
+	private JLabel lblTempo;
+	private JLabel lblAlertaCarregandoLixo;
 	private JLabel lblAdvertencia;
 	private LixoImgData iconeLixo;
 	
@@ -64,14 +58,30 @@ public class TelaPrincipal extends JanelaBase {
 	}
 
 	private void setPropriedadesComponentes() {
-		lblTempo.setBounds(1065, 40, 70, 12);
-		lblPontuacao.setBounds(1000, 90, 110, 15);
+		
+		lblBackgroundPainelInformacoes.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/novasImagens/fundoverde.jpg")));
+		lblBackgroundPainelInformacoes.setBounds(1000, 0, 200, 671);
+		
+		lblTempo.setBounds(1065, 40, 100, 12);
+		lblTempo.setFont(new Font("Rockwell", Font.BOLD, 12));
+		lblTempo.setForeground(new Color(255, 255, 255));
+		
+		lblPontuacao.setBounds(1000, 90, 200, 15);
+		lblPontuacao.setText("PONTUAÇÃO: 0");
+		lblPontuacao.setFont(new Font("Rockwell", Font.BOLD, 12));
+		lblPontuacao.setForeground(new Color(255, 255, 255));
 		
 		lixoInicial.setIcon(iconeLixo.getIconeLixo( new Random().nextInt(7)));
 		lixoInicial.setBounds(830, 300, 50, 50);
 		
 		lblAlertaCarregandoLixo.setBounds(1000, 115, 150, 15);
+		lblAlertaCarregandoLixo.setVisible(false);
+		lblAlertaCarregandoLixo.setFont(new Font("Rockwell", Font.BOLD, 12));
+		lblAlertaCarregandoLixo.setForeground(new Color(255, 255, 0));
+		
 		lblAdvertencia.setBounds(1000, 140, 200, 100);
+		lblAdvertencia.setFont(new Font("Rockwell", Font.BOLD, 14));
+		lblAdvertencia.setForeground(new Color(255, 255, 255));
 		
 		background.setBounds(0, 0, 1000, getHeight());
 		detalhesBackground.setBounds(0, 0, 1000, getHeight());
@@ -82,65 +92,47 @@ public class TelaPrincipal extends JanelaBase {
 		setaLixeiraUm.setBounds(270, 80, 50, 50);
 		setaLixeiraDois.setBounds(702, 80, 50, 50);
 		setaLixeiraTres.setBounds(390, 510, 50, 50);
-		
-		eixoX.setBounds(1065, 180, 100, 40);
-		eixoY.setBounds(1065, 240, 100, 40);
-
-		eixoEcoX.setBounds(1065, 300, 100, 40);
-		eixoEcoY.setBounds(1065, 360, 100, 40);
 	}
 
 	private void instanciarComponentes() {
-		lblTempo = new Label();
-		lblPontuacao = new Label("PONTUAÇÃO: 0");
+
+		lblBackgroundPainelInformacoes = new JLabel();
+		lblTempo = new JLabel();
+		lblPontuacao = new JLabel();
 		lblAdvertencia = new JLabel();
 		lixoInicial = new JLabel();
-		lblAlertaCarregandoLixo = new Label("CARREGANDO LIXO...");
+		lblAlertaCarregandoLixo = new JLabel("CARREGANDO LIXO...");
 		background = new JLabel();
 		detalhesBackground = new JLabel();
 		
 		setaLixeiraUm = new JLabel(new ImageIcon(TelaPrincipal.class.getResource("/data/SetaLixeira.png")));
 		setaLixeiraDois = new JLabel(new ImageIcon(TelaPrincipal.class.getResource("/data/SetaLixeira.png")));
 		setaLixeiraTres = new JLabel(new ImageIcon(TelaPrincipal.class.getResource("/data/SetaLixeira.png")));
-		
-		eixoX = new Label();
-		eixoY = new Label();
-
-		eixoEcoX = new Label();
-		eixoEcoY = new Label();
 
 		iconeLixo = new LixoImgData();
 	}
 
 	private void adicionarComponentesTela() {
+		
+		this.add(lblPontuacao);
+		
+		this.add(lblTempo);
+		
+		this.add(lblAdvertencia);
+		
+		this.add(lblAlertaCarregandoLixo);	
+		
+		this.add(lblBackgroundPainelInformacoes);
 
 		this.add(detalhesBackground);
-
 		this.add(setaLixeiraUm);
 		this.add(setaLixeiraDois);
 		this.add(setaLixeiraTres);
-		
 		this.add(lixoInicial);
 		this.add(ecoman.ecoImage);
 		this.add(dirtyman.dirtyImage);
-
-		this.add(lblPontuacao);
-		this.add(lblTempo);
-
-		this.add(lblAlertaCarregandoLixo);
-		lblAlertaCarregandoLixo.setVisible(false);
-
-		this.add(lblAdvertencia);
-		lblAdvertencia.setVisible(false);
-
 		this.add(background);
 		listaLixos.add(lixoInicial);
-		
-		this.add(eixoX);
-		this.add(eixoY);
-
-		this.add(eixoEcoX);
-		this.add(eixoEcoY);
 	}
 
 	private void setPropriedadesjanela() {
@@ -178,12 +170,6 @@ public class TelaPrincipal extends JanelaBase {
 			lblAlertaCarregandoLixo.setVisible(true);
 		} else
 			lblAlertaCarregandoLixo.setVisible(false);
-
-		Integer x = ecoman.ecoImage.getBounds().x + 30;
-		eixoEcoX.setText(x.toString());
-
-		Integer y = ecoman.ecoImage.getBounds().y + 50;
-		eixoEcoY.setText(y.toString());
 	}
 
 	public void mostrarAdvertenciaEcologica(boolean mostrarAdvertencia, int numeroMensagem) {
@@ -198,7 +184,7 @@ public class TelaPrincipal extends JanelaBase {
 
 		lixo.btnLixo = new JLabel(iconeLixo.getIconeLixo( new Random().nextInt(7)));
 		lixo.btnLixo.setBounds(posicaoX, posicaoY, lixo.getLargura(), lixo.getAltura());
-		lixo.btnLixo.setBackground(new Color(0,0,0,0));
+		lixo.btnLixo.setBackground(new Color(0, 0, 0, 0));
 		listaLixos.add(lixo.btnLixo);
 
 		this.add(lixo.btnLixo);

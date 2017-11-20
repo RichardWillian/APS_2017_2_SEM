@@ -7,7 +7,7 @@ public class Cronometro extends Thread {
 
 	TelaPrincipal telaPrincipal;
 
-	private static final int TEMPO = 999;
+	private static final int TEMPO = 60;
 	private static final int TEMPO_BONUS = 4;
 
 	public static int tempo;
@@ -48,7 +48,7 @@ public class Cronometro extends Thread {
 				TelaPrincipal.getInstance().mostrarAdvertenciaEcologica(false, 0);
 			}
 
-			if (tempo > TEMPO - 10) {
+			if (tempo > TEMPO - 5) {
 
 				if (movimentarSetas) {
 					TelaPrincipal.getInstance().movimentarSetaLixeira(movimentarSetas);
