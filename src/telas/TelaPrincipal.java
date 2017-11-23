@@ -229,6 +229,8 @@ public class TelaPrincipal extends JanelaBase {
 			this.setComponentZOrder(ecoman.ecoImage, 0);
 		else
 			this.setComponentZOrder(dirtyman.dirtyImage, 0);
+		
+		this.setComponentZOrder(detalhesBackground, 1);
 	}
 
 	public void descenderNivelSilhuetaPersonagem(IValidavel personagem) {
@@ -237,6 +239,8 @@ public class TelaPrincipal extends JanelaBase {
 			this.setComponentZOrder(ecoman.ecoImage, 3);
 		else
 			this.setComponentZOrder(dirtyman.dirtyImage, 3);
+		
+		this.setComponentZOrder(detalhesBackground, 1);
 	}
 
 	public void iniciarNivelPersonagens() {
