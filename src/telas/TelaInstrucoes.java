@@ -90,9 +90,11 @@ public class TelaInstrucoes extends JanelaBaseSwing{
 		lblDirecao.setFont(new Font("Rockwell", Font.BOLD, 15));
 		lblDirecao.setForeground(new Color(0, 255, 0));
 		
-		botaoVoltar.setBounds(576, 11, 47, 23);
-		botaoVoltar.setIcon(new ImageIcon(TelaInstrucoes.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		botaoVoltar.setBounds(576, 11, 30, 30);
+		botaoVoltar.setIcon(new ImageIcon(TelaInstrucoes.class.getResource("/imagensTelaInformacoes/Seta_Voltar.png")));
 		botaoVoltar.addActionListener(this);
+		botaoVoltar.setBorderPainted(false);
+		botaoVoltar.setBackground(new Color(7, 31, 15));
 
 		lblFuncaoBarraEspaco.setBounds(400, 365, 227, 18);
 		lblFuncaoBarraEspaco.setFont(new Font("Rockwell", Font.BOLD, 14));

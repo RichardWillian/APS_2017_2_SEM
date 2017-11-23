@@ -13,6 +13,7 @@ public class Cronometro extends Thread {
 	public static int tempo;
 	private static Cronometro instancia;
 	private static boolean ganhou = false;
+	private int contadorTempoMensagem;
 
 	Cronometro() {
 
@@ -43,9 +44,13 @@ public class Cronometro extends Thread {
 				e.printStackTrace();
 			}
 
-			if ((MensagemData.getInstance().isMensagemOn()) && (tempo % 10 == 0)) {
+			if ((MensagemData.getInstance().isMensagemOn()))
+				contadorTempoMensagem++;
+			
+			if(contadorTempoMensagem == 7){
 				MensagemData.getInstance().desligarMensagem();
 				TelaPrincipal.getInstance().mostrarAdvertenciaEcologica(false, 0);
+				contadorTempoMensagem = 0;
 			}
 
 			if (tempo > TEMPO - 5) {
